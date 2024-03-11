@@ -12,6 +12,7 @@ export class LoginComponent {
     email: '',
     password: ''
   };
+  errorMessage: string = '';  // Ajoutez cette ligne pour stocker le message d'erreur
 
   
   constructor(private authentificationService: AuthentificationService,
@@ -62,10 +63,21 @@ export class LoginComponent {
           this.router.navigate(['/manager']);
         }
       },
-      error: (error) => {
+    /*  error: (error) => {
         console.error('Authentication failed', error);
+        this.errorMessage = error.message;  // Mettez à jour le message d'erreur
       }
-    });
+    });*/  // hedhi traja3li ken code  "code": "BAD_CREDENTIALS"
+
+    error: (error) => {
+      console.error('Authentication failed', error);
+      if (error.error && error.error.errors && error.error.errors.length > 0) {
+        this.errorMessage = error.error.errors[0];
+      } else {
+        this.errorMessage = 'Une erreur est survenue lors de l\'authentification.';
+      }
+    }
+  });
   }
 
 }

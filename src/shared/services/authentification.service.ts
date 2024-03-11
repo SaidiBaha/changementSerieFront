@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, tap } from "rxjs";
+import { Observable, catchError, tap, throwError } from "rxjs";
 import { HttpRepositoryService } from "src/core/httpRepository.service";
 
 @Injectable({
@@ -38,7 +38,14 @@ export class AuthentificationService {
       tap(response => {
         this.currentUser = response.user;
         localStorage.setItem('role', response.role);  // Stockez le rôle dans le localStorage
-      })
+      }),
+      
+    /*  catchError(error => {
+        // Propagez l'erreur pour la traiter dans le composant
+        return throwError(() => new Error(error.error.message || 'Erreur de connexion'));
+      })*/
+      catchError(error => throwError(() => error)) //renviyer l'erreur complète
+
     );
   }
   getRole(): string {
