@@ -14,7 +14,9 @@ export class UserService {
   getUser(userId: any) {
     return this.httpRepositoryService.get<any>(`${this.BASE_URI}/${userId}`);
   }
-
+  getUsers(){
+    return this.httpRepositoryService.get<any>(this.BASE_URI);
+  }
 
   
 }

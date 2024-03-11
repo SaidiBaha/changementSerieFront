@@ -76,3 +76,24 @@
     padding: 20px;
     }
     }
+
+
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      color: white;
+      background-color: green;
+      z-index: 1000;
+      transition: opacity 0.5s, bottom 0.5s;
+      opacity: 0; /* start out invisible */
+      visibility: hidden; /* start out hidden */
+    }
+    
+    .notification.success {
+      visibility: visible;
+      opacity: 1;
+      bottom: 30px; /* move up a bit when visible */
+    }

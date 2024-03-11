@@ -7,6 +7,8 @@ import { AuthentificationService } from 'src/shared/services/authentification.se
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  registrationSuccess = false;
+  errorMessage = '';
 
   user = {
     firstname: '',
@@ -21,8 +23,11 @@ export class RegisterComponent {
     this.authentificationService.register(this.user).subscribe({
       next: (response) => {
         console.log('Registration successful', response);
+        this.registrationSuccess = true;
+        setTimeout(() => this.registrationSuccess = false, 3000);
       },
       error: (error) => {
+        this.errorMessage = "Une erreur est survenue lors de l'inscription.";
         console.error('Registration failed', error);
       }
     });

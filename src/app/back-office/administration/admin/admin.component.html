@@ -1,1 +1,65 @@
-<p>admin works!</p>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+     
+      <div class="card">
+        
+        <div class="card-body">
+          <div class="card-body d-flex align-items-center">
+            <p class="card-title flex-grow-1">Users Table</p>
+              
+         <!--   <button type="button" class="btn btn-primary my-btn" data-toggle="modal" data-target="#exampleModal2">
+              addUser
+            </button>-->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              addUser
+            </button>
+         
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table class="display expandable-table" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Matricule</th> 
+                      <th>last name</th> 
+                      <th>first name</th>
+                      <th>Email</th>
+                      <th>loginstatus</th>
+                      <th>Role</th>
+                     
+                     
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let user of listUser ">
+                    <tr>
+                        <td>{{user.matriculeDto}}</td>
+                        <td>{{user.firstNameDto}}</td>
+                        <td>{{user.lastNameDto}}</td>
+                        <td>{{user.emailDto}}</td>
+                        <td>{{user.loginstatusDto}}</td>
+                        <td>{{user.roleDto}}</td>
+                        <td>
+                      
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Edit
+                          </button>
+                    
+                        
+                          <button type="button" class="btn btn-danger" >
+                            Delete
+                          </button>       
+    
+      
+                        </td>
+                        
+                    </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div> 
+      </div>
+  </div>
