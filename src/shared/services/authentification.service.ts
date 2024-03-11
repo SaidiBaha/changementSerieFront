@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
 import { HttpRepositoryService } from "src/core/httpRepository.service";
 
 @Injectable({
@@ -8,6 +8,7 @@ import { HttpRepositoryService } from "src/core/httpRepository.service";
 export class AuthentificationService {
 
     private BASE_URI = 'springMVC/api/v1/auth';
+    currentUser: any = null;
 
     constructor(private httpRepositoryService: HttpRepositoryService) { }
 
@@ -15,8 +16,42 @@ export class AuthentificationService {
     register(data: any): Observable<any> {
         return this.httpRepositoryService.post(`${this.BASE_URI}/register`, data);
       }
-    
-      authenticate(data: any): Observable<any> {
+    //1ere méthode just ken reponse w generer le token
+    /*  authenticate(data: any): Observable<any> {
         return this.httpRepositoryService.post(`${this.BASE_URI}/authenticate`, data);
-      }
+      }*/
+
+
+      
+
+//2éme méthode 
+ /* authenticate(data: any): Observable<any> {
+    return this.httpRepositoryService.post(`${this.BASE_URI}/authenticate`, data).pipe(
+      tap(response => {
+        this.currentUser = response.user;
+      })
+    );
+  }*/
+
+  authenticate(data: any): Observable<any> {
+    return this.httpRepositoryService.post(`${this.BASE_URI}/authenticate`, data).pipe(
+      tap(response => {
+        this.currentUser = response.user;
+        localStorage.setItem('role', response.role);  // Stockez le rôle dans le localStorage
+      })
+    );
+  }
+  getRole(): string {
+    return localStorage.getItem('role') || '';
+  }
+
+  logout(): void {
+    this.currentUser = null;
+  }
+
+
+//teb3a 2éme méthode 
+ /* getRole(): string | null {
+    return this.currentUser ? this.currentUser.role : null;
+  }*/
 }
