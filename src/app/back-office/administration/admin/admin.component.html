@@ -5,15 +5,14 @@
         
         <div class="card-body">
           <div class="card-body d-flex align-items-center">
-            <p class="card-title flex-grow-1">Users Table</p>
+            <p class="card-title flex-grow-1">Tableaux des Utilisateurs</p>
               
-         <!--   <button type="button" class="btn btn-primary my-btn" data-toggle="modal" data-target="#exampleModal2">
-              addUser
-            </button>-->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       
+            <button type="button" class="btn btn-primary" (click)="openModal()">
               addUser
             </button>
-         
+         <!--   <button mat-raised-button (click)="openAddUserDialog()">Add User</button>
+         -->
           </div>
           <div class="row">
             <div class="col-12">
@@ -46,7 +45,7 @@
                           </button>
                     
                         
-                          <button type="button" class="btn btn-danger" >
+                          <button type="button" class="btn btn-danger" (click)="deleteUser(user.idDto)">
                             Delete
                           </button>       
     
@@ -63,3 +62,138 @@
         </div> 
       </div>
   </div>
+
+
+<!-- 
+  Modal
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+  
+        <div class="modal-body">
+          <form novalidate>
+            <div class="row">
+                <div class="col-md-12 grid-margin">
+                    <div class="card rounded">
+                        <div class="card-header">
+                            <h4 class="card-title">ADD User</h4>
+                        </div>
+                        <div class="card-body">
+                          
+                          <div class="form-group text-center">
+                            <input type="text" class="form-control form-control-sm w-75 mx-auto" name="matricule"
+                                [(ngModel)]="user.matriculeDto" placeholder="matricule" required #titleInput>
+                        </div>
+
+                          <div class="form-group text-center">
+                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="lastName"
+                                  [(ngModel)]="user.lastNameDto" placeholder="lastName" required #titleInput>
+                          </div>
+                          <div class="form-group text-center">
+                            <input type="text" class="form-control form-control-sm w-75 mx-auto" name="firstName"
+                                [(ngModel)]="user.firstNameDto" placeholder="firstName" required #titleInput>
+                        </div>
+                          <div class="form-group text-center">
+                              <input type="email" class="form-control form-control-sm w-75 mx-auto" name="email"
+                                  [(ngModel)]="user.emailDto" placeholder="email" required #titleInput>
+                          </div>
+ 
+                          <div class="form-group text-center">
+                              <input type="password" class="form-control form-control-sm w-75 mx-auto" name="password"
+                                  [(ngModel)]="user.passwordDto" placeholder="password" required #titleInput>
+                          </div>
+                         
+                          <div class="form-group text-center">
+                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="niveau"
+                                  [(ngModel)]="user.loginstatusDto" placeholder="loginstatus">
+                          </div>
+  
+                  
+  
+  
+  
+                           <div class="form-group text-center">
+                            <select class="form-control form-control-sm w-75 mx-auto" name="role" [(ngModel)]="user.roleDto" placeholder="role">
+                              <option *ngFor="let role of roles | keyvalue" [ngValue]="role.key">{{ role.value }}</option>
+                            </select>
+                          </div>
+  
+              
+        
+                            <div class="form-group text-center"> 
+                               aria-label="Close"  data-dismiss="modal" (click)="closeModal(); 
+                                 <button type="submit" class="btn btn-danger" aria-label="Close"  data-dismiss="modal" (click)="closeModal();  (click)="UpdateOffer()" >Update</button> 
+                                <button type="submit" class="btn btn-danger" aria-label="Close"  data-dismiss="modal" (click)="closeModal();  createUser()">Submit</button>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <app-modal [title]="'Add User'"  #dialog>
+    <div class="modal-body">
+      <form novalidate>
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card rounded">
+                    <div class="card-header">
+                        <h4 class="card-title">ADD User</h4>
+                    </div>
+                    <div class="card-body">
+                      
+                      <div class="form-group text-center">
+                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="matricule"
+                            [(ngModel)]="user.matriculeDto" placeholder="matricule" required #titleInput>
+                    </div>
+
+                      <div class="form-group text-center">
+                          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="lastName"
+                              [(ngModel)]="user.lastNameDto" placeholder="lastName" required #titleInput>
+                      </div>
+                      <div class="form-group text-center">
+                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="firstName"
+                            [(ngModel)]="user.firstNameDto" placeholder="firstName" required #titleInput>
+                    </div>
+                      <div class="form-group text-center">
+                          <input type="email" class="form-control form-control-sm w-75 mx-auto" name="email"
+                              [(ngModel)]="user.emailDto" placeholder="email" required #titleInput>
+                      </div>
+
+                      <div class="form-group text-center">
+                          <input type="password" class="form-control form-control-sm w-75 mx-auto" name="password"
+                              [(ngModel)]="user.passwordDto" placeholder="password" required #titleInput>
+                      </div>
+                     
+                      <div class="form-group text-center">
+                          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="niveau"
+                              [(ngModel)]="user.loginstatusDto" placeholder="loginstatus">
+                      </div>
+
+              
+
+
+
+                       <div class="form-group text-center">
+                        <select class="form-control form-control-sm w-75 mx-auto" name="role" [(ngModel)]="user.roleDto" placeholder="role">
+                          <option *ngFor="let role of roles | keyvalue" [ngValue]="role.key">{{ role.value }}</option>
+                        </select>
+                      </div>
+
+          
+    
+                        <div class="form-group text-center"> 
+                           aria-label="Close"  data-dismiss="modal" (click)="closeModal(); 
+                            <button type="submit" class="btn btn-danger" aria-label="Close"  data-dismiss="modal" (click)="closeModal();  createUser()">Submit</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+  </app-modal>

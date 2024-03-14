@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
   ],
 
   exports: [
-
   ],
 
   bootstrap: [AppComponent]

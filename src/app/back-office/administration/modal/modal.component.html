@@ -1,0 +1,20 @@
+<ng-container *ngIf="_shown">
+    <div class="modal fade custom-modal show" aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div style="width:150%"class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{title}}</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" (click)="close()">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ng-content></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+    <div class="modal-backdrop fade show"></div>
+</ng-container>

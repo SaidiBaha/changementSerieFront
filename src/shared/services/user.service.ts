@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
+import { User } from '../models/User';
 
 
 @Injectable({
@@ -18,5 +19,16 @@ export class UserService {
     return this.httpRepositoryService.get<any>(this.BASE_URI);
   }
 
+  createUser(user: User){
+    return this.httpRepositoryService.post<User>(this.BASE_URI,user)
+
+  }
+  updateUser(id: number, user: User) {
+    return this.httpRepositoryService.put<User>(`${this.BASE_URI}/${id}`, user);
+  }
+
+  deleteUser(id: number) {
+    return this.httpRepositoryService.delete<void>(`${this.BASE_URI}/${id}`);
+  }
   
 }
