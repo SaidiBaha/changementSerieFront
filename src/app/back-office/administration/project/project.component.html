@@ -1,0 +1,103 @@
+
+
+<div class="container mt-3">
+    <h2 class="mb-3">Mes Projet</h2>
+    <div class="text-end mb-3">
+   
+      <button type="button" class="btn btn-primary mb-3" (click)="openModal()">Ajouter un projet</button>
+ 
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+                      <tr>
+                        <th>Titre Projet</th> 
+                        <th>Description</th> 
+                        <th>Date Début</th>
+                        <th>Date Fin</th>
+                        <th>Actions</th>
+                       
+                       
+                       
+                      </tr>
+        </thead>
+        <tbody *ngFor="let projet of projets ">
+                      <tr>
+                          <td>{{projet.titreProjetDto}}</td>
+                          <td>{{projet.descriptionDto}}</td>
+                          <td>{{projet.dateDebutDto}}</td>
+                          <td>{{projet.dateFinDto}}</td>
+                          
+                          <td>
+
+                            <!-- <button type="button" class="btn btn-info me-1"(click)="getById(user.idDto)"(click)="openModal()">Edit<i class="bi bi-pencil"></i></button>
+                         
+                            <button type="button" class="btn btn-danger me-1"(click)="deleteUser(user.idDto)">Delete<i class="bi bi-trash"></i></button>
+                      -->
+                      <button type="button" class="btn btn-info" (click)="openModal(projet)">Modifier</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteProjet(projet.idDto)">Supprimer</button>
+                   
+        
+                          </td>
+                          
+                      </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+
+            
+  <app-modal [title]="'Ajouter une nouvelle Projet'"  #dialog>
+    <div class="modal-body">
+      <form novalidate>
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card rounded">
+                    <div class="card-header">
+                        <h4 class="card-title">ADD User</h4>
+                    </div>
+                    <div class="card-body">
+                      
+                      <div class="form-group text-center">
+                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreProjetDto"
+                            [(ngModel)]="projet.titreProjetDto" placeholder="titreProjet" required #titleInput>
+                    </div>
+
+                      <div class="form-group text-center">
+                          <input type="textarea" class="form-control form-control-sm w-75 mx-auto" name="descriptionDto"
+                              [(ngModel)]="projet.descriptionDto" placeholder="description" required #titleInput>
+                      </div>
+                      <div class="form-group text-center">
+                        <input type="date" class="form-control form-control-sm w-75 mx-auto" name="dateDebutDto"
+                            [(ngModel)]="projet.dateDebutDto" placeholder="dateDebut" required #titleInput>
+                    </div>
+                      <div class="form-group text-center">
+                          <input type="date" class="form-control form-control-sm w-75 mx-auto" name="dateFinDto"
+                              [(ngModel)]="projet.dateFinDto" placeholder="date Fin" required #titleInput>
+                      </div>
+
+                      
+
+              
+
+
+
+                   
+
+          
+    
+                        <div class="form-group text-center"> 
+                           
+                          <button type="submit" class="btn btn-danger" (click)="submitProjet()">Submit</button>
+                          <!-- <button type="submit" class="btn btn-danger" aria-label="Close"   (click)="  createUser()">Submit</button> -->
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+  </app-modal>
+
+              

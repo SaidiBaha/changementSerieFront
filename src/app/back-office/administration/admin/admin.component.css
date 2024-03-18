@@ -1,0 +1,28 @@
+/* Ajoutez vos propres styles pour personnaliser l'apparence en plus de Bootstrap */
+.table thead th {
+    color: #6c757d; /* Header text color */
+  }
+  
+  .btn-info {
+    color: white;
+  }
+  
+  /* Styles pour les boutons d'action */
+  .btn-info {
+    background-color: #17a2b8;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+  }
+  
+  /* Ajoutez des icônes depuis une bibliothèque comme Bootstrap Icons si nécessaire */
+  

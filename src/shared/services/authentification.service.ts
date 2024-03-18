@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { HttpRepositoryService } from "src/core/httpRepository.service";
 
+
 @Injectable({
     providedIn: 'root'
   })
@@ -36,8 +37,10 @@ export class AuthentificationService {
   authenticate(data: any): Observable<any> {
     return this.httpRepositoryService.post(`${this.BASE_URI}/authenticate`, data).pipe(
       tap(response => {
-        this.currentUser = response.user;
-        localStorage.setItem('role', response.role);  // Stockez le rôle dans le localStorage
+        localStorage.setItem('token', response.token); // Continuez de stocker le JWT si présent
+        localStorage.setItem('idUser', response.idUser); // Stockez l'ID utilisateur
+        localStorage.setItem('role', response.role); // Stockez le rôle
+        this.currentUser = response.user; // Mise à jour de l'utilisateur courant
       }),
       
     /*  catchError(error => {
@@ -51,6 +54,10 @@ export class AuthentificationService {
   getRole(): string {
     return localStorage.getItem('role') || '';
   }
+  getCurrentUserId(): string | null {
+    return localStorage.getItem('idUser');
+  }
+  
 
   logout(): void {
     this.currentUser = null;
@@ -61,4 +68,7 @@ export class AuthentificationService {
  /* getRole(): string | null {
     return this.currentUser ? this.currentUser.role : null;
   }*/
+
+
+
 }

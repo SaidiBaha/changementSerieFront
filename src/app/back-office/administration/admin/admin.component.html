@@ -1,24 +1,13 @@
-<div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
-     
-      <div class="card">
-        
-        <div class="card-body">
-          <div class="card-body d-flex align-items-center">
-            <p class="card-title flex-grow-1">Tableaux des Utilisateurs</p>
-              
-       
-            <button type="button" class="btn btn-primary" (click)="openModal()">
-              addUser
-            </button>
-         <!--   <button mat-raised-button (click)="openAddUserDialog()">Add User</button>
-         -->
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="table-responsive">
-                <table class="display expandable-table" style="width:100%">
-                  <thead>
+
+
+<div class="container mt-3">
+  <h2 class="mb-3">Mes Utilisateurs</h2>
+  <div class="text-end mb-3">
+    <button type="button" class="btn btn-primary" (click)="openModal()">ADD</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
                     <tr>
                       <th>Matricule</th> 
                       <th>last name</th> 
@@ -26,6 +15,7 @@
                       <th>Email</th>
                       <th>loginstatus</th>
                       <th>Role</th>
+                      <th>Actions</th>
                      
                      
                     </tr>
@@ -39,29 +29,28 @@
                         <td>{{user.loginstatusDto}}</td>
                         <td>{{user.roleDto}}</td>
                         <td>
-                      
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                          <button type="button" class="btn btn-info me-1"(click)="getById(user.idDto)"(click)="openModal()">Edit<i class="bi bi-pencil"></i></button>
+                          <!-- <button type="button" class="btn btn-warning me-1"><i class="bi bi-plus"></i></button> -->
+                          <button type="button" class="btn btn-danger me-1"(click)="deleteUser(user.idDto)">Delete<i class="bi bi-trash"></i></button>
+                          <!-- <button type="button" class="btn btn-success"><i class="bi bi-menu-button-wide"></i></button> -->
+<!--                       
+                          <button type="button" class="btn btn-primary" (click)="getById(user.idDto)"(click)="openModal()">
                             Edit
                           </button>
                     
                         
                           <button type="button" class="btn btn-danger" (click)="deleteUser(user.idDto)">
                             Delete
-                          </button>       
+                          </button>        -->
     
       
                         </td>
                         
                     </tr>
-                </tbody>
+                  </tbody>
                 </table>
               </div>
             </div>
-          </div>
-          </div>
-        </div> 
-      </div>
-  </div>
 
 
 <!-- 
@@ -135,7 +124,7 @@
     </div>
   </div> -->
 
-  <app-modal [title]="'Add User'"  #dialog>
+  <app-modal [title]="'Ajouter une nouvelle utilisateur'"  #dialog>
     <div class="modal-body">
       <form novalidate>
         <div class="row">
@@ -187,8 +176,9 @@
           
     
                         <div class="form-group text-center"> 
-                           aria-label="Close"  data-dismiss="modal" (click)="closeModal(); 
-                            <button type="submit" class="btn btn-danger" aria-label="Close"  data-dismiss="modal" (click)="closeModal();  createUser()">Submit</button>
+                           
+                          <button type="submit" class="btn btn-danger" (click)="submitUser()">Submit</button>
+                          <!-- <button type="submit" class="btn btn-danger" aria-label="Close"   (click)="  createUser()">Submit</button> -->
                           </div>
                     </div>
                 </div>

@@ -4,6 +4,8 @@ import { Role, User } from 'src/shared/models/User';
 import { Router } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 
+
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,9 +14,11 @@ import { ModalComponent } from '../modal/modal.component';
 export class AdminComponent implements OnInit {
   listUser!:User[];
   roles = Role;
-  showModal = false;
+  isEditMode = false; // Ajoutez cette propriété pour suivre le mode de la modal
   user: User = new User();
-@ViewChild("dialog",{static:false} )dialog!:ModalComponent;
+  idUser! : number; 
+
+@ViewChild("dialog",{static:false} )dialog!:ModalComponent; //hedhi l modal gernerique
 
 
   constructor(private userService : UserService, private route:Router) { }
@@ -23,14 +27,44 @@ export class AdminComponent implements OnInit {
     this.getUsers()
   }
 
-  getUser(){
-    this.userService.getUser(1).subscribe( (user :any) => {
-      console.log("user",user)
-    })
+  getById(id : number){
+    this.userService.getUser(id).subscribe((user: any) => {
+      console.log("user", user);
+      this.openModal(user); // Ouvre le modal en mode édition avec les données de l'utilisateur
+    });
   }
-openModal(){
+
+  // hedhi fonction ki tibda 3ana modal wahda 
+/*openModal(){
   this.dialog?.open()
+}*/
+
+openModal(user?: User) {
+  if (user) {
+    // Si un utilisateur est passé en argument, remplissez le formulaire pour la mise à jour
+    this.user = { ...user };
+    this.isEditMode = true;
+    this.idUser = user.idDto; // Assurez-vous que l'ID est conservé pour la mise à jour
+  } else {
+    // Sinon, réinitialisez le formulaire pour ajouter un nouvel utilisateur
+    this.user = new User();
+    this.isEditMode = false;
+    this.idUser = undefined;
+  }
+  this.dialog?.open();
 }
+
+submitUser() {
+  if (this.isEditMode) {
+    this.updateuser();
+  } else {
+    this.createUser();
+  }
+}
+
+
+
+
   getUsers(){
     this.userService.getUsers().subscribe(
 
@@ -56,13 +90,12 @@ openModal(){
         )
       });
       this.dialog.close()
+      this.getUsers(); // Rechargez la liste après l'ajout
 
     }
 
 
-    closeModal() {
-      this.showModal = false;
-    }
+ 
 
 
     deleteUser(id : number){
@@ -78,5 +111,16 @@ openModal(){
         
       })
     }
-  
+
+    updateuser(){
+      this.userService.updateUser(this.idUser, this.user).subscribe(() => {
+        this.dialog.close();
+        this.getUsers(); // Rechargez la liste après la mise à jour
+      });
+    }
+
+
+
 }
+
+
