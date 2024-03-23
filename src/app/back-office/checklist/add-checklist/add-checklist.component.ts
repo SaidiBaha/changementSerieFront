@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Checklist, TypeValidation, TypeZone } from 'src/shared/models/Checklist';
 import { Famille } from 'src/shared/models/Famille';
 import { Testeur } from 'src/shared/models/Testeur';
@@ -30,6 +31,7 @@ export class AddChecklistComponent implements OnInit{
     private testeurService: TesteurService,
      private router: Router,
      private route: ActivatedRoute,
+     private toastr: ToastrService // Injectez ToastrService
      ) {}
 
 
@@ -74,7 +76,7 @@ export class AddChecklistComponent implements OnInit{
     createChecklist(): void {
       this.checklistService.createCehcklist(this.checklist, this.checklist.familleDto, this.checklist.testeurDto).subscribe({
         next: () => {
-        
+          this.toastr.success('Checklist created successfully!', 'Success'); // Affichez la notification
           this.router.navigate(['/dashboard/checklist/listcheck']);
         },
         error: (err) => {
@@ -90,6 +92,8 @@ export class AddChecklistComponent implements OnInit{
         },
         error: (err) => {
           console.error('Error updating checklist:', err);
+        
+          
         }
       });
     }
@@ -103,7 +107,7 @@ export class AddChecklistComponent implements OnInit{
     }
   
     cancel(): void {
-      this.router.navigate(['/dashboard/checklist']);
+      this.router.navigate(['/dashboard/checklist/listcheck']);
     }
 
 }

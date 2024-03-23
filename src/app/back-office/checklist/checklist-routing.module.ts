@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'addCheck',
     component: AddChecklistComponent,
+  },
+  {
+    path: 'addCheck/:id',
+    component: AddChecklistComponent,
   }
 
 ];
