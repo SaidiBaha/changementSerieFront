@@ -8,6 +8,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ModalComponent } from './modal/modal.component';
 import { ProjectComponent } from './project/project.component';
 import { DemandechangementComponent } from './demandechangement/demandechangement.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { MatSelectModule } from '@angular/material/select';
+
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -21,6 +26,10 @@ import { DemandechangementComponent } from './demandechangement/demandechangemen
         CommonModule,
         AdministrationRoutingModule,
         FormsModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
         ReactiveFormsModule,
         MatFormFieldModule,
         

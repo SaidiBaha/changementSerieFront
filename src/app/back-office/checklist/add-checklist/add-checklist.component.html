@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>{{ checklist.idDto ? 'Edit' : 'Add' }} Checklist</h2>
+    <form>
+      <div class="form-group">
+        <label for="titre">Title:</label>
+        <input type="text" class="form-control" id="titre" [(ngModel)]="checklist.titreDto" name="titre">
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" [(ngModel)]="checklist.descriptionDto" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="famille">Famille:</label>
+        <select id="famille" class="form-control" [(ngModel)]="checklist.familleDto" name="famille">
+          <option *ngFor="let famille of familles" [value]="famille.idDto">{{ famille.nomFamilleDto }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="testeur">Testeur:</label>
+        <select id="testeur" class="form-control" [(ngModel)]="checklist.testeurDto" name="testeur">
+            <option *ngFor="let testeur of testeurs" [value]="testeur.idDto">{{ testeur.nomTesteurDto }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="typeValidation">Type of Validation:</label>
+        <select class="form-control" id="typeValidation" [(ngModel)]="checklist.typeValidationDto" name="typeValidation">
+          <option *ngFor="let type of typeValidations" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="typeZone">Type of Zone:</label>
+        <select class="form-control" id="typeZone" [(ngModel)]="checklist.typeZoneDto" name="typeZone">
+          <option *ngFor="let type of typeZones" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <!-- Add other fields as needed -->
+      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+ 
+  

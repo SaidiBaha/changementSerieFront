@@ -14,6 +14,8 @@ import { ModalComponent } from '../modal/modal.component';
 export class AdminComponent implements OnInit {
   listUser!:User[];
   roles = Role;
+  rolesArray = Object.values(Role); // This converts the enum to an array
+ 
   isEditMode = false; // Ajoutez cette propriété pour suivre le mode de la modal
   user: User = new User();
   idUser! : number; 

@@ -38,6 +38,49 @@
       
     </mat-expansion-panel>
 
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
+         management
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <a mat-list-item  routerLink="management/famille">
+        <mat-icon class="sidenav-icon"></mat-icon>
+        famille
+      </a>
+      <a mat-list-item  routerLink="management/produit">
+        <mat-icon class="sidenav-icon"></mat-icon>
+        produit
+      </a>
+      <a mat-list-item  routerLink="management/testeur" >
+        <mat-icon class="sidenav-icon"></mat-icon>
+        testeur
+      </a>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
+         checklist
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <a mat-list-item  routerLink="checklist/listcheck">
+        <mat-icon class="sidenav-icon"></mat-icon>
+        Liste des checklists
+      </a>
+      <a mat-list-item  routerLink="checklist/addCheck">
+        <mat-icon class="sidenav-icon"></mat-icon>
+        Ajouter une Checklist
+      </a>
+      
+    </mat-expansion-panel>
+
+    
+
   </mat-accordion>
 
 </mat-nav-list>

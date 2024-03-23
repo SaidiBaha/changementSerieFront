@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
 import {BackOfficeRoutingModule} from "./back-office-routing.module";
@@ -15,11 +15,15 @@ import {MatButtonModule} from '@angular/material/button';
 
 
 
+
+
 @NgModule({
+   
     declarations: [
         LayoutComponent,
         SideNavComponent,
         TopNavComponent,
+     
 
     ],
     imports: [
@@ -34,5 +38,6 @@ import {MatButtonModule} from '@angular/material/button';
         FlexLayoutModule,
         MatButtonModule,
     ]
+   
 })
 export class BackOfficeModule { }

@@ -1,0 +1,74 @@
+<div class="container mt-3">
+  <h2 class="mb-3">Gestion des Familles</h2>
+  <div class="text-end mb-3">
+    <button type="button" class="btn btn-primary mb-3" (click)="openModal()"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Ajouter une Famille</button>
+    <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" style="margin-left: 1650%;"(click)="openModal()"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <mat-icon>addsss</mat-icon>
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom de la Famille</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let famille of familles">
+          <td>{{ famille.nomFamilleDto }}</td>
+          <td>
+            <!-- <button type="button" class="btn btn-info" (click)="openModal(famille)">Modifier</button> -->
+            <button type="button" class="btn btn-danger" (click)="deleteFamille(famille.idDto)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-modal-g [title]="'Ajouter/Modifier une Famille'" #dialog1>
+    <div class="modal-body">
+      <form novalidate>
+        <div class="form-group text-center">
+          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="nomFamilleDto"
+            [(ngModel)]="famille.nomFamilleDto" placeholder="Nom de la famille" required>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-danger" (click)="submitFamille()">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </app-modal-g>
+</div>
+
+
+
+<button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" style="margin-left: 1650%;"(click)="openModal()"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <mat-icon>add</mat-icon>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <form class="form">
+  <p id="heading">Add Testeurs</p>
+  
+  
+
+  
+
+  
+  
+  
+  <div class="field">
+  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  
+  </svg>
+    <input autocomplete="off" placeholder="CMS2 line" class="input-field" type="CMS2 line" [(ngModel)]="famille.nomFamilleDto" name="CMS2 line">
+  </div>
+  <button class="button1" style="margin-left: 25.5%;" >Save</button>
+  </form>
+  </div>
+  </div>
+  </div>
+

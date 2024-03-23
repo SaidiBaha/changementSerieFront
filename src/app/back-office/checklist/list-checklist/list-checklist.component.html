@@ -1,0 +1,32 @@
+<div class="container mt-3">
+    <h2 class="mb-3">Liste des Checklists</h2>
+    <div class="text-end mb-3">
+      <button type="button" class="btn btn-primary" (click)="navigateToAddChecklist()" >Ajouter</button>
+    
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Outillage</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let checklist of checklists">
+          <td>{{ checklist.titreDto }}</td>
+          <td>{{ checklist.descriptionDto }}</td>
+          <td>{{ checklist.outillageDto }}</td>
+         
+          <td>
+            <button type="button" class="btn btn-info me-1" (click)="navigateToEditChecklist(checklist.idDto)">Modifier</button>
+            <button type="button" class="btn btn-danger me-1" (click)="deleteChecklist(checklist.idDto)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  

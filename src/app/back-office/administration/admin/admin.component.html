@@ -127,63 +127,50 @@
   <app-modal [title]="'Ajouter une nouvelle utilisateur'"  #dialog>
     <div class="modal-body">
       <form novalidate>
-        <div class="row">
-            <div class="col-md-12 grid-margin">
-                <div class="card rounded">
-                    <div class="card-header">
-                        <h4 class="card-title">ADD User</h4>
-                    </div>
-                    <div class="card-body">
-                      
-                      <div class="form-group text-center">
-                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="matricule"
-                            [(ngModel)]="user.matriculeDto" placeholder="matricule" required #titleInput>
-                    </div>
-
-                      <div class="form-group text-center">
-                          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="lastName"
-                              [(ngModel)]="user.lastNameDto" placeholder="lastName" required #titleInput>
+          <div class="row">
+              <div class="col-md-12 grid-margin">
+                  <div class="card rounded">
+                      <div class="card-header">
+                          <h4 class="card-title">ADD User</h4>
                       </div>
-                      <div class="form-group text-center">
-                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="firstName"
-                            [(ngModel)]="user.firstNameDto" placeholder="firstName" required #titleInput>
-                    </div>
-                      <div class="form-group text-center">
-                          <input type="email" class="form-control form-control-sm w-75 mx-auto" name="email"
-                              [(ngModel)]="user.emailDto" placeholder="email" required #titleInput>
-                      </div>
-
-                      <div class="form-group text-center">
-                          <input type="password" class="form-control form-control-sm w-75 mx-auto" name="password"
-                              [(ngModel)]="user.passwordDto" placeholder="password" required #titleInput>
-                      </div>
-                     
-                      <div class="form-group text-center">
-                          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="niveau"
-                              [(ngModel)]="user.loginstatusDto" placeholder="loginstatus">
-                      </div>
-
-              
-
-
-
-                       <div class="form-group text-center">
-                        <select class="form-control form-control-sm w-75 mx-auto" name="role" [(ngModel)]="user.roleDto" placeholder="role">
-                          <option *ngFor="let role of roles | keyvalue" [ngValue]="role.key">{{ role.value }}</option>
-                        </select>
-                      </div>
-
-          
-    
-                        <div class="form-group text-center"> 
-                           
-                          <button type="submit" class="btn btn-danger" (click)="submitUser()">Submit</button>
-                          <!-- <button type="submit" class="btn btn-danger" aria-label="Close"   (click)="  createUser()">Submit</button> -->
+                      <div class="card-body">
+                          <div class="form-group text-center">
+                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="matricule"
+                                  [(ngModel)]="user.matriculeDto" placeholder="matricule" required>
                           </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    </div>
+                          <div class="form-group text-center">
+                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="lastName"
+                                  [(ngModel)]="user.lastNameDto" placeholder="lastName" required>
+                          </div>
+                          <div class="form-group text-center">
+                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="firstName"
+                                  [(ngModel)]="user.firstNameDto" placeholder="firstName" required>
+                          </div>
+                          <div class="form-group text-center">
+                              <input type="email" class="form-control form-control-sm w-75 mx-auto" name="email"
+                                  [(ngModel)]="user.emailDto" placeholder="email" required>
+                          </div>
+                          <div class="form-group text-center">
+                              <input type="password" class="form-control form-control-sm w-75 mx-auto" name="password"
+                                  [(ngModel)]="user.passwordDto" placeholder="password" required>
+                          </div>
+                          <div class="form-group text-center">
+                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="niveau"
+                                  [(ngModel)]="user.loginstatusDto" placeholder="loginstatus">
+                          </div>
+                          <div class="form-group text-center">
+                              <select class="form-control form-control-sm w-75 mx-auto" name="role" [(ngModel)]="user.roleDto" placeholder="role">
+                                  <option *ngFor="let role of roles | keyvalue" [ngValue]="role.key">{{ role.value }}</option>
+                              </select>
+                          </div>
+                          <div class="form-group text-center">
+                              <button type="submit" class="btn btn-danger" (click)="submitUser()">Submit</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+  
   </app-modal>
