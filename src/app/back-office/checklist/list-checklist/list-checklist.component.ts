@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Checklist } from 'src/shared/models/Checklist';
+import { ChecklistSharedService } from 'src/shared/services/ChecklistShared.service';
 import { ChecklistService } from 'src/shared/services/checklist.service';
 
 @Component({
@@ -13,7 +14,10 @@ export class ListChecklistComponent implements OnInit{
 
   checklists: Checklist[] = [];
 
-  constructor(private checklistService: ChecklistService, private router: Router) {}
+  constructor(private checklistService: ChecklistService,
+     private router: Router,
+     private checklistSharedService: ChecklistSharedService
+     ) {}
 
   ngOnInit(): void {
     this.loadChecklists();
@@ -30,11 +34,18 @@ export class ListChecklistComponent implements OnInit{
     });
   }
 
+  navigateToChecklistDetails(id: number): void {
+    this.router.navigate(['/dashboard/checklist/checklistDetails', id]);
+  }
+  
+
   navigateToAddChecklist(): void {
+   
     this.router.navigate(['/dashboard/checklist/addCheck']);
   }
 
   navigateToEditChecklist(id: number): void {
+    this.checklistSharedService.changeChecklistId(id);
     this.router.navigate(['/dashboard/checklist/addCheck', id]);
   }
 

@@ -21,6 +21,8 @@
           <td>{{ checklist.outillageDto }}</td>
          
           <td>
+            <button class="btn btn-info" (click)="navigateToChecklistDetails(checklist.idDto)">Détails</button>
+
             <button type="button" class="btn btn-info me-1" (click)="navigateToEditChecklist(checklist.idDto)">Modifier</button>
             <button type="button" class="btn btn-danger me-1" (click)="deleteChecklist(checklist.idDto)">Supprimer</button>
           </td>

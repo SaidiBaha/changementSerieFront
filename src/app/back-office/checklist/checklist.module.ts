@@ -5,6 +5,9 @@ import { ChecklistRoutingModule } from './checklist-routing.module';
 import { ListChecklistComponent } from './list-checklist/list-checklist.component';
 import { AddChecklistComponent } from './add-checklist/add-checklist.component';
 import { FormsModule } from '@angular/forms';
+import { LigneCheckComponent } from './ligne-check/ligne-check.component';
+import { AddLigneCheckComponent } from './add-ligne-check/add-ligne-check.component';
+import { ChecklistDetailsComponent } from './checklist-details/checklist-details.component';
 
 
 
@@ -13,7 +16,10 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ListChecklistComponent,
-    AddChecklistComponent
+    AddChecklistComponent,
+    LigneCheckComponent,
+    AddLigneCheckComponent,
+    ChecklistDetailsComponent
   ],
   imports: [
     CommonModule,

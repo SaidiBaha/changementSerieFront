@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListChecklistComponent } from './list-checklist/list-checklist.component';
 import { AddChecklistComponent } from './add-checklist/add-checklist.component';
+import { LigneCheckComponent } from './ligne-check/ligne-check.component';
+import { AddLigneCheckComponent } from './add-ligne-check/add-ligne-check.component';
+import { ChecklistDetailsComponent } from './checklist-details/checklist-details.component';
 
 const routes: Routes = [
   {
@@ -15,7 +18,24 @@ const routes: Routes = [
   {
     path: 'addCheck/:id',
     component: AddChecklistComponent,
+  },
+  {
+    path: 'ligneCheck/:checklistId',
+    component: LigneCheckComponent,
+  },
+  {
+    path: 'ligneCheck/:checklistId/add',
+    component: AddLigneCheckComponent,
+  },
+  {
+    path: 'ligneCheck/:checklistId/edit/:id',
+    component: AddLigneCheckComponent,
+  },
+  {
+    path: 'checklistDetails/:id',
+    component: ChecklistDetailsComponent,
   }
+  
 
 ];
 

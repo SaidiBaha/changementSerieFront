@@ -1,0 +1,58 @@
+<!-- <div class="container">
+    <h2>Liste des Lignes de Checklist</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th>Nom du Test</th>
+          <th>Validation</th>
+          <th>Checklist ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ligne of ligneChecklists">
+          
+          <td>{{ ligne.nomTestAFaireDto }}</td>
+          <td>{{ ligne.validationLigneCheckDto ? 'Oui' : 'Non' }}</td>
+          <td>{{ ligne.checklistDto }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteLigneChecklist(ligne.idDto)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->
+  
+   <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        Liste des Lignes de Checklist
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let ligne of ligneChecklists">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ligne ID: {{ ligne.idDto }}</h5>
+              <p class="card-text">Nom du Test: {{ ligne.nomTestAFaireDto }}</p>
+              <p class="card-text">Validation: {{ ligne.validationLigneCheckDto ? 'Oui' : 'Non' }}</p>
+              <p class="card-text">Checklist ID: {{ ligne.checklistDto }}</p>
+              
+              <button class="btn btn-info" (click)="navigateToEditLigneCheck(ligne.idDto)">Modifier</button>
+              <button class="btn btn-danger" (click)="deleteLigneChecklist(ligne.idDto)">Supprimer</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- Bouton pour ajouter une nouvelle ligne de checklist -->
+      <div class="card-footer">
+        <button class="btn btn-primary" (click)="navigateToAddLigneCheck()">Ajouter une ligne de checklist</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  

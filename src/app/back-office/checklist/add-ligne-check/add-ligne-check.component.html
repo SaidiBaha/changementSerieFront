@@ -1,0 +1,15 @@
+<!-- add-ligne-check.component.html -->
+<div class="container">
+    <h2>{{ ligneCheck.idDto ? 'Modifier' : 'Ajouter' }} une ligne de checklist</h2>
+    <form>
+      <!-- Ajoutez les champs nécessaires pour LigneCheck -->
+      <div class="form-group">
+        <label for="nomTest">Nom du Test:</label>
+        <input type="text" class="form-control" id="nomTest" [(ngModel)]="ligneCheck.nomTestAFaireDto" name="nomTest">
+      </div>
+      <!-- Autres champs... -->
+      <button type="button" class="btn btn-primary" (click)="saveLigneCheck()">Enregistrer</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+    </form>
+  </div>
+  
