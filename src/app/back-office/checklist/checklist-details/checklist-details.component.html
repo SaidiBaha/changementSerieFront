@@ -1,8 +1,8 @@
-<div *ngIf="checklist">
+<!-- <div *ngIf="checklist">
     <h2>Détails de la Checklist</h2>
     <p>Titre: {{ checklist.titreDto }}</p>
     <p>Description: {{ checklist.descriptionDto }}</p>
-    <!-- Affichez d'autres attributs de la checklist ici -->
+   
 
 
   <div class="container mt-4">
@@ -20,6 +20,16 @@
              
               
              
+        <div *ngIf="ligne.posages">
+          <h6>Posages:</h6>
+          <ul>
+              <li *ngFor="let posage of ligne.posages">
+                  Nom Interface: {{ posage.nomInterfaceDto }},
+                 
+              </li>
+          </ul>
+      </div>
+     
             </div>
           </div>
         </li>
@@ -27,5 +37,127 @@
      
     
     </div>
+  </div> -->
+
+<!-- 
+  <div *ngIf="checklist">
+    <h2>Détails de la Checklist</h2>
+    <p>Titre: {{ checklist.titreDto }}</p>
+    <p>Description: {{ checklist.descriptionDto }}</p>
+
+    <div class="container mt-4">
+        <div *ngFor="let ligne of ligneChecklists" class="card mb-3">
+            <div class="card-header">
+                Ligne ID: {{ ligne.idDto }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Nom du Test: {{ ligne.nomTestAFaireDto }}</h5>
+                <p class="card-text">Validation: {{ ligne.validationLigneCheckDto ? 'Oui' : 'Non' }}</p>
+
+              
+                <div *ngIf="ligne.posages" class="mt-3">
+                    <h6 class="mb-2">Posages:</h6>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li *ngFor="let posage of ligne.posages" class="mb-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            Nom Interface: {{ posage.nomInterfaceDto }},
+                                            Validation Type 1: {{ posage.validationType1Dto }},
+                                            Validation Type 2: {{ posage.validationType2Dto }}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div *ngIf="checklist">
+  <h2>Détails de la Checklist</h2>
+  <p>Titre: {{ checklist.titreDto }}</p>
+  <p>Description: {{ checklist.descriptionDto }}</p>
+
+  <div class="container mt-4">
+      <div *ngFor="let ligne of ligneChecklists" class="card mb-3">
+          <div class="card-header">
+              A faire: {{ ligne.nomTestAFaireDto }}
+            
+          </div>
+          <div class="card-body">
+              <div class="d-flex flex-row flex-nowrap">
+                
+                  <div *ngIf="ligne.posages" class="d-flex flex-row">
+                      <div *ngFor="let posage of ligne.posages" class="card me-2">
+                          <div class="card-body">
+                              <h6 class="card-title">{{ posage.nomInterfaceDto }}</h6>
+                             
+                          </div>
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+      </div>
   </div>
-  
+</div> -->
+
+<div *ngIf="checklist">
+    <h2>Détails de la Checklist</h2>
+    <p>Titre: {{ checklist.titreDto }}</p>
+    <p>Description: {{ checklist.descriptionDto }}</p>
+
+    <div *ngFor="let ligne of ligneChecklists; let ligneIndex = index" class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <!-- Colonne pour la ligneChecklist -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Ligne Checklist
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Ligne ID: {{ ligne.idDto }}</p>
+                            <p class="card-text">Nom du Test: {{ ligne.nomTestAFaireDto }}</p>
+                            <p class="card-text">Validation: {{ ligne.validationLigneCheckDto ? 'Oui' : 'Non' }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne pour les posages -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            Posages
+                            <button type="button" class="btn btn-primary float-end" (click)="addPosage(ligne.idDto)">Ajouter</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-row">
+                                <div *ngFor="let posage of ligne.posages" class="card ms-2">
+                                    <div class="card-body">
+                                        <p class="card-text">{{ posage.nomInterfaceDto }}</p>
+                                        <p class="card-text">{{ posage.validationType1Dto }}</p>
+                                        <p class="card-text">{{ posage.validationType2Dto }}</p>
+                                        <button type="button" class="btn btn-info" (click)="editPosage(posage.idDto)">Modifier</button>
+                                        <button type="button" class="btn btn-danger" (click)="deletePosage(posage.idDto, ligneIndex)">Supprimer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -45,10 +45,13 @@ export class LigneCheckComponent implements OnInit {
   navigateToEditLigneCheck(id: number): void {
     this.router.navigate(['/dashboard/checklist/ligneCheck', this.checklistId, 'edit', id]);
   }
-  navigateToChecklistDetails(id: number): void {
-    this.router.navigate(['/dashboard/checklist/checklistDetails', id]);
+  
+  navigateToPosageDetails(ligneChecklistId: number): void {
+    this.router.navigate(['/dashboard/checklist/list', ligneChecklistId]);
+    console.log("test")
   }
   
+
   
   
   

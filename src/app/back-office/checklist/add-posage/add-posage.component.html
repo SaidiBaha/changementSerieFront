@@ -1,0 +1,34 @@
+<!-- <div class="container">
+    <h2>{{ editMode ? 'Modifier' : 'Ajouter' }} Posage</h2>
+    <form (ngSubmit)="savePosage()">
+    
+      <div class="form-group">
+        <label for="nomInterface">Nom de l'interface</label>
+        <input type="text" class="form-control" id="nomInterface" [(ngModel)]="posage.nomInterfaceDto" name="nomInterface" required>
+      </div>
+  
+     
+  
+      <button type="submit" class="btn btn-success">{{ editMode ? 'Modifier' : 'Créer' }}</button>
+    </form>
+  </div>
+   -->
+
+   <!-- Dans AddPosageComponent.html -->
+
+<div class="container">
+  <h2>{{ posage.idDto ? 'Modifier' : 'Ajouter' }} Posage</h2>
+  <form (ngSubmit)="savePosage()">
+    <!-- Champs du formulaire posage -->
+    <div class="form-group">
+      <label for="nomInterface">Nom Interface:</label>
+      <input type="text" id="nomInterface" [(ngModel)]="posage.nomInterfaceDto" name="nomInterface" class="form-control">
+    </div>
+    <!-- Ajoutez d'autres champs comme nécessaire -->
+    
+    <!-- Boutons pour sauvegarder ou annuler -->
+    <button type="submit" class="btn btn-success">Sauvegarder</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+  </form>
+</div>
+

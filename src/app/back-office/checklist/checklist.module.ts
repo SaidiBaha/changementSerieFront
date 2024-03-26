@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { LigneCheckComponent } from './ligne-check/ligne-check.component';
 import { AddLigneCheckComponent } from './add-ligne-check/add-ligne-check.component';
 import { ChecklistDetailsComponent } from './checklist-details/checklist-details.component';
+import { ListPosageComponent } from './list-posage/list-posage.component';
+import { AddPosageComponent } from './add-posage/add-posage.component';
+import { PosageDetailsComponent } from './posage-details/posage-details.component';
 
 
 
@@ -19,7 +22,10 @@ import { ChecklistDetailsComponent } from './checklist-details/checklist-details
     AddChecklistComponent,
     LigneCheckComponent,
     AddLigneCheckComponent,
-    ChecklistDetailsComponent
+    ChecklistDetailsComponent,
+    ListPosageComponent,
+    AddPosageComponent,
+    PosageDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,8 @@ import { AddChecklistComponent } from './add-checklist/add-checklist.component';
 import { LigneCheckComponent } from './ligne-check/ligne-check.component';
 import { AddLigneCheckComponent } from './add-ligne-check/add-ligne-check.component';
 import { ChecklistDetailsComponent } from './checklist-details/checklist-details.component';
+import { ListPosageComponent } from './list-posage/list-posage.component';
+import { AddPosageComponent } from './add-posage/add-posage.component';
 
 const routes: Routes = [
   {
@@ -34,7 +36,31 @@ const routes: Routes = [
   {
     path: 'checklistDetails/:id',
     component: ChecklistDetailsComponent,
-  }
+  },
+  {
+    path: 'listPosage',
+    component: ListPosageComponent,
+  },
+  {
+    path: 'list/:ligneChecklistId',
+    component: ListPosageComponent,
+  },
+  {
+    path: 'addPosage',
+    component: AddPosageComponent,
+  },
+ /* {
+    path: 'ligneCheck/:ligneChecklistId/posages',
+    component: ListPosageComponent,
+  },*/
+  {
+    path: 'ligneCheck/:ligneChecklistId/posages/add',
+    component: AddPosageComponent,
+  },
+  {
+    path: 'ligneCheck/:ligneChecklistId/posages/edit/:id',
+    component: AddPosageComponent,
+  },
   
 
 ];

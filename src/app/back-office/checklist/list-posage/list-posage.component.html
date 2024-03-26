@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h2>Liste des Posages</h2>
+    <div *ngFor="let posage of posages" class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">{{ posage.nomInterfaceDto }}</h5>
+        <p class="card-text">
+          Validation Type 1: {{ posage.validationType1Dto }}
+        
+        </p>
+        <p class="card-text">
+          Validation Type 2: {{ posage.validationType2Dto }}
+        </p>
+        <p class="card-text">Ligne Checklist ID: {{ posage.ligneChecklistDto }}</p>
+
+        <!-- ... autres éléments de la carte ... -->
+<div class="card-footer">
+  <button class="btn btn-primary" (click)="onEdit(posage)">Modifier</button>
+  <button class="btn btn-danger" (click)="onDelete(posage.idDto)">Supprimer</button>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  
+  
