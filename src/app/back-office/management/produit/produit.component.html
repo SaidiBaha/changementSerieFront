@@ -1,1 +1,35 @@
-<p>produit works!</p>
+<div class="container mt-3">
+    <h2 class="mb-3">Gestion des Produit</h2>
+    <div class="text-end mb-3">
+    
+       
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nom de Produit</th>
+            <th>Réference</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produit of produits">
+            <td>{{ produit.nomProduitDto }}</td>
+            <td>{{ produit.refProduitDto }}</td>
+            <td>
+              <!-- <button type="button" class="btn btn-info" (click)="openModal(famille)">Modifier</button> -->
+              <button type="button" class="btn btn-danger" >Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+   
+  
+    
+  
+    
+    
+   

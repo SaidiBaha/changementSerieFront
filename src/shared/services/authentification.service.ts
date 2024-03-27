@@ -41,6 +41,7 @@ export class AuthentificationService {
         localStorage.setItem('idUser', response.idUser); // Stockez l'ID utilisateur
         localStorage.setItem('role', response.role); // Stockez le rôle
         this.currentUser = response.user; // Mise à jour de l'utilisateur courant
+        this.setUser(response); // Mise à jour de l'utilisateur courant avec la réponse d'authentification
       }),
       
     /*  catchError(error => {
@@ -70,7 +71,7 @@ export class AuthentificationService {
   }*/
 
   private lastName: string = '';  // Ajoutez cette ligne pour stocker le nom de l'utilisateur
-
+  private email: string = '';
   // Autres méthodes et propriétés du service...
 
   setLastName(lastName: string): void {
@@ -79,6 +80,19 @@ export class AuthentificationService {
 
   getLastName(): string {
     return this.lastName;
+  }
+
+ //hedhi pour Remplacez  par l'email de l'utilisateur connecté
+
+ private user: any = null; // Remplacez 'any' par le type approprié pour votre objet de réponse d'authentification
+
+  // Appelée lorsque l'utilisateur se connecte
+  setUser(authResponse: any) { // Remplacez 'any' par le type approprié
+    this.user = authResponse;
+  }
+
+  getEmail(): string | null {
+    return this.user ? this.user.username : null;
   }
 
 }

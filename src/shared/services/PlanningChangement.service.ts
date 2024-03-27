@@ -35,16 +35,20 @@ export class PlanningChangementSerieService {
   createPlanningWithFilteredChecklists(planning: PlanningChangementSerie, nomFamille: string, nomProduit: string) {
     return this.httpRepositoryService.post<PlanningChangementSerie>(`${this.BASE_URI}/createWithFilteredChecklists?nomFamille=${nomFamille}&nomProduit=${nomProduit}`, planning);
   }
-/*
-  markNotificationAsRead(notificationId: number) {
-    return this.httpRepositoryService.post<void>(`${this.BASE_URI}/notifications/markAsRead/${notificationId}`, {});
-  }*/
 
+  /*markNotificationAsRead(notificationId: number) {
+    return this.httpRepositoryService.post<void>(`${this.BASE_URI}/notifications/markAsRead/${notificationId}`);
+  }*/
+  
+  
+
+/*
   getAllNotifications() {
     return this.httpRepositoryService.get<Notification[]>(`${this.BASE_URI}/notifications`);
   }
 
   getNotificationsByUser(email: string) {
     return this.httpRepositoryService.get<Notification[]>(`${this.BASE_URI}/notifications/user?email=${email}`);
-  }
+  }*/
+  
 }

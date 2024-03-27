@@ -1,1 +1,35 @@
-<p>add-changement works!</p>
+<div class="container">
+    <h2>Add New Planning</h2>
+    <form [formGroup]="planningForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="titreDto">Title:</label>
+        <input type="text" class="form-control" id="titreDto" formControlName="titreDto" required>
+      </div>
+      <div class="form-group">
+        <label for="debutDto">Start Date:</label>
+        <input type="datetime-local" class="form-control" id="debutDto" formControlName="debutDto" required>
+      </div>
+      <div class="form-group">
+        <label for="finDto">End Date:</label>
+        <input type="datetime-local" class="form-control" id="finDto" formControlName="finDto" required>
+      </div>
+      <div class="form-group">
+        <label for="descriptionDto">Description:</label>
+        <textarea class="form-control" id="descriptionDto" formControlName="descriptionDto" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="nomFamille">Family:</label>
+        <select class="form-control" id="nomFamille" formControlName="nomFamille" [(ngModel)]="selectedFamille" required>
+          <option *ngFor="let famille of familles" [value]="famille.nomFamilleDto">{{famille.nomFamilleDto}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nomProduit">Product:</label>
+        <select class="form-control" id="nomProduit" formControlName="nomProduit" [(ngModel)]="selectedProduit" required>
+          <option *ngFor="let produit of produits" [value]="produit.nomProduitDto">{{produit.nomProduitDto}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Planning</button>
+    </form>
+  </div>
+  

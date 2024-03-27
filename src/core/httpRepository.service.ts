@@ -25,6 +25,7 @@ export class HttpRepositoryService {
     return this.http.post<T>(`${this.baseUrl}/${url}`, data, this.httpOptions);
   }
 
+
   put<T>(url: string, data: T): Observable<T> {
     return this.http.put<T>(`${this.baseUrl}/${url}`, data, this.httpOptions);
   }

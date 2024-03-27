@@ -1,0 +1,8 @@
+<div *ngIf="data.notification">
+    <h3>Notification Details</h3>
+    <p><strong>Message:</strong> {{ data.notification.message }}</p>
+    <p><strong>Timestamp:</strong> {{ data.notification.timestamp | date }}</p>
+    <p><strong>Recipient:</strong> {{ data.notification.recipient }}</p>
+    <button (click)="close()">Close</button>
+  </div>
+  

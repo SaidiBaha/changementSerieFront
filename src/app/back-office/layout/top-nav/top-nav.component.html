@@ -7,17 +7,30 @@
   </div>
   <span class="nav-spacer"></span>
   <!-- Ajout de l'icône de notification -->
-  <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
+ <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
     <mat-icon>notifications</mat-icon>
+    <!-- <span *ngIf="notifications.length > 0" class="notification-badge">{{ notifications.length }}</span> -->
+    <span *ngIf="unreadNotificationsCount > 0" class="notification-badge">
+      {{ unreadNotificationsCount }}
+    </span>
   </button>
   <mat-menu #notificationMenu="matMenu" [overlapTrigger]="false">
-    <!-- Ajoutez vos éléments de menu de notification ici -->
-    <button mat-menu-item>
-      <mat-icon>email</mat-icon>
-      <span>Nouveau message</span>
-    </button>
-    <!-- Ajoutez d'autres éléments de menu de notification si nécessaire -->
-  </mat-menu>
+    <!-- <ng-container *ngFor="let notification of notifications">
+        <button mat-menu-item (click)="markAsRead(notification.id)">
+            <mat-icon *ngIf="!notification.read">email</mat-icon>
+            <mat-icon *ngIf="notification.read">drafts</mat-icon>
+            <span>{{ notification.message }}</span>
+        </button>
+    </ng-container> -->
+    <ng-container *ngFor="let notification of notifications">
+      <button mat-menu-item  (click)="openNotificationDetails(notification)">
+        <mat-icon *ngIf="!notification.read">email</mat-icon>
+        <mat-icon *ngIf="notification.read">drafts</mat-icon>
+        <span>{{ notification.message }}</span>
+      </button>
+    </ng-container>
+</mat-menu>
+
 
 
   <button mat-button [matMenuTriggerFor]="userMenu">

@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -33,6 +34,7 @@ import {MatButtonModule} from '@angular/material/button';
         MatSidenavModule,
         MatIconModule,
         MatListModule,
+        MatDialogModule,
         MatMenuModule,
         MatExpansionModule,
         FlexLayoutModule,
