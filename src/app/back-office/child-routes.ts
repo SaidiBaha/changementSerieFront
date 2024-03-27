@@ -14,5 +14,9 @@ export const childRoutes = [
   {path: 'checklist',
   loadChildren: () => import('./checklist/checklist.module').then(m => m.ChecklistModule),
   data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
+  },
+  {path: 'planning-changement',
+  loadChildren: () => import('./planning-changement/planning-changement.module').then(m => m.PlanningChangementModule),
+  data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
   }
 ];

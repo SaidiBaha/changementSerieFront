@@ -55,12 +55,14 @@ export class LoginComponent {
       next: (response) => {
         console.log('Authentication successful', response);
         const role = this.authentificationService.getRole();
+        this.authentificationService.setLastName(response.lastname);// Stockez le nom de l'utilisateur
+      
         if (role === 'ADMIN') {
           this.router.navigate(['/dashboard']);
         } else if (role === 'USER') {
           this.router.navigate(['/user']);
         } else if (role === 'MANAGER') {
-          this.router.navigate(['/manager']);
+          this.router.navigate(['/dashboard']);
         }
       },
     /*  error: (error) => {

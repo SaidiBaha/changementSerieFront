@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthentificationService } from 'src/shared/services/authentification.service';
 
 
 
@@ -11,14 +12,22 @@ import { Router } from '@angular/router';
 export class TopNavComponent implements OnInit {
   @Output() sideNavToggled = new EventEmitter<void>();
 
+  lastName: string = '';  // Ajoutez cette ligne pour stocker le nom de l'utilisateur
+
+  
+
 
   constructor(
     private router: Router,
+    private authentificationService: AuthentificationService  // Injectez le service d'authentification
     ) {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.lastName = this.authentificationService.getLastName();  // Récupérez le nom de l'utilisateur
+    console.log(this.lastName)
+   }
 
   toggleSidebar() {
     this.sideNavToggled.emit();

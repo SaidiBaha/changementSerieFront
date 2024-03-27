@@ -69,6 +69,16 @@ export class AuthentificationService {
     return this.currentUser ? this.currentUser.role : null;
   }*/
 
+  private lastName: string = '';  // Ajoutez cette ligne pour stocker le nom de l'utilisateur
 
+  // Autres méthodes et propriétés du service...
+
+  setLastName(lastName: string): void {
+    this.lastName = lastName;
+  }
+
+  getLastName(): string {
+    return this.lastName;
+  }
 
 }
