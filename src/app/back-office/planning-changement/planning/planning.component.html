@@ -20,6 +20,11 @@
           <td>{{ planning.debutDto | date: 'short' }}</td>
           <td>{{ planning.finDto | date: 'short' }}</td>
           <td>{{ planning.descriptionDto }}</td>
+          <!-- Dans votre planning.component.html -->
+          <button (click)="openDetails(planning)">
+            Détails
+          </button>
+
         </tr>
       </tbody>
     </table>

@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Liste des Plannings de Changement de Série</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let planning of plannings">
+        <td>{{ planning.titreDto }}</td>
+        <td>{{ planning.debutDto | date: 'short' }}</td>
+        <td>{{ planning.finDto | date: 'short' }}</td>
+        <td>{{ planning.descriptionDto }}</td>
+        <!-- Dans votre planning.component.html -->
+        <button   [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]">
+          Détails
+        </button>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+  

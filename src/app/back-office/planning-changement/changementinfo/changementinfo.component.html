@@ -1,0 +1,15 @@
+<div *ngIf="planningInfo">
+    <h2>Détails du Planning de Changement de Série</h2>
+    <p>Titre: {{ planningInfo.titreDto }}</p>
+    <p>Début: {{ planningInfo.debutDto | date: 'short' }}</p>
+    <p>Fin: {{ planningInfo.finDto | date: 'short' }}</p>
+    <p>Description: {{ planningInfo.descriptionDto }}</p>
+    <p>Nom de la famille: {{ planningInfo.nomFamilleDto }}</p>
+    <p>Nom du produit: {{ planningInfo.nomProduitDto }}</p>
+    <p>Référence du produit: {{ planningInfo.refProduitDto }}</p>
+    <p>Référence du testeur: {{ planningInfo.refTesteurDto }}</p>
+    <p>Ligne CMS/Intégration: {{ planningInfo.ligneCMSorIntegDto }}</p>
+    <p>Atelier: {{ planningInfo.atelierDto }}</p>
+    <p>UF: {{ planningInfo.ufDto }}</p>
+  </div>
+  

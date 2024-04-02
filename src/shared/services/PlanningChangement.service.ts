@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
 import { PlanningChangementSerie } from '../models/PlanningChangementSerie ';
+import { PlanningInfoDto } from '../models/PlanningInfo';
 
 
 @Injectable({
@@ -50,5 +51,9 @@ export class PlanningChangementSerieService {
   getNotificationsByUser(email: string) {
     return this.httpRepositoryService.get<Notification[]>(`${this.BASE_URI}/notifications/user?email=${email}`);
   }*/
+
+  getPlanningInfo(id: number) {
+    return this.httpRepositoryService.get<PlanningInfoDto>(`${this.BASE_URI}/${id}/info`);
+  }
   
 }
