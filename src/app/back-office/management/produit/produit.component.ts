@@ -23,4 +23,10 @@ export class ProduitComponent implements OnInit {
       this.produits = data;
     });
   }
+  deleteproduit(id: number): void {
+    //add by manar 5ater mafamech delete produit
+    this.produitservice.deleteProduit(id).subscribe(() => {
+      this.produits = this.produits.filter(f => f.idDto !== id);
+    });
+  }
 }

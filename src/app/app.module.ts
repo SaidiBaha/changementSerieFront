@@ -6,7 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
+/*manar zedetehom MatDividerModule,MatIconModule,MatButtonModule*/
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
   
     ToastrModule.forRoot(),  
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule,
+    MatIconModule,
+    MatButtonModule
 
   ],
  
