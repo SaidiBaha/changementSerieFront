@@ -1,0 +1,67 @@
+<div *ngIf="checklistVide">
+  <h2>Détails de la Checklist</h2>
+  <p>ID: {{ checklistVide.checklist.idDto }}</p>
+  <p>Titre: {{ checklistVide.checklist.titreDto }}</p>
+  <p>Description: {{ checklistVide.checklist.descriptionDto }}</p>
+  <p>Outillage: {{ checklistVide.checklist.outillageDto }}</p>
+  <p>Planning ID: {{ checklistVide.checklist.planningDto.idDto }}</p>
+  <p>Planning Titre: {{ checklistVide.checklist.planningDto.titreDto }}</p>
+  <p>Planning Début: {{ checklistVide.checklist.planningDto.debutDto }}</p>
+  <p>Planning Fin: {{ checklistVide.checklist.planningDto.finDto }}</p>
+
+  <h3>Lignes de Checklist</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nom du Test à Faire</th>
+        <th>Validation de la Ligne de Checklist</th>
+        <th>Posages</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ligne of checklistVide.lignes">
+        <td>{{ ligne.nomTestAFaireDto }}</td>
+       
+        <td>
+          <ul>
+            <!-- Afficher les posages et les inputs pour choisir la TypeValidation -->
+            <li *ngFor="let posage of ligne.posagesDto">
+              <p>Nom de l'Interface: {{ posage.nomInterfaceDto }}</p>
+              <!-- Utiliser ngModel avec ngModelChange pour gérer les modifications -->
+              <select [ngModel]="getTypeValidation(posage.idDto)" (ngModelChange)="updateValidationType($event, posage.idDto)">
+                <option value="OK">OK</option>
+                <option value="NOK">NOK</option>
+                <option value="NA">NA</option>
+              </select>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="container mt-3">
+  <h2>Ajouter une Checklist Complétée</h2>
+
+
+
+
+
+  <div class="form-group">
+    <label for="constats">Constats:</label>
+    <input type="text" class="form-control" id="constats" [(ngModel)]="constats" name="constats">
+  </div>
+
+  <div class="form-group">
+    <label for="resteAfaire">Reste à faire:</label>
+    <input type="text" class="form-control" id="resteAfaire" [(ngModel)]="resteAfaire" name="resteAfaire">
+  </div>
+
+  <!-- Ajoutez ici les champs nécessaires pour les données de validation -->
+
+  <button class="btn btn-primary" (click)="completeChecklistForPlanning()">Compléter la Checklist</button>
+</div>

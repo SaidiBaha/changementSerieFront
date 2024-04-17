@@ -18,11 +18,7 @@ export class ChangementDetailsComponent implements OnInit {
     this.loadlistPlannings();
   }
 
-  openDetails(planning: PlanningChangementSerie) {
-    this.dialog.open(NotificationDetailsComponent, {
-      data: { planning: planning }
-    });
-  }
+
 
 
   loadlistPlannings(): void {

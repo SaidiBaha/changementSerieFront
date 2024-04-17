@@ -11,6 +11,8 @@ import { ChecklistDetailsComponent } from './checklist-details/checklist-details
 import { ListPosageComponent } from './list-posage/list-posage.component';
 import { AddPosageComponent } from './add-posage/add-posage.component';
 import { PosageDetailsComponent } from './posage-details/posage-details.component';
+import { ListCecklistCompleteComponent } from './list-cecklist-complete/list-cecklist-complete.component';
+import { AddChecklistCompleteComponent } from './add-checklist-complete/add-checklist-complete.component';
 
 
 
@@ -25,7 +27,9 @@ import { PosageDetailsComponent } from './posage-details/posage-details.componen
     ChecklistDetailsComponent,
     ListPosageComponent,
     AddPosageComponent,
-    PosageDetailsComponent
+    PosageDetailsComponent,
+    ListCecklistCompleteComponent,
+    AddChecklistCompleteComponent
   ],
   imports: [
     CommonModule,

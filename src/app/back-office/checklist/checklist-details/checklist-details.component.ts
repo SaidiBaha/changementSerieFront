@@ -45,8 +45,8 @@ export class ChecklistDetailsComponent implements OnInit {
         this.ligneChecklists = data;
         // Pour chaque ligneChecklist, récupérez les posages associés
         this.ligneChecklists.forEach(ligneCheck => {
-            this.ligneChecklistService.getPosagesByLigneChecklistId(ligneCheck.idDto).subscribe(posages => {
-                ligneCheck.posages = posages;
+            this.ligneChecklistService.getPosagesByLigneChecklistId(ligneCheck.idDto).subscribe(posagesDto => {
+                ligneCheck.posagesDto = posagesDto;
             });
         });
     });
@@ -70,7 +70,7 @@ deletePosage(posageId: number,ligneCheckIndex: number): void {
       next: () => {
        
           // Rechargez les posages ou mettez à jour la vue
-          this.ligneChecklists[ligneCheckIndex].posages = this.ligneChecklists[ligneCheckIndex].posages.filter(p => p.idDto !== posageId);
+          this.ligneChecklists[ligneCheckIndex].posagesDto = this.ligneChecklists[ligneCheckIndex].posagesDto.filter(p => p.idDto !== posageId);
           console.log('Posage supprimé');
       },
       error: (err) => {
