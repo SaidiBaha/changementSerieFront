@@ -152,7 +152,7 @@
   .deleteButton:hover  {
     opacity: 1;
   }
-  .btn {
+  .updatebtn {
     width: 40px;
     height: 40px;
     display: flex;
@@ -161,10 +161,10 @@
     justify-content: center;
     gap: 3px;
     background-color: transparent;
-    border: 2px solid transparent;;
+    border: 2px solid transparent;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.05s;
     position: relative;
     overflow: hidden;
     color: DodgerBlue; /* Couleur du texte bleue par défaut */
@@ -172,16 +172,15 @@
     font-size: 16px;
   }
   
-  .btn i.fa {
+  .updatebtn i.fa {
     color: DodgerBlue; /* Couleur bleue pour l'icône de crayon par défaut */
   }
   
-  .btn:hover {
+  .updatebtn:hover {
     background-color: RoyalBlue;
     color: white; /* Changement de couleur du texte en survol */
   }
   
-  .btn:hover i.fa {
+  .updatebtn:hover i.fa {
     color: white; /* Changement de couleur de l'icône en survol */
   }
-  

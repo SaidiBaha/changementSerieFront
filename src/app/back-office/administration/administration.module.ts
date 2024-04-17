@@ -13,6 +13,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -32,6 +36,10 @@ import { MatInputModule } from '@angular/material/input';
         MatInputModule,
         ReactiveFormsModule,
         MatFormFieldModule,
+        HttpClientModule,
+    MatDividerModule,
+    MatIconModule,
+    MatButtonModule
         
     ]
 })

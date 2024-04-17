@@ -1,50 +1,59 @@
 <div class="container">
     <h2>{{ checklist.idDto ? 'Edit' : 'Ajouter' }} Checklist</h2>
-    <form>
-      <div class="form-group">
-        <label for="titre">Titre</label>
-        <input type="text" class="form-control" id="titre" [(ngModel)]="checklist.titreDto" name="titre">
-      </div>
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea class="form-control" id="description" [(ngModel)]="checklist.descriptionDto" name="description"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="famille">Famille:</label>
-        <select id="famille" class="form-control" [(ngModel)]="checklist.familleDto" name="famille">
+    <form class="form" style="width: 90%;">
+      <label for="titre" style="margin-left: 10%;">Titre</label>
+
+     <input id="file" type="file">
+        <input type="text" class="input" id="titre" [(ngModel)]="checklist.titreDto" name="titre" style="width: 85%;align-self: center;">
+        <label for="titre" style="margin-left: 10%;">Description</label>
+        <input type="text" class="input" id="description" [(ngModel)]="checklist.descriptionDto" name="description" style="width: 85%;align-self: center;">
+      <td>       
+         <label for="famille" style="margin-right: 1%;margin-left: 10%;">Famille</label>
+         <label for="testeur" style="margin-left: 40%;">Testeur</label>
+      </td>
+        <td >
+        <select id="famille" class="input" [(ngModel)]="checklist.familleDto" name="famille" style="width: 40%;margin-right: 4.5%;margin-left: 7.5%;">
           <option *ngFor="let famille of familles" [value]="famille.idDto">{{ famille.nomFamilleDto }}</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label for="testeur">Testeur:</label>
-        <select id="testeur" class="form-control" [(ngModel)]="checklist.testeurDto" name="testeur">
-            <option *ngFor="let testeur of testeurs" [value]="testeur.idDto">{{ testeur.nomTesteurDto }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="typeValidation">Validation:</label>
-        <select class="form-control" id="typeValidation" [(ngModel)]="checklist.typeValidationDto" name="typeValidation">
-          <option *ngFor="let type of typeValidations" [value]="type">{{ type }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="typeZone">Zone:</label>
-        <select class="form-control" id="typeZone" [(ngModel)]="checklist.typeZoneDto" name="typeZone">
-          <option *ngFor="let type of typeZones" [value]="type">{{ type }}</option>
-        </select>
-      </div>
+        <select id="testeur" class="input" [(ngModel)]="checklist.testeurDto" name="testeur" style="width: 40%;margin-left: 1%;">
+          <option *ngFor="let testeur of testeurs" [value]="testeur.idDto">{{ testeur.nomTesteurDto }}</option>
+      </select></td>
+      
+      <td>
+              <label for="typeValidation" style="margin-right: 1%;margin-left: 10%;">Validation</label>
+              <label for="typeZone" style="margin-left: 40%;">Zone</label>
+      </td>
+      
+      <td >
+            <select class="input" id="typeValidation" [(ngModel)]="checklist.typeValidationDto" name="typeValidation"  style="width: 40%;margin-right: 4.5%;margin-left: 7.5%;">
+        <option *ngFor="let type of typeValidations" [value]="type">{{ type }}</option>
+      </select>
+      <select class="input" id="typeZone" [(ngModel)]="checklist.typeZoneDto" name="typeZone" style="width: 40%;margin-left: 1%;">
+        <option *ngFor="let type of typeZones" [value]="type">{{ type }}</option>
+      </select>
+    </td>
+        <button class="custom-button" style="width: 30%;align-self: center;" (click)="save()">
+          <span >
+            <i class="fa fa-floppy-o"></i>
+          </span></button>
+        
+    </form>
+  
+    <!--
+     
+     
       <button class="bookmarkBtn"(click)="save()" style="margin-left: 404px;">
         <span class="IconContainer">
           <i class="fa fa-floppy-o"></i>
         </span>
         
-      </button>
+      </button>--->
      
-      <!-- Add other fields as needed -->
-     <!-- <button type="button" class="btn btn-primary" (click)="save()">Sauvegarder</button>-->
+      
+     <!--<button type="button" class="btn btn-primary" (click)="save()">Sauvegarder</button>-->
       <!--<button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>-->
-    </form>
-  </div>
+    <!--</form>-->
+    
 
   <app-ligne-check></app-ligne-check>
 
