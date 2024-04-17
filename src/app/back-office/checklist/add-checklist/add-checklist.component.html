@@ -32,27 +32,21 @@
         <option *ngFor="let type of typeZones" [value]="type">{{ type }}</option>
       </select>
     </td>
-        <button class="custom-button" style="width: 30%;align-self: center;" (click)="save()">
+    <td >
+        <button class="custom-button" style="width: 15%;align-self: center;margin-left: 58%;margin-right: 2%;" (click)="save()">
           <span >
             <i class="fa fa-floppy-o"></i>
           </span></button>
-        
+          <button class="cancelbutton" style="width: 15%;align-self: center;" (click)="cancel()">
+            <span>
+              <i class="fa fa-times"></i> 
+            </span>
+          </button>
+        </td>
     </form>
-  
-    <!--
+   
      
-     
-      <button class="bookmarkBtn"(click)="save()" style="margin-left: 404px;">
-        <span class="IconContainer">
-          <i class="fa fa-floppy-o"></i>
-        </span>
-        
-      </button>--->
-     
-      
-     <!--<button type="button" class="btn btn-primary" (click)="save()">Sauvegarder</button>-->
-      <!--<button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>-->
-    <!--</form>-->
+    
     
 
   <app-ligne-check></app-ligne-check>

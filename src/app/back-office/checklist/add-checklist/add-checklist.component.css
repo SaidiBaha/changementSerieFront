@@ -119,14 +119,21 @@
     display: none;
   }
   .custom-button {
-    width: 40%;
+    width: 30%;
     align-self: center;
     transition: background-color 0.3s ease;
   }
   
   .custom-button:hover {
-    background-color: #f0f0f0; /* Changez cette couleur selon vos préférences */
+    background-color: green; /* Changez cette couleur selon vos préférences */
+  }
+  .cancelbutton{
+    width: 30%;
+    align-self: center;
+    transition: background-color 0.3s ease;
   }
   
-  
+  .cancelbutton:hover {
+    background-color: red; /* Changez cette couleur selon vos préférences */
+  }
   
