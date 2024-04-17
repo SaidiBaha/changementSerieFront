@@ -74,14 +74,7 @@
               </tbody>
             </table>
           </div>
-                  
-          
-         
-      
-        
-                        
-
-            
+             
   <app-modal [title]="'Ajouter une nouvelle Projet'"  #dialog>
     <div class="modal-body">
       <form novalidate>
@@ -89,7 +82,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="card rounded">
                     <div class="card-header">
-                        <h4 class="card-title">ADD User</h4>
+                        <h4 class="card-title"></h4>
                     </div>
                     <div class="card-body">
                       
@@ -111,16 +104,6 @@
                               [(ngModel)]="projet.dateFinDto" placeholder="date Fin" required #titleInput>
                       </div>
 
-                      
-
-              
-
-
-
-                   
-
-          
-    
                         <div class="form-group text-center"> 
                            
                           <button type="submit" class="btn btn-danger" (click)="submitProjet()">Submit</button>

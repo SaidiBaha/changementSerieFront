@@ -6,8 +6,9 @@
      <input id="file" type="file">
         <input type="text" class="input" id="titre" [(ngModel)]="checklist.titreDto" name="titre" style="width: 85%;align-self: center;">
         <label for="titre" style="margin-left: 10%;">Description</label>
-        <input type="text" class="input" id="description" [(ngModel)]="checklist.descriptionDto" name="description" style="width: 85%;align-self: center;">
-      <td>       
+        <textarea type="text" class="input" id="description" [(ngModel)]="checklist.descriptionDto" name="description" style="width: 85%;align-self: center;"required></textarea>
+      
+        <td>       
          <label for="famille" style="margin-right: 1%;margin-left: 10%;">Famille</label>
          <label for="testeur" style="margin-left: 40%;">Testeur</label>
       </td>
@@ -33,7 +34,7 @@
       </select>
     </td>
     <td >
-        <button class="custom-button" style="width: 15%;align-self: center;margin-left: 58%;margin-right: 2%;" (click)="save()" data-toggle="tooltip" data-placement="top" title="Ajouter checklist">
+        <button class="custom-button" style="width: 15%;align-self: center;margin-left: 58%;margin-right: 2%;" (click)="save()" data-toggle="tooltip" data-placement="top" title="Sauvgarder checklist">
           <span >
             <i class="fa fa-floppy-o"></i>
           </span></button>
