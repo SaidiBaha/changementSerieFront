@@ -36,7 +36,7 @@
                         <button type="button" class="btn btn-warning me-1"><i class="bi bi-plus"></i></button> -->
                          <!-- <button type="button" class="btn btn-danger me-1"(click)="deleteUser(user.idDto)">Delete<i class="bi bi-trash"></i></button>-->
                          <td>
-                          <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier utilisateur">create</i></button>
+                          <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier utilisateur" (click)="getById(user.idDto)" (click)="openModal()">create</i></button>
 
                           <!--<button class="btn" data-toggle="tooltip" data-placement="top" title="Modifier utilisateur" (click)="getById(user.idDto)" (click)="openModal()"><i class="material-icons"></i></button>-->
                         </td>

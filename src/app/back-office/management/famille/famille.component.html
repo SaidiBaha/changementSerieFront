@@ -2,7 +2,7 @@
   <h2 class="mb-3">Gestion des Familles</h2>
   <div class="text-end mb-3">
    
-    <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter famille">
+    <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter famille" (click)="openModal()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="auto" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
    
     </button> 
@@ -23,7 +23,7 @@
             <!--<button type="button" class="btn btn-danger" (click)="deleteFamille(famille.idDto)">Supprimer</button>-->
             
             <td>
-              <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier famille">create</i></button>
+              <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier famille" (click)="openModal()">create</i></button>
               
             
             </td>
