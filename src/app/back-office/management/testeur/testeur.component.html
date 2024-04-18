@@ -1,5 +1,6 @@
 <div class="container">
-    <h2>Liste des Testeurs</h2>
+  <div class="cardtable">
+    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Liste des Testeurs</h2>
     <div class="text-end mb-3">
     
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter testeur">
@@ -7,7 +8,7 @@
       </button>
       
     </div>
-    <table class="table">
+    <table class="mat-elevation-z8" style="width:90%;margin-left: 5%;margin-block-end: 3%;">
       <thead>
         <tr>
           <th>ID</th>
@@ -27,15 +28,8 @@
           <td>{{ testeur.ligneCMSorIntegDto }}</td>
           <td>{{ testeur.atelierDto }}</td>
           <td>{{ testeur.ufDto }}</td>
-          
-          
-           <!-- <button class="btn btn-danger" (click)="deleteTesteur(testeur.idDto)">Supprimer</button>-->
-          
-           <td> 
+          <div class="action-buttons">
             <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier testeur">create</i></button>
-
-
-          <td>
           <button class="deleteButton" (click)="deleteTesteur(testeur.idDto)"data-toggle="tooltip" data-placement="top" title="Supprimer testeur"  >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,10 +55,9 @@
             </svg>
           
           </button>
-        </td>
-        </tr>
-      
-    </tbody>
+        </div>
+    </tr>
+  </tbody>
   </table>
 </div>
         

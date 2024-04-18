@@ -1,14 +1,15 @@
 <div class="container mt-3">
-    <h2 class="mb-3">Gestion des Produit</h2>
+  <div class="cardtable">
+    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Produit</h2>
     <div class="text-end mb-3">
     
-      <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter produit">
+      <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter produit" >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="auto" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
       </button>
 
     </div>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="mat-elevation-z8" style="width:90%;margin-left: 5%;margin-block-end: 3%;">
         <thead>
           <tr>
             <th>Nom de Produit</th>
@@ -20,14 +21,8 @@
           <tr *ngFor="let produit of produits">
             <td>{{ produit.nomProduitDto }}</td>
             <td>{{ produit.refProduitDto }}</td>
-            <td>
-              <!-- <button type="button" class="btn btn-info" (click)="openModal(famille)">Modifier</button> 
-              <button type="button" class="btn btn-danger" >Supprimer</button>-->
-              <td>
+            <div class="action-buttons">
                 <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier produit">create</i></button>
-                
-
-              </td>
               <td> <button class="deleteButton" (click)="deleteproduit(produit.idDto)"data-toggle="tooltip" data-placement="top" title="Supprimer produit"  >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -53,10 +48,9 @@
                 </svg>
               
               </button>
-            </td>
-            
-          </tr>
-        </tbody>
+            </div>
+        </tr>
+      </tbody>
       </table>
     </div>
             

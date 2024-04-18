@@ -1,5 +1,6 @@
 <div class="container mt-3">
-    <h2 class="mb-3">Mes changements</h2>
+  <div class="cardtable">
+    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;" >Mes changements</h2>
     <div class="text-end mb-3">
    
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;"(click)="openModal()" data-toggle="tooltip" data-placement="top" title="Ajouter demande de changement">
@@ -8,7 +9,7 @@
  
     </div>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="mat-elevation-z8" style="width:90%;margin-left: 5%;margin-block-end: 3%;">
       <thead>
         <tr>
         
@@ -26,13 +27,11 @@
           <td>{{ demande.debutDto }}</td>
           <td>{{ demande.finDto }}</td>
           <td>{{ demande.descriptionDto }}</td>
-          <td>
-           <!-- <button type="button" class="btn btn-info" (click)="openModal(demande)">Modifier</button>
-            <button type="button" class="btn btn-danger" (click)="deleteDemande(demande.idDto)">Supprimer</button>-->
-            <td>
+         
+            <div class="action-buttons">
               <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier demande de changement" (click)="openModal(demande)">create</i></button>
-            </td>
-            <td> <button class="deleteButton" (click)="deleteDemande(demande.idDto)" data-toggle="tooltip" data-placement="top" title="Supprimer demande de changement" >
+            
+            <button class="deleteButton" (click)="deleteDemande(demande.idDto)" data-toggle="tooltip" data-placement="top" title="Supprimer demande de changement" >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -57,10 +56,9 @@
               </svg>
             
             </button>
-          </td>
-          
-        </tr>
-      </tbody>
+          </div>
+      </tr>
+    </tbody>
     </table>
   </div>
         

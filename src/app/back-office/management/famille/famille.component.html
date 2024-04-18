@@ -1,5 +1,6 @@
 <div class="container mt-3">
-  <h2 class="mb-3">Gestion des Familles</h2>
+  <div class="cardtable" >
+        <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Familles</h2>
   <div class="text-end mb-3">
    
     <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter famille" (click)="openModal()">
@@ -8,26 +9,19 @@
     </button> 
   </div>
   <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="mat-elevation-z8" style="width:90%;margin-left: 5%;margin-block-end: 3%;">
       <thead>
         <tr>
           <th style="text-align: center;">Nom de la Famille</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let famille of familles">
           <td style="text-align: center;">{{ famille.nomFamilleDto }}</td>
-  
-          
-            <!-- <button type="button" class="btn btn-info" (click)="openModal(famille)">Modifier</button> -->
-            <!--<button type="button" class="btn btn-danger" (click)="deleteFamille(famille.idDto)">Supprimer</button>-->
-            
-            <td>
+          <div class="action-buttons">
               <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier famille" (click)="openModal()">create</i></button>
-              
-            
-            </td>
-            <td> <button class="deleteButton" (click)="deleteFamille(famille.idDto)"  data-toggle="tooltip" data-placement="top" title="Supprimer famille">
+             <button class="deleteButton" (click)="deleteFamille(famille.idDto)"  data-toggle="tooltip" data-placement="top" title="Supprimer famille">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -52,16 +46,12 @@
               </svg>
             
             </button>
-          </td>
-        </tr>
-      </tbody>
+          </div>
+      </tr>
+    </tbody>
     </table>
   </div>
-          
   
- 
-
-
   <app-modal-g [title]="'Sauvegarder Famille'" #dialog1>
     <div class="modal-body">
       <form novalidate>
