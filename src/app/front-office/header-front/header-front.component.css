@@ -1,0 +1,15 @@
+.logo {
+    max-width: 28%; /* Définit la largeur maximale du logo */
+    height: 50%; /* Permet au logo de conserver son ratio largeur/hauteur */
+    margin-bottom: 50px; 
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons a {
+    color: #333; /* Couleur des icônes */
+    font-size: 24px; /* Taille des icônes */
+    margin: 0 10px; /* Espacement entre les icônes */
+  }

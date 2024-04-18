@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -78,6 +79,12 @@ export class LoginComponent {
       } else {
         this.errorMessage = 'Une erreur est survenue lors de l\'authentification.';
       }
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Authentication failed. Please check your credentials.",
+        
+      });
     }
   });
   }

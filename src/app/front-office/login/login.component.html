@@ -15,11 +15,11 @@
   </div>-->
   
   <div class="login-wrapper">
-    <div class="login-content">
+    <div class="login-content" id="login">
       <div class="brand">
-        <a href="#">Soft UI Dashboard PRO</a>
+       
       </div>
-      <h2>Welcome back</h2>
+      <h2>Welcome</h2>
       <p>Enter your email and password to sign in</p>
       <form (ngSubmit)="authenticate()" class="login-form">
         <div class="form-group">
@@ -40,6 +40,7 @@
       </form>
       <div class="signup-link">
         Don't have an account? <a href="/register">Sign up</a>
+        <p>Forgot your password? <a href="/forgot-password">Reset it here</a></p>
       </div>
     </div>
   </div>

@@ -9,6 +9,7 @@ import { HttpRepositoryService } from "src/core/httpRepository.service";
 export class AuthentificationService {
 
     private BASE_URI = 'springMVC/api/v1/auth';
+    private FORGOT_PASSWORD_URI = `springMVC/forgotPassword`;
     currentUser: any = null;
 
     constructor(private httpRepositoryService: HttpRepositoryService) { }
@@ -94,5 +95,17 @@ export class AuthentificationService {
   getEmail(): string | null {
     return this.user ? this.user.username : null;
   }
+  /*Oumaima's work*/
+  
+  sendOTP(email: string): Observable<any> {
+    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/verifyMail/${email}`,{} );
+  }
 
+  verifyOTP(otp: number, email: string): Observable<any> {
+    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/verifyOtp/${email}`, { otp });
+  }
+
+  changePassword(newPassword: string, email: string): Observable<any> {
+    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/forgotPassword/changePassword/${email}`, { newPassword });
+  }
 }
