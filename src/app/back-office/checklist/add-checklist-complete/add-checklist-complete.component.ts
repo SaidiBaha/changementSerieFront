@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ChecklistCompletee } from 'src/shared/models/ChecklistCompletee';
 import { ChecklistVide } from 'src/shared/models/ChecklistVide';
 import { TypeValidation, ValidationsInput } from 'src/shared/models/ValidationsInput';
@@ -14,7 +15,7 @@ import { ChecklistService } from 'src/shared/services/checklist.service';
 })
 export class AddChecklistCompleteComponent implements OnInit{
   userId: number; // Propriété pour stocker l'ID de l'utilisateur connecté
-  planningId: number=10; // Initialiser la valeur de planningId
+  planningId: number=1; // Initialiser la valeur de planningId
   constats: string;
   resteAfaire: string;
   validationsInput: ValidationsInput[] = []; 
@@ -23,14 +24,15 @@ export class AddChecklistCompleteComponent implements OnInit{
 
   constructor(private checklistService: ChecklistService,
               private authService: AuthentificationService,
-              private router: Router ) { }
+              private router: Router ,
+              private toastr: ToastrService ) { }
   
   
   ngOnInit(): void {
     
     const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
     const numericUserId = Number(userId);
-    const checklistId = 44; // Remplacez 1 par l'ID de la checklist que vous souhaitez afficher
+    const checklistId = 1; // Remplacez 1 par l'ID de la checklist que vous souhaitez afficher
     this.checklistService.getChecklistDetailsForUser(numericUserId, checklistId).subscribe(
       (details: ChecklistVide) => {
         this.checklistVide = details;
@@ -43,6 +45,8 @@ export class AddChecklistCompleteComponent implements OnInit{
     );
   }
 
+
+  
 
 // Fonction pour initialiser les validationsInput avec des valeurs par défaut
 initValidationsInput(): void {
@@ -82,28 +86,46 @@ initValidationsInput(): void {
   completeChecklistForPlanning(): void {
     const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
     const numericUserId = Number(userId); //convertir id string en number 
-
-    console.log(numericUserId)
-    if (userId) {
-      this.checklistService.completeChecklistForPlanning(numericUserId, this.planningId, { 
-        validationsInput: this.validationsInput,
-        constats: this.constats,
-        resteAfaire: this.resteAfaire
-      }).subscribe(
-        response => {
-          console.log('Checklist complétée avec succès');
-          console.log(response)
-
-          this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
-        },
-        error => {
-          console.error('Erreur lors de la complétion de la checklist:', error);
-          // Gérer l'erreur si nécessaire
-        }
-      );
-    } else {
+  
+    console.log(numericUserId);
+    
+    if (!userId) {
       console.error('Impossible de récupérer l\'ID de l\'utilisateur connecté');
+      return; // Arrête l'exécution de la fonction si l'ID de l'utilisateur est vide
     }
+  
+    if (!this.constats || !this.resteAfaire) {
+      console.error('Veuillez remplir tous les champs avant de compléter la checklist.');
+      this.toastr.error('Veuillez remplir tous les champs avant de compléter la checklist.', 'Erreur');
+      
+      return; // Arrête l'exécution de la fonction si les champs sont vides
+    }
+  
+    // Si tous les champs sont remplis, alors envoyer la requête au service pour compléter la checklist
+    this.checklistService.completeChecklistForPlanning(numericUserId, this.planningId, { 
+      validationsInput: this.validationsInput,
+      constats: this.constats,
+      resteAfaire: this.resteAfaire
+    }).subscribe(
+      response => {
+        console.log('Checklist complétée avec succès');
+        console.log(response);
+        this.toastr.success('Checklist complétée avec succès', 'Succès');
+        this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
+      },
+      error => {
+        console.error('Erreur lors de la complétion de la checklist:', error);
+        this.toastr.error(error.error.message, 'Erreur lors de la création du planning');
+        this.toastr.error(error.error.message, 'Erreur lors de la complétion de la checklist');
+        // Gérer l'erreur si nécessaire
+      }
+    );
   }
+
+
+  
+
+
+
 
 }

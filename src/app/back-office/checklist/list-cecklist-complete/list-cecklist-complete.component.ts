@@ -14,7 +14,7 @@ export class ListCecklistCompleteComponent implements OnInit{
   constructor(private checklistService: ChecklistService) { }
 
   ngOnInit(): void {
-    const userId = 30; // pour le moment ba3d lazem nrodo dynamique
+    const userId = 1; // pour le moment ba3d lazem nrodo dynamique
     this.getAllChecklistCompleteeByUserId(userId);
   }
   getAllChecklistCompleteeByUserId(userId: number): void {

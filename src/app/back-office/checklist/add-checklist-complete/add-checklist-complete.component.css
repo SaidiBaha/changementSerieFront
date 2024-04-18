@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  th, td {
+    padding: 10px; /* Ajoute de l'espace autour du contenu de chaque cellule */
+    text-align: left; /* Aligne le texte à gauche dans les cellules */
+  }
+  

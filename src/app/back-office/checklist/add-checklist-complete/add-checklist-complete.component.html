@@ -1,40 +1,58 @@
 <div *ngIf="checklistVide">
-  <h2>Détails de la Checklist</h2>
-  <p>ID: {{ checklistVide.checklist.idDto }}</p>
-  <p>Titre: {{ checklistVide.checklist.titreDto }}</p>
-  <p>Description: {{ checklistVide.checklist.descriptionDto }}</p>
-  <p>Outillage: {{ checklistVide.checklist.outillageDto }}</p>
-  <p>Planning ID: {{ checklistVide.checklist.planningDto.idDto }}</p>
-  <p>Planning Titre: {{ checklistVide.checklist.planningDto.titreDto }}</p>
-  <p>Planning Début: {{ checklistVide.checklist.planningDto.debutDto }}</p>
-  <p>Planning Fin: {{ checklistVide.checklist.planningDto.finDto }}</p>
+  <h2> Checklist de Changement</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Outillage</th>
+        <th>Planning ID</th>
+        <th>Planning Titre</th>
+        <th>Planning Début</th>
+        <th>Planning Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ checklistVide.checklist.titreDto }}</td>
+        <td>{{ checklistVide.checklist.descriptionDto }}</td>
+        <td>{{ checklistVide.checklist.outillageDto }}</td>
+        <td>{{ checklistVide.checklist.planningDto.idDto }}</td>
+        <td>{{ checklistVide.checklist.planningDto.titreDto }}</td>
+        <td>{{ checklistVide.checklist.planningDto.debutDto }}</td>
+        <td>{{ checklistVide.checklist.planningDto.finDto }}</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h3>Lignes de Checklist</h3>
   <table border="1">
     <thead>
       <tr>
         <th>Nom du Test à Faire</th>
-        <th>Validation de la Ligne de Checklist</th>
+       
         <th>Posages</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let ligne of checklistVide.lignes">
         <td>{{ ligne.nomTestAFaireDto }}</td>
-       
+      
         <td>
-          <ul>
-            <!-- Afficher les posages et les inputs pour choisir la TypeValidation -->
-            <li *ngFor="let posage of ligne.posagesDto">
-              <p>Nom de l'Interface: {{ posage.nomInterfaceDto }}</p>
-              <!-- Utiliser ngModel avec ngModelChange pour gérer les modifications -->
+          <!-- Utiliser flexbox pour afficher les posages à côté -->
+          <div style="display: flex; flex-direction: row;">
+            <!-- Afficher chaque posage -->
+            <div *ngFor="let posage of ligne.posagesDto">
+              <!-- Afficher le posage -->
+              <p> {{ posage.nomInterfaceDto }}</p>
+              <!-- Ajouter le champ pour la TypeValidation -->
               <select [ngModel]="getTypeValidation(posage.idDto)" (ngModelChange)="updateValidationType($event, posage.idDto)">
                 <option value="OK">OK</option>
                 <option value="NOK">NOK</option>
                 <option value="NA">NA</option>
               </select>
-            </li>
-          </ul>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
