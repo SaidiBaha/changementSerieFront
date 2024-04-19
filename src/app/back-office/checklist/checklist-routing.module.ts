@@ -57,11 +57,11 @@ const routes: Routes = [
   },
 
   {
-    path: 'remlirCheck',
+    path: 'remlirCheck/:checklistId',
     component: AddChecklistCompleteComponent,
   },
 
-
+  
 
  /* {
     path: 'ligneCheck/:ligneChecklistId/posages',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChecklistCompletee } from 'src/shared/models/ChecklistCompletee';
 import { ChecklistVide } from 'src/shared/models/ChecklistVide';
@@ -15,25 +15,30 @@ import { ChecklistService } from 'src/shared/services/checklist.service';
 })
 export class AddChecklistCompleteComponent implements OnInit{
   userId: number; // Propriété pour stocker l'ID de l'utilisateur connecté
-  planningId: number=1; // Initialiser la valeur de planningId
+ // planningId: number=4; // Initialiser la valeur de planningId
   constats: string;
   resteAfaire: string;
   validationsInput: ValidationsInput[] = []; 
   checklistVide: ChecklistVide | null = null; // Propriété pour stocker les détails de la checklist
+
+  checklistId: number;
+  planningId: number;
   
 
   constructor(private checklistService: ChecklistService,
               private authService: AuthentificationService,
               private router: Router ,
+              private route: ActivatedRoute,
               private toastr: ToastrService ) { }
   
   
-  ngOnInit(): void {
+ /* ngOnInit(): void {
     
     const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
     const numericUserId = Number(userId);
-    const checklistId = 1; // Remplacez 1 par l'ID de la checklist que vous souhaitez afficher
-    this.checklistService.getChecklistDetailsForUser(numericUserId, checklistId).subscribe(
+    console.log(this.checklistId)
+   // const checklistId = 1; // Remplacez 1 par l'ID de la checklist que vous souhaitez afficher
+    this.checklistService.getChecklistDetailsForUser(numericUserId, this.checklistId).subscribe(
       (details: ChecklistVide) => {
         this.checklistVide = details;
         // Initialisation des validationsInput avec des valeurs par défaut
@@ -43,7 +48,39 @@ export class AddChecklistCompleteComponent implements OnInit{
         console.error('Erreur lors de la récupération des détails de la checklist:', error);
       }
     );
+  }*/
+  ngOnInit(): void {
+    const userId = this.authService.getCurrentUserId();
+    const numericUserId = Number(userId);
+  
+    this.route.params.subscribe(params => {
+      this.checklistId = params['checklistId'];
+      console.log(this.checklistId); // Vérifiez la valeur de checklistId
+      // Continuez avec votre logique pour charger les détails de la checklist
+      this.loadChecklistDetails();
+    });
   }
+  
+  loadChecklistDetails(): void {
+    if (!this.checklistId) {
+      console.error('ID de la checklist non défini');
+      return;
+    }
+  
+    const userId = this.authService.getCurrentUserId();
+    const numericUserId = Number(userId);
+  
+    this.checklistService.getChecklistDetailsForUser(numericUserId, this.checklistId).subscribe(
+      (details: ChecklistVide) => {
+        this.checklistVide = details;
+        this.initValidationsInput();
+      },
+      error => {
+        console.error('Erreur lors de la récupération des détails de la checklist:', error);
+      }
+    );
+  }
+  
 
 
   
@@ -81,7 +118,7 @@ initValidationsInput(): void {
   }
 
 
-
+/*
   
   completeChecklistForPlanning(): void {
     const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
@@ -100,9 +137,10 @@ initValidationsInput(): void {
       
       return; // Arrête l'exécution de la fonction si les champs sont vides
     }
+    const planningId = this.route.snapshot.params['planningId'];
   
     // Si tous les champs sont remplis, alors envoyer la requête au service pour compléter la checklist
-    this.checklistService.completeChecklistForPlanning(numericUserId, this.planningId, { 
+    this.checklistService.completeChecklistForPlanning(numericUserId,planningId, { 
       validationsInput: this.validationsInput,
       constats: this.constats,
       resteAfaire: this.resteAfaire
@@ -122,8 +160,47 @@ initValidationsInput(): void {
     );
   }
 
+*/
+completeChecklistForPlanning(): void {
+  const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
+  const numericUserId = Number(userId); // Convertir id string en number 
 
-  
+  if (!userId) {
+    console.error('Impossible de récupérer l\'ID de l\'utilisateur connecté');
+    return; // Arrête l'exécution de la fonction si l'ID de l'utilisateur est vide
+  }
+
+  if (!this.constats || !this.resteAfaire) {
+    console.error('Veuillez remplir tous les champs avant de compléter la checklist.');
+    this.toastr.error('Veuillez remplir tous les champs avant de compléter la checklist.', 'Erreur');
+    
+    return; // Arrête l'exécution de la fonction si les champs sont vides
+  }
+
+  // Récupérer le planningId à partir de l'URL
+  const planningId = this.route.snapshot.params['planningId'];
+
+  // Si tous les champs sont remplis, alors envoyer la requête au service pour compléter la checklist
+  this.checklistService.completeChecklistForPlanning(numericUserId, planningId, { 
+    validationsInput: this.validationsInput,
+    constats: this.constats,
+    resteAfaire: this.resteAfaire
+  }).subscribe(
+    response => {
+      console.log('Checklist complétée avec succès');
+      console.log(response);
+      this.toastr.success('Checklist complétée avec succès', 'Succès');
+      this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
+    },
+    error => {
+      console.error('Erreur lors de la complétion de la checklist:', error);
+      this.toastr.error(error.error.message, 'Erreur lors de la création du planning');
+      this.toastr.error(error.error.message, 'Erreur lors de la complétion de la checklist');
+      // Gérer l'erreur si nécessaire
+    }
+  );
+}
+
 
 
 

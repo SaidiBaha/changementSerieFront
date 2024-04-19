@@ -21,8 +21,9 @@
         <button   [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]">
           Détails
         </button>
-        <button   [routerLink]="['/dashboard/checklist/remlirCheck']">
-          lancer le process de changement 
+      
+        <button (click)="launchChangementProcess(planning.idDto)">
+          lancer le process de changement
         </button>
 
       </tr>
