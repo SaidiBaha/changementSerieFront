@@ -1,473 +1,4 @@
 .button {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border: 1px solid #257bc8;
-    background-color: #257bc8;
-    border-radius: 20px; /* Rendre les coins ronds */
-  }
-  
-  .button, .button__icon, .button__text {
-    transition: all 0.05s;
-  }
-  
-  .button .button__text {
-    transform: translateX(30px);
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .button .button__icon {
-    position: absolute;
-    transform: translateX(109px);
-    height: 100%;
-    width: 39px;
-    background-color: #20384f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px 20px 20px 20px; /* Rendre le coin droit rond */
-  }
-  
-  .button .svg {
-    width: 30px;
-    stroke: #fff;
-  }
-  
-  .button:hover {
-    background: #20384f;
-  }
-  
-  .button:hover .button__text {
-    color: transparent;
-  }
-  
-  .button:hover .button__icon {
-    width: 148px;
-    transform: translateX(0);
-  }
-  
-  .button:active .button__icon {
-    background-color: #3d2e86;
-  }
-  
-  .button:active {
-    border: 1px solid #000e04;
-  }
-  .bookmarkBtn {
-    width: 100px;
-    height: 40px;
-    border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.349);
-    background-color: rgb(12, 12, 12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition-duration: 0.05s;
-    overflow: hidden;
-  }
-  
-  .IconContainer {
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(to bottom, rgb(255, 136, 255), rgb(172, 70, 255));
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    z-index: 2;
-    transition-duration: 0.05s;
-  }
-  
-  .icon {
-    border-radius: 1px;
-  }
-  
-  .text {
-    height: 100%;
-    width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    z-index: 1;
-    transition-duration: 0.05s;
-    font-size: 1.04em;
-  }
-  
-  .bookmarkBtn:hover .IconContainer {
-    width: 90px;
-    transition-duration: 0.05s;
-  }
-  
-  .bookmarkBtn:hover .text {
-    transform: translate(10px);
-    width: 0;
-    font-size: 0;
-    transition-duration: 0.05s;
-  }
-  
-  .bookmarkBtn:active {
-    transform: scale(0.95);
-    transition-duration: 0.05s;
-  }
-
-  .card {
-    width: 400px;
-    margin: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  table {
-    width: 90%;
-    border-collapse: collapse;
-    margin-top: 15px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 6px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  .noselect {
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    background: #00c1d6;
-   }
-   
-   .noselect, button span {
-    transition: 200ms;
-   }
-   
-   .noselect .text {
-    transform: translateX(35px);
-    color: white;
-    font-weight: bold;
-   }
-   
-   .noselect .icon {
-    position: absolute;
-    border-left: 1px solid #00c1d6;
-    transform: translateX(110px);
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-   
-   .noselect svg {
-    width: 15px;
-    fill: #eee;
-   }
-   
-   .noselect:hover {
-    background: #ff3636;
-   }
-   
-   .noselect:hover .text {
-    color: transparent;
-   }
-   
-   .noselect:hover .icon {
-    width: 150px;
-    border-left: none;
-    transform: translateX(0);
-   }
-   
-   .noselect:focus {
-    outline: none;
-   }
-   
-   .noselect:active .icon svg {
-    transform: scale(0.8);
-   }
-   .logo-container {
-    margin-right: 10px;
-    text-align: center;
-  }
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-  }
-  
-  .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  .button {
-    margin-right: 8px;
-  }
-  /* Style pour le bouton */
-.button.mat-raised-button {
-  background-color: #1976d2; /* Couleur de fond */
-  color: white; /* Couleur du texte */
-  padding: 10px 20px; /* Rembourrage */
-  border-radius: 4px; /* Bord arrondi */
-  cursor: pointer; /* Curseur au survol */
-  transition: background-color 0.05s ease; /* Transition sur le changement de couleur de fond */
-}
-
-/* Style pour le survol */
-.button.mat-raised-button:hover {
-  background-color: #1565c0; /* Couleur de fond au survol */
-}
-
-/* Style pour le clic */
-.button.mat-raised-button:active {
-  background-color: #0d47a1; /* Couleur de fond au clic */
-}
-
-/* Style pour le focus */
-.button.mat-raised-button:focus {
-  outline: none; /* Supprimer l'outline */
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3); /* Ombre de focus */
-}
-
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-    order: 2; /* Increase the order value */
-    margin-top: 8px;
-  }
-  .nomodify {
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    background: #00c1d6;
-   }
-  
-  .nomodify, button span {
-    transition: 200ms;
-  
-   }
-  
-  .nomodify .text {
-    transform: translateX(35px);
-    color: white;
-    font-weight: bold;
-   }
-  
-  .nomodify .icon {
-    position: absolute;
-    border-left: 1px solid #00c1d6;
-    transform: translateX(110px);
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-  
-  .nomodify svg {
-    width: 15px;
-    fill: #eee;
-   }
-  
-  .nomodify:hover {
-    background: #ff3636;
-   }
-  
-  .nomodify:hover .text {
-    color: transparent;
-   }
-  
-  .nomodify:hover .icon {
-    width: 150px;
-    border-left: none;
-    transform: translateX(0);
-   }
-  
-  .nomodify:focus {
-    outline: none;
-   }
-  
-  .nomodify:active .icon svg {
-    transform: scale(0.8);
-  }
-  .mat-icon-white {
-    color: white;
-  }
-  .mat-accent{
-    background-color: #00a8e6;
-  }
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 0.4em;
-    background-color: #000;
-    border-radius: 25px;
-    transition: .4s ease-in-out;
-  }
-  
-  .form:hover {
-    transform: scale(1.05);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  
-  #heading {
-    text-align: center;
-    margin: 2em;
-    color: rgb(255, 255, 255);
-    font-size: 1.2em;
-  }
-  
-  .field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    border-radius: 25px;
-    padding: 0.6em;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: #171717;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-  }
-  
-  .input-icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: white;
-  }
-  
-  .input-field {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100%;
-    color: #d3d3d3;
-  }
-  
-  .form .btn {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 2.5em;
-  }
-  
-  .button1 {
-    width: 50%;
-    padding: 0.5em;
-    padding-left: 1.1em;
-    padding-right: 1.1em;
-    border-radius: 20px;
-    margin-right: 0.5em;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-  }
-  
-  .button1:hover {
-    background-color: black;
-    color: white;
-    
-  }
-  .custom-modal {
-    background-color: white; /* Modal background color */
-}
-
-.custom-modal #heading {
-    color: black; /* Heading color */
-}
-
-.custom-modal  {
-    background-color: red; /* Confirm button background color */
-    color: white; /* Confirm button text color */
-}
-
-.custom-modal  {
-    background-color: grey; /* Cancel button background color */
-    color: black; /* Cancel button text color */
-}
-.buttonCo {
-  font-family: monospace;
-  background-color: #f3f7fe;
-  color: #f41b1b;
-  border: none;
-  border-radius: 8px;
-  width: 100px;
-  height: 45px;
-  transition: .3s;
-}
-
-.buttonCo:hover {
-  background-color: #3b82f6;
-  box-shadow: 0 0 0 5px #3b83f65f;
-  color: #fff;
-}
-.buttonCa {
-  font-family: monospace;
-  background-color: #f3f7fe;
-  color: #8fa9d3;
-  border: none;
-  border-radius: 8px;
-  width: 100px;
-  height: 45px;
-  transition: .3s;
-}
-
-.buttonCa:hover {
-  background-color: #3b82f6;
-  box-shadow: 0 0 0 5px #3b83f65f;
-  color: #fff;
-}
-.demo-table {
-  width: 100%;
-}
-
-.mat-mdc-row .mat-mdc-cell {
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
-  cursor: pointer;
-}
-
-.mat-mdc-row:hover .mat-mdc-cell {
-  border-color: currentColor;
-}
-
-.demo-row-is-clicked {
-  font-weight: bold;
-}
-.button {
   position: relative;
   width: 40px;
   height: 40px;
@@ -531,7 +62,7 @@
   height: 40px;
   border-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.349);
-  background-color: (12, 12, 12);
+  background-color: rgb(12, 12, 12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -586,207 +117,680 @@
   transition-duration: 0.05s;
 }
 
-.deleteButton {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  background-color: transparent;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.deleteButton svg {
-  width: 44%;
-}
-.deleteButton:hover {
-  background-color: rgb(237, 56, 56);
-  overflow: visible;
-}
-.bin path {
-  transition: all 0.2s;
-}
-.deleteButton:hover .bin path {
-  fill: #fff;
-}
-.deleteButton:active {
-  transform: scale(0.98);
-}
-.tooltip {
-  --tooltip-color: rgb(41, 41, 41);
-  position: absolute;
-  top: -40px;
-  background-color: var(--tooltip-color);
-  color: white;
+.card {
+  width: 400px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 12px;
-  padding: 8px 12px;
-  font-weight: 600;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.105);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.noselect {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.5s;
-}
-.tooltip::before {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #00c1d6;
+ }
+ 
+ .noselect, button span {
+  transition: 200ms;
+ }
+ 
+ .noselect .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+ }
+ 
+ .noselect .icon {
   position: absolute;
-  width: z;
-  height: 10px;
-  transform: rotate(45deg);
-  content: "";
-  background-color: var(--tooltip-color);
-  bottom: -10%;
-}
-.deleteButton:hover .tooltip {
-  opacity: 1;
-}
-.updatebtn {
-  width: 40px;
+  border-left: 1px solid #00c1d6;
+  transform: translateX(110px);
   height: 40px;
+  width: 40px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  background-color: transparent;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.05s;
-  position: relative;
-  overflow: hidden;
-  color: DodgerBlue; /* Couleur du texte bleue par défaut */
-  padding: 12px 16px;
-  font-size: 16px;
+ }
+ 
+ .noselect svg {
+  width: 15px;
+  fill: #eee;
+ }
+ 
+ .noselect:hover {
+  background: #ff3636;
+ }
+ 
+ .noselect:hover .text {
+  color: transparent;
+ }
+ 
+ .noselect:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+ 
+ .noselect:focus {
+  outline: none;
+ }
+ 
+ .noselect:active .icon svg {
+  transform: scale(0.8);
+ }
+ .logo-container {
+  margin-right: 10px;
+  text-align: center;
+}
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
 }
 
-.updatebtn i.fa {
-  color: DodgerBlue; /* Couleur bleue pour l'icône de crayon par défaut */
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+.button {
+  margin-right: 8px;
+}
+/* Style pour le bouton */
+.button.mat-raised-button {
+background-color: #1976d2; /* Couleur de fond */
+color: white; /* Couleur du texte */
+padding: 10px 20px; /* Rembourrage */
+border-radius: 4px; /* Bord arrondi */
+cursor: pointer; /* Curseur au survol */
+transition: background-color 0.05s ease; /* Transition sur le changement de couleur de fond */
 }
 
-.updatebtn:hover {
-  background-color: RoyalBlue;
-  color: white; /* Changement de couleur du texte en survol */
+/* Style pour le survol */
+.button.mat-raised-button:hover {
+background-color: #1565c0; /* Couleur de fond au survol */
 }
 
-.updatebtn:hover i.fa {
-  color: white; /* Changement de couleur de l'icône en survol */
+/* Style pour le clic */
+.button.mat-raised-button:active {
+background-color: #0d47a1; /* Couleur de fond au clic */
 }
-.savebtn {
-  width: 40px;
-  height: 40px;
+
+/* Style pour le focus */
+.button.mat-raised-button:focus {
+outline: none; /* Supprimer l'outline */
+box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3); /* Ombre de focus */
+}
+
+
+.example-flex-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  order: 2; /* Increase the order value */
+  margin-top: 8px;
+}
+.nomodify {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #00c1d6;
+ }
+
+.nomodify, button span {
+  transition: 200ms;
+
+ }
+
+.nomodify .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+ }
+
+.nomodify .icon {
+  position: absolute;
+  border-left: 1px solid #00c1d6;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  background-color: transparent;
-  border: 2px solid transparent;;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.05s;
-  position: relative;
-  overflow: hidden;
-  color: DodgerBlue; /* Couleur du texte bleue par défaut */
-  padding: 12px 16px;
-  font-size: 16px;
+ }
+
+.nomodify svg {
+  width: 15px;
+  fill: #eee;
+ }
+
+.nomodify:hover {
+  background: #ff3636;
+ }
+
+.nomodify:hover .text {
+  color: transparent;
+ }
+
+.nomodify:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+
+.nomodify:focus {
+  outline: none;
+ }
+
+.nomodify:active .icon svg {
+  transform: scale(0.8);
+}
+.mat-icon-white {
+  color: white;
+}
+.mat-accent{
+  background-color: #00a8e6;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-color: #000;
+  border-radius: 25px;
+  transition: .4s ease-in-out;
 }
 
-.savebtn i.fa {
-  color: DodgerBlue; /* Couleur bleue pour l'icône de crayon par défaut */
+.form:hover {
+  transform: scale(1.05);
+  border: 1px solid rgb(0, 0, 0);
 }
 
-.savebtn:hover {
-  background-color: RoyalBlue;
-  color: white; /* Changement de couleur du texte en survol */
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
 }
 
-.savebtn:hover i.fa {
-  color: white; /* Changement de couleur de l'icône en survol */
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: white;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+
+.form .btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2.5em;
+}
+
+.button1 {
+  width: 50%;
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  border-radius: 20px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #252525;
+  color: white;
+}
+
+.button1:hover {
+  background-color: black;
+  color: white;
+  
+}
+.custom-modal {
+  background-color: white; /* Modal background color */
+}
+
+.custom-modal #heading {
+  color: black; /* Heading color */
+}
+
+.custom-modal  {
+  background-color: red; /* Confirm button background color */
+  color: white; /* Confirm button text color */
+}
+
+.custom-modal  {
+  background-color: grey; /* Cancel button background color */
+  color: black; /* Cancel button text color */
+}
+.buttonCo {
+font-family: monospace;
+background-color: #f3f7fe;
+color: #f41b1b;
+border: none;
+border-radius: 8px;
+width: 100px;
+height: 45px;
+transition: .3s;
+}
+
+.buttonCo:hover {
+background-color: #3b82f6;
+box-shadow: 0 0 0 5px #3b83f65f;
+color: #fff;
+}
+.buttonCa {
+font-family: monospace;
+background-color: #f3f7fe;
+color: #8fa9d3;
+border: none;
+border-radius: 8px;
+width: 100px;
+height: 45px;
+transition: .3s;
+}
+
+.buttonCa:hover {
+background-color: #3b82f6;
+box-shadow: 0 0 0 5px #3b83f65f;
+color: #fff;
+}
+.demo-table {
+width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+border-bottom: 1px solid transparent;
+border-top: 1px solid transparent;
+cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+font-weight: bold;
+}
+.button {
+position: relative;
+width: 40px;
+height: 40px;
+cursor: pointer;
+display: flex;
+align-items: center;
+border: 1px solid #257bc8;
+background-color: #257bc8;
+border-radius: 20px; /* Rendre les coins ronds */
+}
+
+.button, .button__icon, .button__text {
+transition: all 0.05s;
+}
+
+.button .button__text {
+transform: translateX(30px);
+color: #fff;
+font-weight: 600;
+}
+
+.button .button__icon {
+position: absolute;
+transform: translateX(109px);
+height: 100%;
+width: 39px;
+background-color: #20384f;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 20px 20px 20px 20px; /* Rendre le coin droit rond */
+}
+
+.button .svg {
+width: 30px;
+stroke: #fff;
+}
+
+.button:hover {
+background: #20384f;
+}
+
+.button:hover .button__text {
+color: transparent;
+}
+
+.button:hover .button__icon {
+width: 148px;
+transform: translateX(0);
+}
+
+.button:active .button__icon {
+background-color: #3d2e86;
+}
+
+.button:active {
+border: 1px solid #000e04;
 }
 .bookmarkBtn {
-  width: 180px; /* Modification de la largeur */
-  height: 80px; /* Modification de la hauteur */
-  border-radius: 60px; /* Ajustement du rayon de bordure */
-  border: 2px solid rgba(255, 255, 255, 0.349);
-  background-color: transparent;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  cursor: pointer;
-  transition-duration: 0.05s;
-  overflow: hidden;
-  position:absolute ; /* Positionnement fixe */
-  top: 240%; /* Alignement vertical au centre */
-  left: 50%; /* Alignement horizontal au centre */
-  transform: translate(-50%, -50%); /* Décalage de moitié de la largeur et de la hauteur */
+width: 100px;
+height: 40px;
+border-radius: 40px;
+border: 1px solid rgba(255, 255, 255, 0.349);
+background-color: (12, 12, 12);
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition-duration: 0.05s;
+overflow: hidden;
 }
 
 .IconContainer {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(to bottom,RoyalBlue,rgb(74, 111, 220));
-  border-radius: 80px;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-  overflow: hidden;
-  z-index: 2;
-  transition-duration: 0.05s;
+width: 30px;
+height: 30px;
+background: linear-gradient(to bottom, rgb(255, 136, 255), rgb(172, 70, 255));
+border-radius: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+z-index: 2;
+transition-duration: 0.05s;
 }
 
 .icon {
-  border-radius: 1px;
+border-radius: 1px;
 }
 
 .text {
-  height: 100%;
-  width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  z-index: 1;
-  transition-duration: 0.05s;
-  font-size: 1.04em;
+height: 100%;
+width: 60px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+z-index: 1;
+transition-duration: 0.05s;
+font-size: 1.04em;
 }
 
 .bookmarkBtn:hover .IconContainer {
-  width: 90px;
-  transition-duration: 0.05s;
+width: 90px;
+transition-duration: 0.05s;
 }
 
 .bookmarkBtn:hover .text {
-  transform: translate(10px);
-  width: 0;
-  font-size: 0;
-  transition-duration: 0.05s;
+transform: translate(10px);
+width: 0;
+font-size: 0;
+transition-duration: 0.05s;
 }
 
 .bookmarkBtn:active {
-  transform: scale(0.95);
-  transition-duration: 0.05;
+transform: scale(0.95);
+transition-duration: 0.05s;
+}
+
+.deleteButton {
+width: 40px;
+height: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 3px;
+background-color: transparent;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.2s;
+position: relative;
+overflow: hidden;
+}
+.deleteButton svg {
+width: 44%;
+}
+.deleteButton:hover {
+background-color: rgb(237, 56, 56);
+overflow: visible;
+}
+.bin path {
+transition: all 0.2s;
+}
+.deleteButton:hover .bin path {
+fill: #fff;
+}
+.deleteButton:active {
+transform: scale(0.98);
+}
+.tooltip {
+--tooltip-color: rgb(41, 41, 41);
+position: absolute;
+top: -40px;
+background-color: var(--tooltip-color);
+color: white;
+border-radius: 5px;
+font-size: 12px;
+padding: 8px 12px;
+font-weight: 600;
+box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.105);
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+transition: all 0.5s;
+}
+.tooltip::before {
+position: absolute;
+width: z;
+height: 10px;
+transform: rotate(45deg);
+content: "";
+background-color: var(--tooltip-color);
+bottom: -10%;
+}
+.deleteButton:hover .tooltip {
+opacity: 1;
+}
+.updatebtn {
+width: 40px;
+height: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 3px;
+background-color: transparent;
+border: 2px solid transparent;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.05s;
+position: relative;
+overflow: hidden;
+color: DodgerBlue; /* Couleur du texte bleue par défaut */
+padding: 12px 16px;
+font-size: 16px;
+}
+
+.updatebtn i.fa {
+color: DodgerBlue; /* Couleur bleue pour l'icône de crayon par défaut */
+}
+
+.updatebtn:hover {
+background-color: RoyalBlue;
+color: white; /* Changement de couleur du texte en survol */
+}
+
+.updatebtn:hover i.fa {
+color: white; /* Changement de couleur de l'icône en survol */
+}
+.savebtn {
+width: 40px;
+height: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 3px;
+background-color: transparent;
+border: 2px solid transparent;;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.05s;
+position: relative;
+overflow: hidden;
+color: DodgerBlue; /* Couleur du texte bleue par défaut */
+padding: 12px 16px;
+font-size: 16px;
+}
+
+.savebtn i.fa {
+color: DodgerBlue; /* Couleur bleue pour l'icône de crayon par défaut */
+}
+
+.savebtn:hover {
+background-color: RoyalBlue;
+color: white; /* Changement de couleur du texte en survol */
+}
+
+.savebtn:hover i.fa {
+color: white; /* Changement de couleur de l'icône en survol */
+}
+.bookmarkBtn {
+width: 180px; /* Modification de la largeur */
+height: 80px; /* Modification de la hauteur */
+border-radius: 60px; /* Ajustement du rayon de bordure */
+border: 2px solid rgba(255, 255, 255, 0.349);
+background-color: transparent;
+display: flex;
+align-items: left;
+justify-content: left;
+cursor: pointer;
+transition-duration: 0.05s;
+overflow: hidden;
+position:absolute ; /* Positionnement fixe */
+top: 240%; /* Alignement vertical au centre */
+left: 50%; /* Alignement horizontal au centre */
+transform: translate(-50%, -50%); /* Décalage de moitié de la largeur et de la hauteur */
+}
+
+.IconContainer {
+width: 50px;
+height: 50px;
+background: linear-gradient(to bottom,RoyalBlue,rgb(74, 111, 220));
+border-radius: 80px;
+display: flex;
+align-items: left;
+justify-content: center;
+overflow: hidden;
+z-index: 2;
+transition-duration: 0.05s;
+}
+
+.icon {
+border-radius: 1px;
+}
+
+.text {
+height: 100%;
+width: 60px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+z-index: 1;
+transition-duration: 0.05s;
+font-size: 1.04em;
+}
+
+.bookmarkBtn:hover .IconContainer {
+width: 90px;
+transition-duration: 0.05s;
+}
+
+.bookmarkBtn:hover .text {
+transform: translate(10px);
+width: 0;
+font-size: 0;
+transition-duration: 0.05s;
+}
+
+.bookmarkBtn:active {
+transform: scale(0.95);
+transition-duration: 0.05;
 }
 .savebtn i.fa,
 .bookmarkBtn i.fa {
-  color: white; /* Changement de couleur de l'icône en blanc */
+color: white; /* Changement de couleur de l'icône en blanc */
 }
 .action-buttons {
-  display: flex;
-  align-items: center; /* Pour aligner les boutons verticalement au centre */
+display: flex;
+align-items: center; /* Pour aligner les boutons verticalement au centre */
 }
 .cardtable {
-  width: 100%;
-  height: auto;
-  background: white;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+width: 100%;
+background: white;
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+border-radius: 20px;
+padding-block-end: 10%;
 }
-
+.table-responsive{
+overflow-x: visible;
+overflow-y: hidden;
+}
 

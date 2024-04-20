@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ChangementDetailsComponent implements OnInit {
   plannings: PlanningChangementSerie[] = [];
+  
  
 
   constructor(private planningService: PlanningChangementSerieService,

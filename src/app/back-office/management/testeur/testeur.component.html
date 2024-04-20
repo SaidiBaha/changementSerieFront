@@ -8,10 +8,10 @@
       </button>
       
     </div>
-    <table class="mat-elevation-z8" style="width:90%;margin-left: 5%;margin-block-end: 3%;">
+    <table class="table table-striped" tyle="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
       <thead>
         <tr>
-          <th>ID</th>
+         
           <th>Référence</th>
           <th>Nom</th>
           <th>Ligne CMS/Intégration</th>
@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let testeur of testeurs">
-          <td>{{ testeur.idDto }}</td>
+         
           <td>{{ testeur.refTesteurDto }}</td>
           <td>{{ testeur.nomTesteurDto }}</td>
           <td>{{ testeur.ligneCMSorIntegDto }}</td>

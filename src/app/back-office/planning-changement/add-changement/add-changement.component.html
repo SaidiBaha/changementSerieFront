@@ -1,35 +1,42 @@
 <div class="container">
-    <h2>Add New Planning</h2>
-    <form [formGroup]="planningForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="titreDto">Title:</label>
-        <input type="text" class="form-control" id="titreDto" formControlName="titreDto" required>
-      </div>
-      <div class="form-group">
-        <label for="debutDto">Start Date:</label>
-        <input type="datetime-local" class="form-control" id="debutDto" formControlName="debutDto" required>
-      </div>
-      <div class="form-group">
-        <label for="finDto">End Date:</label>
-        <input type="datetime-local" class="form-control" id="finDto" formControlName="finDto" required>
-      </div>
-      <div class="form-group">
-        <label for="descriptionDto">Description:</label>
-        <textarea class="form-control" id="descriptionDto" formControlName="descriptionDto" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="nomFamille">Family:</label>
-        <select class="form-control" id="nomFamille" formControlName="nomFamille" [(ngModel)]="selectedFamille" required>
+  
+    <form [formGroup]="planningForm" (ngSubmit)="onSubmit()"class="form" style="width: 90%;">
+      <h2>Ajouter un changement</h2>
+      <label for="titreDto">Titre</label>
+    
+      <input id="file" type="file">
+      <input type="text" class="input" id="titreDto" formControlName="titreDto" required >
+      <label for="debutDto">Date de début</label>
+      <input type="datetime-local" class="input" id="debutDto" formControlName="debutDto" required>
+      
+        <label for="finDto">Date de fin</label>
+        <input type="datetime-local" class="input" id="finDto" formControlName="finDto" required>
+     
+        <label for="descriptionDto">Description</label>
+        <textarea class="input" id="descriptionDto" formControlName="descriptionDto" required></textarea>
+      
+        <label for="nomFamille">Famille</label>
+        <select class="input" id="nomFamille" formControlName="nomFamille" [(ngModel)]="selectedFamille" required>
           <option *ngFor="let famille of familles" [value]="famille.nomFamilleDto">{{famille.nomFamilleDto}}</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label for="nomProduit">Product:</label>
-        <select class="form-control" id="nomProduit" formControlName="nomProduit" [(ngModel)]="selectedProduit" required>
+      
+        <label for="nomProduit">Produit</label>
+        <select class="input" id="nomProduit" formControlName="nomProduit" [(ngModel)]="selectedProduit" required>
           <option *ngFor="let produit of produits" [value]="produit.nomProduitDto">{{produit.nomProduitDto}}</option>
         </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Add Planning</button>
+        <div class="action-buttons">
+        <button class="custom-button" style="width: 15%;align-self: center;margin-left: 70%;" data-toggle="tooltip" data-placement="top" title="Sauvgarder Changement">
+          <span >
+            <i class="fa fa-floppy-o"></i>
+          </span></button>
+          <button class="cancelbutton" style="width: 15%;align-self: center;margin-left: 3%;"  data-toggle="tooltip" data-placement="top" title="Retour a la liste de checklist">
+            <span>
+              <i class="fa fa-times"></i> 
+            </span>
+          </button>
+          </div>
     </form>
   </div>
+
+  
   
