@@ -213,5 +213,8 @@
   .cancelbutton:hover {
     background-color: red; /* Changez cette couleur selon vos préférences */
   }
-  
+  .action-buttons {
+    display: flex;
+    align-items: center; /* Pour aligner les boutons verticalement au centre */
+  }
   

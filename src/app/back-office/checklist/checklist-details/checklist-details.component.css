@@ -1,0 +1,140 @@
+.cardtable {
+    width: 100%;
+    height: auto;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 20px;
+    padding: 2%;
+    margin-block-end: 2%;
+}
+.button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #257bc8;
+    background-color: #257bc8;
+    border-radius: 20px; /* Rendre les coins ronds */
+  }
+  
+  .button, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .button .button__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #20384f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 20px 20px; /* Rendre le coin droit rond */
+  }
+  
+  .button .svg {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .button:hover {
+    background: #20384f;
+  }
+  
+  .button:hover .button__text {
+    color: transparent;
+  }
+  
+  .button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button:active .button__icon {
+    background-color: #3d2e86;
+  }
+  
+  .button:active {
+    border: 1px solid #000e04;
+  }
+  
+  .deleteButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .deleteButton svg {
+    width: 44%;
+  }
+  .deleteButton:hover {
+    background-color: rgb(237, 56, 56);
+    overflow: visible;
+  }
+  .bin path {
+    transition: all 0.2s;
+  }
+  .deleteButton:hover .bin path {
+    fill: #fff;
+  }
+  .deleteButton:active {
+    transform: scale(0.98);
+  }
+  .deleteButton:hover  {
+    opacity: 1;
+  }
+  .updatebtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.05s;
+    position: relative;
+    overflow: hidden;
+    color: DodgerBlue; /* Couleur du texte bleue par défaut */
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  .updatebtn i.fa {
+    color: DodgerBlue; /* Couleur bleue pour l'icône de crayon par défaut */
+  }
+  
+  .updatebtn:hover {
+    background-color: RoyalBlue;
+    color: white; /* Changement de couleur du texte en survol */
+  }
+  
+  .updatebtn:hover i.fa {
+    color: white; /* Changement de couleur de l'icône en survol */
+  }
+  .action-buttons {
+    display: flex;
+    align-items: center; /* Pour aligner les boutons verticalement au centre */
+  }

@@ -1,8 +1,9 @@
 <div class="container">
-  <h2>Liste des Plannings de Changement de Série</h2>
+  <div class="cardtable">
+    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Liste des Plannification</h2>
 
-  <table class="table">
-    <thead>
+    <table class="table table-striped" tyle="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
+      <thead>
       <tr>
         <th>Titre</th>
         <th>Début</th>
@@ -18,13 +19,15 @@
         <td>{{ planning.finDto | date: 'short' }}</td>
         <td>{{ planning.descriptionDto }}</td>
         <!-- Dans votre planning.component.html -->
-        <button   [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]">
-          Détails
-        </button>
-
+       
+        <button class="detail-btn" [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]" data-toggle="tooltip" data-placement="top"
+        title="Plus d'informations sur la planification">
+        <i class="fa fa-info-circle"></i>
+      </button>
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 

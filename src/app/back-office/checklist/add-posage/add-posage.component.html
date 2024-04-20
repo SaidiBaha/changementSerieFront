@@ -15,20 +15,31 @@
    -->
 
    <!-- Dans AddPosageComponent.html -->
-
+   <div class="cardtable">
 <div class="container">
   <h2>{{ posage.idDto ? 'Modifier' : 'Ajouter' }} Posage</h2>
   <form (ngSubmit)="savePosage()">
     <!-- Champs du formulaire posage -->
-    <div class="form-group">
-      <label for="nomInterface">Nom Interface:</label>
+    <div class="form-group" style="margin-block-end: 2%;">
+      <label for="nomInterface" style="margin-block-end: 1%;">Nom Interface:</label>
       <input type="text" id="nomInterface" [(ngModel)]="posage.nomInterfaceDto" name="nomInterface" class="form-control">
     </div>
     <!-- Ajoutez d'autres champs comme nécessaire -->
     
     <!-- Boutons pour sauvegarder ou annuler -->
-    <button type="submit" class="btn btn-success">Sauvegarder</button>
-    <button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+
+    <div class="action-buttons">
+      <button class="custom-button"  style="align-self: center;" data-toggle="tooltip" data-placement="top" title="Sauvgarder Possage">
+        <span >
+          <i class="fa fa-floppy-o"></i>
+        </span></button>
+        <button class="cancelbutton" (click)="cancel()" style="align-self: center;"  data-toggle="tooltip" data-placement="top" title="Retour a la Liste de Checklists">
+          <span>
+            <i class="fa fa-times"></i> 
+          </span>
+        </button>
+        </div>
+
   </form>
 </div>
-
+</div>
