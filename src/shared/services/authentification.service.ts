@@ -73,6 +73,7 @@ export class AuthentificationService {
 
   private lastName: string = '';  // Ajoutez cette ligne pour stocker le nom de l'utilisateur
   private email: string = '';
+
   // Autres méthodes et propriétés du service...
 
   setLastName(lastName: string): void {
@@ -82,6 +83,7 @@ export class AuthentificationService {
   getLastName(): string {
     return this.lastName;
   }
+  
 
  //hedhi pour Remplacez  par l'email de l'utilisateur connecté
 
