@@ -28,6 +28,7 @@
         </button>
 
         <button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top"
+        [disabled]="planning.changementEffectueDto"
         title="lancer Changement Process">
         <i class="fa fa-edit" style="color: navy;"></i>
         </button>
