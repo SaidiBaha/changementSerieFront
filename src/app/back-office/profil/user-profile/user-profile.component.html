@@ -1,13 +1,13 @@
-<!--
+
 <div class="row m-3">
     <div class="card col-md-4 text-center mr-3">
       <div class="col">
         <div class="mb-3 mt-3">
           <img src="assets/personne.png" class="rounded-circle" width="200px" height="200px"/> 
         </div>
-        <div class="mb-3">
-          <h2>{{ lastName }} </h2>
-          <small class="form-text text-muted">Adresse, Ville, 12345</small>
+        <div class="mb-3" *ngIf="user">
+          <h2>{{user.firstNameDto}} {{user.lastNameDto}} </h2>
+         
         </div>
         <div class="row">
           <div class="col mb-3">
@@ -17,24 +17,28 @@
         </div>        
       </div>
     </div>
-    <div class="card col-md-7">
+    <div class="card col-md-7" *ngIf="user">
       <table class="table">
         <tbody>
         <tr>
           <th scope="row">Nom</th>
-          <td>{{ firstName }} </td>
+          <td>{{user.firstNameDto}}</td> 
         </tr>
         <tr>
           <th scope="row">Prenom</th>
-          <td> {{ lastName }}</td>
+          <td>{{ user.lastNameDto }} </td>
         </tr>
         <tr>
           <th scope="row">Email</th>
-          <td>{{userEmail}}</td>
+          <td>{{ user.emailDto }}</td>
         </tr>
         <tr>
           <th scope="row">Matricule</th>
-          <td>{{matricule}}</td>
+          <td>{{ user.matriculeDto }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Role</th>
+          <td>{{ user.roleDto }}</td>
         </tr>
         
         </tbody>
@@ -42,13 +46,13 @@
     </div>
   
   </div>
--->
 
 
 
-  <div *ngIf="user">
+
+  <!-- <div *ngIf="user">
     <h2>User Profile</h2>
     <p><strong>Name:</strong> {{ user.lastNameDto }}</p>
     <p><strong>Email:</strong> {{ user.emailDto }}</p>
   
-  </div>
+  </div> -->

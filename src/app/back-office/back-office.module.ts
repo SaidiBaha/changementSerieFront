@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserProfileComponent } from './profil/user-profile/user-profile.component';
 import { ChangePasswordComponent } from './profil/change-password/change-password.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -42,7 +43,7 @@ import { ChangePasswordComponent } from './profil/change-password/change-passwor
         MatMenuModule,
         MatExpansionModule,
         FlexLayoutModule,
-        MatButtonModule,
+        MatButtonModule,FormsModule
     ]
    
 })

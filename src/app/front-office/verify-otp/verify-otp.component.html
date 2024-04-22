@@ -1,0 +1,13 @@
+<!-- Card pour l'étape 2: Saisir l'OTP -->
+<div  class="card text-center mt-5" style="max-width: 400px; margin: auto;">
+    <div class="card-body">
+      <h5 class="card-title">Enter OTP</h5>
+      <form (ngSubmit)="verifyOTP(otp,email)" #otpForm="ngForm">
+        <div class="form-group">
+          <label for="otp">Enter OTP</label>
+          <input type="text" class="form-control" id="otp" name="otp" [(ngModel)]="otp" required>
+        </div>
+        <button type="submit" class="btn btn-danger" >Verify OTP</button>
+      </form>
+    </div>
+  </div>
