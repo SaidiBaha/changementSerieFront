@@ -5,6 +5,11 @@ import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { HomepageFrontComponent } from './homepage-front/homepage-front.component';
+import { HeaderFrontComponent } from './header-front/header-front.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { FooterFrontComponent } from './footer-front/footer-front.component';
+import { BodyFrontComponent } from './body-front/body-front.component';
 
 
 
@@ -12,6 +17,11 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
+    HomepageFrontComponent,
+    HeaderFrontComponent,
+    ForgotPasswordComponent,
+    FooterFrontComponent,
+    BodyFrontComponent,
     
    
    
