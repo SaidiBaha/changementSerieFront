@@ -1,15 +1,69 @@
-<div *ngIf="planningInfo">
-    <h2>Détails du Planning de Changement de Série</h2>
-    <p>Titre: {{ planningInfo.titreDto }}</p>
-    <p>Début: {{ planningInfo.debutDto | date: 'short' }}</p>
-    <p>Fin: {{ planningInfo.finDto | date: 'short' }}</p>
-    <p>Description: {{ planningInfo.descriptionDto }}</p>
-    <p>Nom de la famille: {{ planningInfo.nomFamilleDto }}</p>
-    <p>Nom du produit: {{ planningInfo.nomProduitDto }}</p>
-    <p>Référence du produit: {{ planningInfo.refProduitDto }}</p>
-    <p>Référence du testeur: {{ planningInfo.refTesteurDto }}</p>
-    <p>Ligne CMS/Intégration: {{ planningInfo.ligneCMSorIntegDto }}</p>
-    <p>Atelier: {{ planningInfo.atelierDto }}</p>
-    <p>UF: {{ planningInfo.ufDto }}</p>
-  </div>
+<div class="cardtable">
+  <div *ngIf="planningInfo">
+  <h2 style="color: #194a7e; margin-inline-start: 2%;">Détails du plannification de Changement de Série</h2>
   
+  <div style="display: flex;">
+    <div style="flex: 1;">
+      <table style="margin-left: 6%;width: 100%;">
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;text-align: right;">Date début :</span></td>
+        <td>{{ planningInfo.debutDto | date: 'short' }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Date fin :</span></td>
+        <td>{{ planningInfo.finDto | date: 'short' }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Description :</span></td>
+        <td>{{ planningInfo.descriptionDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Nom de la famille :</span></td>
+        <td>{{ planningInfo.nomFamilleDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Nom du produit :</span></td>
+        <td>{{ planningInfo.nomProduitDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Référence du produit :</span></td>
+        <td>{{ planningInfo.refProduitDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Référence du testeur :</span></td>
+        <td>{{ planningInfo.refTesteurDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Ligne CMS/Intégration:</span></td>
+        <td>{{ planningInfo.ligneCMSorIntegDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Atelier :</span></td>
+        <td>{{ planningInfo.atelierDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">UF :</span></td>
+        <td>{{ planningInfo.ufDto }}</td>
+      </tr>
+      <tr>
+        <td><span style="color: #194a7e;">Titre :</span></td>
+        <td>{{ planningInfo.titreDto }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style="flex: 1;">
+  <img src="assets/photo.jpg" style="width: 75%;height: auto; border-radius: 20px; margin-left: 20%;">
+</div>
+</div>
+</div>
+</div>

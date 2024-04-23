@@ -1,4 +1,6 @@
 <div class="card">
+  <div *ngIf="checklistVide">
+  <div class="table-responsive">
   <table class="tableTitle">
     <tbody>
       <tr>
@@ -6,7 +8,7 @@
             height="100%"></td>
         <td
           style="background-color:#880404; color: #ffffff; font-family: Calibri, sans-serif; font-weight: bold; font-size: 22px;text-align: center;">
-          {{ checklistVide.checklist.titreDto }}</td>
+          {{ checklistVide.checklist.planningDto.titreDto }}</td>
 
         <td style="text-align: center; width: 25%; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">
           <span style="color:#880404; text-decoration: underline;text-align: center;">Outillage :</span> {{
@@ -35,11 +37,12 @@
           Visa Chef secteur Curatif</th>
         <th style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">Visa
           Resp.Prév</th>
+          <th style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">Id planning</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td rowspan="2"> </td>
+        <td rowspan="2"></td>
         <td rowspan="2"></td>
         <td rowspan="2"
           style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 15px; color: rgb(20, 11, 100);">
@@ -54,9 +57,9 @@
         <td rowspan="2"></td>
         <td style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">1ere
           Validation</td>
-        <td style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">2eme
-          Validation</td>
+        <td style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">2eme Validation</td>
         <td rowspan="2"></td>
+        <td rowspan="2">{{checklistVide.checklist.planningDto.idDto}}</td>
       </tr>
       <tr>
         <td></td>
@@ -79,23 +82,26 @@
       <tr *ngFor="let ligne of checklistVide.lignes">
         <td style="font-family: Calibri, sans-serif; font-size: 15px;color: rgb(72, 71, 71);">{{ ligne.nomTestAFaireDto }}</td>
 
-        <td>
+        <td style="width: 100%;">
           <!-- Utiliser flexbox pour afficher les posages à côté -->
-          <div style="display: flex; flex-direction: row;">
+          <div style="display: flex; flex-direction: row; width: 100%;">
             <!-- Afficher chaque posage -->
-            <div *ngFor="let posage of ligne.posagesDto">
+            <div *ngFor="let posage of ligne.posagesDto" style="width: 33.33%; margin-right: 10px;"> <!-- Diviser en trois colonnes si vous avez trois éléments -->
               <!-- Afficher le posage -->
-              <p> {{ posage.nomInterfaceDto }}</p>
+              <p>{{ posage.nomInterfaceDto }}</p>
               <!-- Ajouter le champ pour la TypeValidation -->
-              <select [ngModel]="getTypeValidation(posage.idDto)"
-                (ngModelChange)="updateValidationType($event, posage.idDto)">
+              
+              <select [ngModel]="getTypeValidation(posage.idDto)" (ngModelChange)="updateValidationType($event, posage.idDto)" style="width: calc(100% - 10px); margin-right: 10px;">
                 <option value="OK">OK</option>
                 <option value="NOK">NOK</option>
                 <option value="NA">NA</option>
               </select>
+              
             </div>
           </div>
         </td>
+        
+        
       </tr>
     </tbody>
   </table>
@@ -116,20 +122,34 @@
   </table>
 
 
+  <table class="tableposage">
+    <tr>
+<td style="width: 12%;">
+ <label  for="constats" style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;">Constats :</label>
+</td>
+<td>
 
-<div class="container mt-3">
-  <div class="form-group">
-    <label for="constats">Constats:</label>
-    <input type="text" class="form-control" id="constats" [(ngModel)]="constats" name="constats">
-  </div>
-
-  <div class="form-group">
-    <label for="resteAfaire">Reste à faire:</label>
-    <input type="text" class="form-control" id="resteAfaire" [(ngModel)]="resteAfaire" name="resteAfaire">
+   <input  type="text" class="form-control" id="constats" [(ngModel)]="constats" name="constats" style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;">
+</td>
+</tr>
+<tr>
+<td>
+    <label for="resteAfaire"style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">Reste à faire :</label>
+</td>
+<td>
+  <input type="text" class="form-control" id="resteAfaire" [(ngModel)]="resteAfaire" name="resteAfaire" style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">
+</td>
+</tr>
+</table>
   </div>
   <p style="text-align: center; font-family: Calibri, sans-serif; font-size: 22px;margin-top: 2%;">Document SAGEM Tunisie Communication / Reproduction et divulgation interdites</p>
   <!-- Ajoutez ici les champs nécessaires pour les données de validation -->
+  <button class="completebtn" (click)="completeChecklistForPlanning()" data-toggle="tooltip" data-placement="top" title="Compléter la Checklist">
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg> Crée
+    </span>
+  </button>
+  <!--<button class="btn btn-primary" (click)="completeChecklistForPlanning()">Compléter la Checklist</button>-->
 
-  <button class="btn btn-primary" (click)="completeChecklistForPlanning()">Compléter la Checklist</button>
 </div>
 </div>

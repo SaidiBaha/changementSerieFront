@@ -56,5 +56,8 @@ export class ChangementDetailsComponent implements OnInit {
       }
     });
   }
+   fonctionBaha(): boolean {
+    return false;
+}
 
 }
