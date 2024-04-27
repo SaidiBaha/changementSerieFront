@@ -10,7 +10,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: HomepageFrontComponent,
   },
   {
     path: 'login',

@@ -95,4 +95,18 @@ export class AuthentificationService {
     return this.user ? this.user.username : null;
   }
 
+
+
+
+
+
+// hehdi lezem nfasakhha
+//lazem nikhdem b token ki nji nbadel f pasw
+  getConnectedUser() {
+    // Supposons que vous stockez les informations de l'utilisateur connecté dans le localStorage après l'authentification
+    // Vous pouvez ajuster cette méthode selon la manière dont vous stockez et récupérez les informations de l'utilisateur dans votre application
+    const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
+    return connectedUser;
+  }
+
 }
