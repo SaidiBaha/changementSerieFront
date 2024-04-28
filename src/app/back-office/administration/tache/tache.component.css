@@ -41,4 +41,58 @@
     z-index: 1;
     transform: translateX(-60px) ; 
   }
+  .button {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 4px;
+    height: 32px;
+    border: none;
+    background: #f1f2f4;
+    border-radius: 10px;
+    cursor: pointer; 
+    margin-left: 5%;
+    margin-block-end: 2%;
+  }
   
+  .lable {
+    line-height: 22px;
+    font-size: 17px;
+    color: #3b4e6a;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  .button:hover {
+    background: #d0d4db;
+  }
+  
+  .button:hover .svg-icon {
+    width: 40px; /* Double la largeur */
+      height: 40px; /* Double la hauteur */
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    25% {
+      transform: rotate(10deg);
+    }
+  
+    50% {
+      transform: rotate(0deg);
+    }
+  
+    75% {
+      transform: rotate(-10deg);
+    }
+  
+    100% {
+      transform: rotate(0deg);
+    }
+     
+  }
