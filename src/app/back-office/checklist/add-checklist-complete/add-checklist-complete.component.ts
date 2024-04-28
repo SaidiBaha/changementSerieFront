@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ChecklistCompletee } from 'src/shared/models/ChecklistCompletee';
 import { ChecklistVide } from 'src/shared/models/ChecklistVide';
 import { TypeValidation, ValidationsInput } from 'src/shared/models/ValidationsInput';
+import { PlanningChangementSerieService } from 'src/shared/services/PlanningChangement.service';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
 import { ChecklistService } from 'src/shared/services/checklist.service';
 
@@ -22,12 +23,15 @@ export class AddChecklistCompleteComponent implements OnInit{
   checklistVide: ChecklistVide | null = null; // Propriété pour stocker les détails de la checklist
 
   checklistId: number;
+  checklistIds: number[] = [];
+  currentIndex: number = 0;
  // planningId: number;
 
  checklistRemplie: boolean = false;
   
 
   constructor(private checklistService: ChecklistService,
+              private planningService:PlanningChangementSerieService,
               private authService: AuthentificationService,
               private router: Router ,
               private route: ActivatedRoute,
@@ -95,12 +99,37 @@ export class AddChecklistCompleteComponent implements OnInit{
         this.checklistVide = details;
         this.planningId = this.checklistVide.checklist.planningDto.idDto; // Assigner la valeur de planningId
         this.initValidationsInput();
+          this.loadChecklistIds();
       },
       error => {
         console.error('Erreur lors de la récupération des détails de la checklist:', error);
       }
     );
   }
+
+  loadChecklistIds(): void {
+    this.planningService.getChecklistIdsByPlanningId(this.planningId).subscribe(
+      (checklistIds: number[]) => {
+        this.checklistIds = checklistIds;
+      },
+      error => {
+        console.error('Erreur lors de la récupération des checklistIds:', error);
+        this.toastr.error('Erreur lors de la récupération des checklistIds.', 'Erreur');
+      }
+    );
+  }
+
+  launchChangementProcess(): void {
+    if (this.currentIndex >= this.checklistIds.length) {
+      // Tous les checklistIds ont été traités
+      this.toastr.info('Toutes les checklists ont été traitées.', 'Info');
+      return;
+    }
+
+    const nextChecklistId = this.checklistIds[this.currentIndex];
+    this.router.navigate(['/dashboard/checklist/remlirCheck', nextChecklistId]);
+  }
+  
   
   
 
@@ -116,7 +145,7 @@ initValidationsInput(): void {
           id: 0, // Remplacez 0 par l'ID réel si nécessaire
           ligneChecklistId: ligne.idDto,
           posageId: posage.idDto,
-          validationType: TypeValidation.OK // Choisissez la valeur par défaut selon vos besoins
+          validationType: null // Choisissez la valeur par défaut selon vos besoins
         });
       });
     });
@@ -184,25 +213,36 @@ initValidationsInput(): void {
 
 */
 completeChecklistForPlanning(): void {
-  const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
-  const numericUserId = Number(userId); // Convertir id string en number 
+  // Désactiver le bouton après le premier clic
+  this.checklistRemplie = true;
+  
+  // Vérifier si au moins une option de TypeValidation est sélectionnée
+  if (this.validationsInput.some(input => input.validationType === null)) {
+    // Afficher un message d'erreur
+    this.toastr.error('Veuillez sélectionner une option de validation pour tous les posages.', 'Erreur');
+    // Réactiver le bouton en cas d'erreur
+    this.checklistRemplie = false;
+    return;
+  }
+
+  const userId = this.authService.getCurrentUserId();
+  const numericUserId = Number(userId);
 
   if (!userId) {
     console.error('Impossible de récupérer l\'ID de l\'utilisateur connecté');
-    return; // Arrête l'exécution de la fonction si l'ID de l'utilisateur est vide
+    // Réactivez le bouton en cas d'erreur
+    this.checklistRemplie = false;
+    return;
   }
 
   if (!this.constats || !this.resteAfaire) {
     console.error('Veuillez remplir tous les champs avant de compléter la checklist.');
     this.toastr.error('Veuillez remplir tous les champs avant de compléter la checklist.', 'Erreur');
-    
-    return; // Arrête l'exécution de la fonction si les champs sont vides
+    // Réactivez le bouton en cas d'erreur
+    this.checklistRemplie = false;
+    return;
   }
 
-  // Récupérer le planningId à partir de l'URL
-  //const planningId = this.route.snapshot.params['planningId'];
-
-  // Si tous les champs sont remplis, alors envoyer la requête au service pour compléter la checklist
   this.checklistService.completeChecklistForPlanning(numericUserId, this.planningId, { 
     validationsInput: this.validationsInput,
     constats: this.constats,
@@ -212,18 +252,27 @@ completeChecklistForPlanning(): void {
       console.log('Checklist complétée avec succès');
       console.log(response);
       this.toastr.success('Checklist complétée avec succès', 'Succès');
-      this.checklistRemplie = true;
+      
+      // Mettre à jour l'index pour passer au prochain checklistId
+      this.currentIndex++;
+
+      // Après avoir complété la checklist, naviguer à la prochaine checklist si elle existe
+      this.launchChangementProcess();
+
+      // Réactivez le bouton après la navigation
+      this.checklistRemplie = false;
       this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
     },
     error => {
       console.error('Erreur lors de la complétion de la checklist:', error);
       this.toastr.error(error.error.message, 'Erreur lors de la création du planning');
       this.toastr.error(error.error.message, 'Erreur lors de la complétion de la checklist');
+      // Réactivez le bouton en cas d'erreur
+      this.checklistRemplie = false;
       // Gérer l'erreur si nécessaire
     }
   );
 }
-
 
 
 

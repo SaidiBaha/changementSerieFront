@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AdminComponent} from "./admin/admin.component";
 import { ProjectComponent } from './project/project.component';
 import { DemandechangementComponent } from './demandechangement/demandechangement.component';
+import { TacheComponent } from './tache/tache.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'changement',
     component: DemandechangementComponent,
+  },
+  {
+    path: 'tache',
+    component: TacheComponent,
   },
 
 

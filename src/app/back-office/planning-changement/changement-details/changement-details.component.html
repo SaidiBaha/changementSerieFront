@@ -27,25 +27,29 @@
 
         </button>
 
-        <button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top"
-        title="lancer Changement Process" [disabled]="fonctionBaha()">
-        <i class="fa fa-edit"></i>
+      
+<button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top"
+title="lancer Changement Process" [disabled]="planning.changementEffectueDto">
+<i class="fa fa-edit"></i>
 </button>
 
 
-<button class="checkedbtn" [ngClass]="{'green-color': fonctionBaha(), 'grey-color': !fonctionBaha()}">
-  <div class="material-icons">done_all</div>
+<button class="checkedbtn" [ngClass]="{'green-color': planning.changementEffectueDto, 'grey-color': !planning.changementEffectueDto}">
+<div class="material-icons">done_all</div>
 </button>
-
-
       </div>
+
       
   
+       
       </tr>
     </tbody>
   </table>
   </div>
 </div>
+
+
+
 
 
   

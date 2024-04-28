@@ -6,5 +6,6 @@ export class PlanningChangementSerie {
     debutDto: Date;
     finDto: Date;
     descriptionDto: string;
+    changementEffectueDto:boolean
     checklistsDto: Checklist[];
   }

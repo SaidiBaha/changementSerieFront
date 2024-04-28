@@ -42,22 +42,19 @@ export class ChangementDetailsComponent implements OnInit {
 
   launchChangementProcess(planningId: number): void {
     this.planningService.getChecklistIdsByPlanningId(planningId).subscribe({
-      next: (checklistIds) => {
+      next: (checklistIds: number[]) => {
         if (checklistIds && checklistIds.length > 0) {
-          const checklistId = checklistIds[0]; // Récupérer le premier checklistId (vous pouvez ajuster selon vos besoins)
-          this.router.navigate(['/dashboard/checklist/remlirCheck', checklistId]);
+          const firstChecklistId = checklistIds[0];
+          this.router.navigate(['/dashboard/checklist/remlirCheck', firstChecklistId]);
         } else {
-          this.toastr.error('Aucun checklist trouvé pour le planning sélectionné.', 'Erreur');
+          // Gérer le cas où aucun checklistId n'est trouvé
         }
       },
       error: (error) => {
         console.error('Erreur lors de la récupération de checklistIds:', error);
-        this.toastr.error('Erreur lors de la récupération des checklistIds.', 'Erreur');
+        // Gérer l'erreur
       }
     });
   }
-   fonctionBaha(): boolean {
-    return false;
-}
 
 }

@@ -1,0 +1,22 @@
+.social-container {
+    display: flex; /* Assurez-vous que les icônes sont affichées en ligne */
+    justify-content: center; /* Centrez les icônes horizontalement */
+    align-items: center; /* Centrez les icônes verticalement */
+    background-color: #f0f0f0; /* Couleur de fond du conteneur */
+    padding: 10px; /* Ajoutez de la marge autour des icônes */
+    border-radius: 10px; /* Ajoutez des coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoutez un effet d'ombre */
+  }
+  
+  .social-container a {
+    margin: 0 10px; /* Ajoutez de l'espace entre les icônes */
+  }
+  .sagem {
+    width: 30%; /* Specify the width of the image */
+    height: auto; /* Auto height to maintain aspect ratio */
+   
+  }
+  .d-flex {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically center */
+  }

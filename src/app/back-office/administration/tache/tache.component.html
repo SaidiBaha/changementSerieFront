@@ -1,0 +1,58 @@
+<div class="card-container">
+  <div class="card shadow">
+    <div style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;color: #3b4e6a;margin:2%;">A Faire
+    </div>
+    <table  class="table table-striped" style="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
+      <tbody>
+        <tr *ngFor="let tache of taches">
+          <ng-container *ngIf="tache.statutTacheDto === 'TO_DO'">
+            <td style="border-radius: 20px; background-color: white;">{{ tache.titreTacheDto }}</td>
+            <!--<td>{{ tache.descriptionTacheDto }}</td>
+            <td>{{ tache.dateDebutTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ tache.dateFinTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>-->
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+  <div class="card shadow">
+    <div style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;color: #3b4e6a;margin:2%;">A Faire
+    </div>
+    <table  class="table table-striped" style="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
+      <tbody>
+          <tr *ngFor="let tache of taches ">
+            <ng-container *ngIf="tache.statutTacheDto === 'DOGIN'">
+              <td style="border-radius: 20px; background-color: white;">{{ tache.titreTacheDto }}</td>
+              <!--<td>{{ tache.descriptionTacheDto }}</td>
+              <td>{{ tache.dateDebutTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{ tache.dateFinTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>-->
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="card shadow">
+      <div style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;color: #3b4e6a;margin:2%;">A Faire
+      </div>
+      <table  class="table table-striped" style="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
+        <tbody>
+          <tr *ngFor="let tache of taches ">
+            <ng-container *ngIf="tache.statutTacheDto === 'DONE'">
+              <td style="border-radius: 20px; background-color: white;">{{ tache.titreTacheDto }}</td>
+            <!--<td>{{ tache.descriptionTacheDto }}</td>
+            <td>{{ tache.dateDebutTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ tache.dateFinTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>-->
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  

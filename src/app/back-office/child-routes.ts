@@ -18,5 +18,11 @@ export const childRoutes = [
   {path: 'planning-changement',
   loadChildren: () => import('./planning-changement/planning-changement.module').then(m => m.PlanningChangementModule),
   data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
+  },
+  
+  {path: 'utilisateur',
+  loadChildren: () => import('./utilisateur/utilisateur.module').then(m => m.UtilisateurModule),
+  data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
   }
+  
 ];
