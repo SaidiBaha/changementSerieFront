@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tache } from 'src/shared/models/Tache';
 import { TacheService } from 'src/shared/services/tache.service';
 
@@ -11,10 +12,22 @@ export class TacheComponent implements OnInit{
   taches: Tache[] = [];
   tache: Tache;
   idTache: number;
-  constructor(private tacheService: TacheService) { }
+  showDropdownMenu: boolean = false;
+  constructor(private tacheService: TacheService,private route:ActivatedRoute) { }
+
   ngOnInit(): void {
-    this.getAllTaches();
+    const projetId = this.route.snapshot.params['projetId'];
+     this.tacheService.getAllTachesByProjetId(projetId).subscribe(data => {
+      this.taches=data;
+       console.log('Projet ID:', projetId);
+      // Autres actions à effectuer avec l'ID du projet...
+    //  console.log(params);
+    // });
+  });}
+  toggleDropdownMenu() {
+    this.showDropdownMenu = true;
   }
+  
  
   getAllTaches(): void {
     this.tacheService.getAllTaches().subscribe(
@@ -83,6 +96,17 @@ export class TacheComponent implements OnInit{
     this.tacheService.getAllTachesDONEByProjetId(projetId).subscribe((taches: Tache[]) => {
       console.log('Taches with status DONE for projet', projetId, ':', taches);
     });
+  }
+  getAllTachesByProjetId(projetId: number): void {
+    this.tacheService.getAllTachesByProjetId(projetId).subscribe(
+      (taches: Tache[]) => {
+        this.taches = taches;
+        console.log('Taches for projet', projetId, ':', this.taches);
+      },
+      (error: any) => {
+        console.error('Error fetching taches for projet', projetId, ':', error);
+      }
+    );
   }
 }
 

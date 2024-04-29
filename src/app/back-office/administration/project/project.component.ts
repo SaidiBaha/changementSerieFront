@@ -4,6 +4,8 @@ import { Projet } from 'src/shared/models/Projet';
 import { ProjetService } from 'src/shared/services/projet.service';
 import { ModalComponent } from '../modal/modal.component';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
+import { TacheService } from 'src/shared/services/tache.service';
+import { Tache } from 'src/shared/models/Tache';
 
 @Component({
   selector: 'app-project',
@@ -23,11 +25,11 @@ export class ProjectComponent implements OnInit{
   isEditMode = false;
   projet:Projet = new Projet();
   idProjet :number;
-
+  taches: Tache[] = [];
+ tache:Tache=new Tache();
  
 
-
-  constructor(private projetservice:ProjetService,private authService: AuthentificationService ,router:Router){}
+  constructor(private projetservice:ProjetService,private authService: AuthentificationService ,private router:Router,private tacheService:TacheService){}
 
 
   ngOnInit(): void {
@@ -130,5 +132,11 @@ export class ProjectComponent implements OnInit{
       this.createProjet(this.projet);
     }
   }
+//            ------------------Oumaima--------------------
+
+navigateToTache(idProjet: number): void {
+  this.router.navigate(['/dashboard/administration/tache', idProjet]);
+}
+
 
 }

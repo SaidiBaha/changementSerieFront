@@ -1,0 +1,130 @@
+.table td {
+    background-color: white; /* Définit la couleur de fond à blanc pour toutes les cellules <td> */
+  }
+  
+  
+  .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+  }
+    
+    .card {
+      width: 50%;
+      height: auto;
+      background: #f1f2f4;
+      border-radius: 20px;
+     margin-block-start: 12%;
+      margin-left: 50px; /* Ajustez la valeur pour l'espacement entre les cartes */
+      position: relative;
+    }
+    
+    .shadow {
+      box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+      0 0  0 2px rgb(190, 190, 190),
+      0.3em 0.3em 1em rgba(0,0,0,0.3);
+  
+    }
+    
+    /* Ajustez la position des cartes superposées */
+    .card:nth-child(1) {
+      z-index: 3;
+    }
+    
+    .card:nth-child(2) {
+      z-index: 2;
+      transform: translateX(-30px) ; 
+    }
+    
+    .card:nth-child(3) {
+      z-index: 1;
+      transform: translateX(-60px) ; 
+    }
+    .button {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 12px;
+      gap: 4px;
+      height: 32px;
+      border: none;
+      background: #f1f2f4;
+      border-radius: 10px;
+      cursor: pointer; 
+      margin-left: 5%;
+      margin-block-end: 2%;
+    }
+    
+    .lable {
+      line-height: 22px;
+      font-size: 17px;
+      color: #3b4e6a;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .button:hover {
+      background: #d0d4db;
+    }
+    
+    .button:hover .svg-icon {
+      width: 40px; /* Double la largeur */
+        height: 40px; /* Double la hauteur */
+    }
+    
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+    
+      25% {
+        transform: rotate(10deg);
+      }
+    
+      50% {
+        transform: rotate(0deg);
+      }
+    
+      75% {
+        transform: rotate(-10deg);
+      }
+    
+      100% {
+        transform: rotate(0deg);
+      }
+       
+    }
+    .card {
+      position: relative;
+    }
+    
+    .card-header {
+      position: relative; /* Changement de position */
+    }
+    
+    .dropdown-toggle {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      display: none;
+    }
+    
+    .dropdown-menu button {
+      display: block;
+      width: 100%;
+    }
+    .dropdown-toggle::after {
+      display: none; /* Cacher la flèche vers le bas */
+    }
+        

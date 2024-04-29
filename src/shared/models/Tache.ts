@@ -7,11 +7,12 @@ export enum StatutTache {
 
 export class Tache {
     idDto!: number;
-    titreDto!: string;
-    descriptionDto!: string;
-    dateDebutDto!: Date;
-    dateFinDto!: Date;
-    statutDto!: StatutTache;
-    userIdDto!: number;
+    titreTacheDto!: string;
+    descriptionTacheDto!: string;
+    dateDebutTacheDto!: Date;
+    dateFinTacheDto!: Date;
+    statutTacheDto!: StatutTache;
+    userIDDto!: number;
+    projetDto!:number;
     // Autres propriétés nécessaires
   }

@@ -8,30 +8,30 @@ import { Observable } from 'rxjs';
 })
 export class TacheService {
 
-  private baseUrl = ' /springMVC/api/v1/tache';
+  private baseUrl = 'springMVC/api/v1/tache';
 
   constructor(private httpRepositoryService: HttpRepositoryService) { }
   saveTache(tache: Tache, projetId: number): Observable<Tache> {
     return this.httpRepositoryService.post<Tache>(`${this.baseUrl}/save/${projetId}`, tache);
   }
 
-  getTacheById(id: number): Observable<Tache> {
+  getTacheById(id: number) {
     return this.httpRepositoryService.get<Tache>(`${this.baseUrl}/${id}`);
   }
 
-  getAllTaches(): Observable<Tache[]> {
+  getAllTaches(){
     return this.httpRepositoryService.get<Tache[]>(`${this.baseUrl}/all`);
   }
 
-  updateTache(id: number, tache: Tache): Observable<Tache> {
+  updateTache(id: number, tache: Tache){
     return this.httpRepositoryService.put<Tache>(`${this.baseUrl}/update/${id}`, tache);
   }
 
-  deleteTache(id: number): Observable<void> {
+  deleteTache(id: number) {
     return this.httpRepositoryService.delete<void>(`${this.baseUrl}/delete/${id}`);
   }
 
-  updateTacheStatus(id: number, tache: Tache): Observable<Tache> {
+  updateTacheStatus(id: number, tache: Tache) {
     return this.httpRepositoryService.put<Tache>(`${this.baseUrl}/updateTacheStatus/${id}`, tache);
   }
 
@@ -39,16 +39,19 @@ export class TacheService {
     return this.httpRepositoryService.post<void>(`${this.baseUrl}/${tacheId}/assign/${userId}`,null);
   }
 
-  getAllTachesToDoByProjetId(projetId: number): Observable<Tache[]> {
+  getAllTachesToDoByProjetId(projetId: number){
     return this.httpRepositoryService.get<Tache[]>(`${this.baseUrl}/to-do/${projetId}`);
   }
 
-  getAllTachesDoingByProjetId(projetId: number): Observable<Tache[]> {
+  getAllTachesDoingByProjetId(projetId: number) {
     return this.httpRepositoryService.get<Tache[]>(`${this.baseUrl}/DOGIN/${projetId}`);
   }
 
-  getAllTachesDONEByProjetId(projetId: number): Observable<Tache[]> {
+  getAllTachesDONEByProjetId(projetId: number) {
     return this.httpRepositoryService.get<Tache[]>(`${this.baseUrl}/DONE/${projetId}`);
+  }
+  getAllTachesByProjetId(projetId: number): Observable<Tache[]> {
+    return this.httpRepositoryService.get<Tache[]>(`${this.baseUrl}/all/${projetId}`);
   }
 }
 
