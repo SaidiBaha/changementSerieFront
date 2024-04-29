@@ -10,6 +10,11 @@
               <!--<td>{{ tache.descriptionTacheDto }}</td>
               <td>{{ tache.dateDebutTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>
               <td>{{ tache.dateFinTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>-->
+
+              <button class="buttonUpdate" (click)="openModal();getId(tache.idDto)">
+              <span *ngIf="tache"  style="font-size:10px; float: right;">
+                <mat-icon style="color: orange;" >create</mat-icon>
+              </span></button>
             </ng-container>
           </tr>
         </tbody>
@@ -19,10 +24,6 @@
         <span class="lable">Ajouter une carte</span>
       </button>
     </div>
-  
-  
-  
-  
   
     <div class="card shadow">
       <div style="font-family: sans-serif;font-weight: bold; font-size: 17px;color: #3b4e6a;margin:2%;">En cours
@@ -35,6 +36,10 @@
                 <!--<td>{{ tache.descriptionTacheDto }}</td>
                 <td>{{ tache.dateDebutTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>
                 <td>{{ tache.dateFinTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>-->
+                <button class="buttonUpdate" (click)="openModal();getId(tache.idDto)">
+                  <span *ngIf="tache"  style="font-size:10px; float: right;">
+                    <mat-icon style="color: orange;" >create</mat-icon>
+                  </span></button>
               </ng-container>
             </tr>
           </tbody>
@@ -47,9 +52,7 @@
   
   
       <div class="card shadow">
-         <div>
-            <button (click)="updateTacheStatus(tache.idDto,tache)"></button>
-         </div>
+         
         <div style="font-family: sans-serif;font-weight: bold; font-size: 17px;color: #3b4e6a;margin:2%;">Terminé
         </div>
         <table  class="table table-striped" style="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
@@ -60,6 +63,10 @@
               <!--<td>{{ tache.descriptionTacheDto }}</td>
               <td>{{ tache.dateDebutTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>
               <td>{{ tache.dateFinTacheDto | date:'dd/MM/yyyy HH:mm' }}</td>-->
+              <button class="buttonUpdate"(click)="openModal();getId(tache.idDto)">
+                <span *ngIf="tache"  style="font-size:10px; float: right;">
+                  <mat-icon style="color: orange;" >create</mat-icon>
+                </span></button>
             </ng-container>
           </tr>
         </tbody>
@@ -71,4 +78,30 @@
       
     </div>
     </div>
+    <ng-template #modalContent>
+      <!-- <div style="width: 250px; position: relative;">
+        <button mat-icon-button color="warn" style="position: absolute; top: 5px; right: 5px; font-size: 16px;" (click)="closeModal()">
+          <mat-icon>close</mat-icon>
+        </button> -->
+  <div style="width: 250px;">
+    <h2>Changer le statut de la tâche</h2>
+    <!-- Ajoutez un input pour permettre à l'utilisateur de saisir le nouveau statut de la tâche -->
+    <mat-form-field >
+      <mat-label>Nouveau statut</mat-label>
+       <mat-select placeholder="Nouveau statut de la tâche" [(ngModel)]="tache.statutTacheDto" >
+        <mat-option value="TO_DO">A faire</mat-option>
+        <mat-option value="DOGIN">En cours</mat-option>
+        <mat-option value="DONE">Terminé</mat-option>
+      </mat-select> 
+      <!-- <input matInput placeholder="Nouveau statut de la tâche" [(ngModel)]="nouveauStatut">
+       -->
+    </mat-form-field>
+    <button class="buttonUpdate" (click)="updateTacheStatus();closeModal()">
+    <span mat-raised-button color="primary" >
+      
+      <mat-icon style="color: orange;" >save</mat-icon></span>
     
+    </button>
+  </div>
+  <!-- </div> -->
+</ng-template>

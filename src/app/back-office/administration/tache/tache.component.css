@@ -127,4 +127,18 @@
     .dropdown-toggle::after {
       display: none; /* Cacher la flèche vers le bas */
     }
-        
+    .buttonUpdate {
+      width: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 6px;
+      gap: 4px;
+      height: 32px;
+      border: none;
+      background: #f1f2f4;
+      border-radius: 10px;
+      cursor: pointer; 
+      margin-left: 5%;
+      margin-block-end: 2%;
+    }  
