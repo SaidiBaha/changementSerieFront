@@ -88,9 +88,10 @@ export class TacheComponent implements OnInit{
   
     //   }
     // )
+    this.loadTaches();
     
   })
-  this.loadTaches();
+  
   }
 
 
@@ -113,23 +114,6 @@ export class TacheComponent implements OnInit{
     })
     this.route.navigate(['/list-availablity'])
   }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   assignerTacheAUtilisateur(tacheId: number, userId: number): void {
@@ -168,7 +152,7 @@ export class TacheComponent implements OnInit{
   }
   openModal(): void {
     this.idTache = this.tache.idDto;
-    this.dialog.open(this.modalContent); // Vous devez remplacer ceci par le contenu de votre modal
+    this.dialogRef = this.dialog.open(this.modalContent); // Vous devez remplacer ceci par le contenu de votre modal
   }
   
   closeModal(): void {
