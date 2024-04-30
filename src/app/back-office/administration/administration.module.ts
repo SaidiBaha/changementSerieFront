@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { MatInputModule } from '@angular/material/input';
 import { TacheComponent } from './tache/tache.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { TacheComponent } from './tache/tache.component';
         MatInputModule,
         ReactiveFormsModule,
         MatFormFieldModule,
+        MatIconModule,
         
     ]
 })

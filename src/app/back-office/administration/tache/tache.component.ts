@@ -1,9 +1,9 @@
-import { Component, OnInit ,ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tache } from 'src/shared/models/Tache';
 import { TacheService } from 'src/shared/services/tache.service';
 import { ModalComponent } from '../modal/modal.component';
-
-
 
 @Component({
   selector: 'app-tache',
@@ -11,37 +11,42 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./tache.component.css']
 })
 export class TacheComponent implements OnInit{
+  @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
   taches: Tache[] = [];
-  tache: Tache= new Tache();
+  tache: Tache =new Tache();
   idTache: number;
-  @ViewChild("dialog",{static:false} )dialog!:ModalComponent; 
-  constructor(private tacheService: TacheService) { }
-  ngOnInit(): void {
-    this.getAllTaches();
+  id:number;
+  showDropdownMenu: boolean = false;
+  nouveauStatut: string = '';
+  dialogRef: MatDialogRef<any>;
+  showAddCardInput: boolean = false;
 
-  }
-  getAllTachesByProjetId(projetId: number): void {
-    this.tacheService.getAllTachesByProjetId(projetId).subscribe(
-      (taches: Tache[]) => {
-        this.taches = taches;
-        console.log('Taches for projet', projetId, ':', this.taches);
+  constructor(private tacheService: TacheService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
+
+  ngOnInit(): void {
+    this.loadTaches();
+    }
+ loadTaches():void{
+  const projetId = this.route.snapshot.params['projetId'];
+     this.tacheService.getAllTachesByProjetId(projetId).subscribe(data => {
+      this.taches=data;
+       console.log('Projet ID:', projetId);
+      // Autres actions à effectuer avec l'ID du projet...
+    //  console.log(params);
+    // });
+  });
+ }
+  
+  getAllTaches(): void {
+    this.tacheService.getAllTaches().subscribe(
+      (data: Tache[]) => {
+        this.taches = data;
       },
       (error: any) => {
-        console.error('Error fetching taches for projet', projetId, ':', error);
+        console.error('Error fetching taches', error);
       }
     );
   }
- 
-  getAllTaches(): void {
-    this.tacheService.getAllTaches().subscribe(
-      res=>{
-        console.log("res",res);
-        this.taches=res
-        
-      }
-    )
-  }
-  
 
   getTacheById(id: number): void {
     this.tacheService.getTacheById(id).subscribe((tache: any) => {
@@ -71,11 +76,47 @@ export class TacheComponent implements OnInit{
     });
   }
 
-  updateTacheStatus(id: number, tacheData: Tache): void {
-    this.tacheService.updateTacheStatus(id, tacheData).subscribe(() => {
-      console.log('Tache status updated successfully:', id, tacheData);
-    });
+  // updateTacheStatus(id: number, tacheData: Tache): void {
+  //   this.tacheService.updateTacheStatus(id, tacheData).subscribe(() => {
+  //     console.log('Tache status updated successfully:', id, tacheData);
+  //   });
+  // }
+  updateTacheStatus() {
+  this.tacheService.updateTacheStatus(this.idTache,this.tache).subscribe((response)=>{
+    // this.tacheService.getTacheById(this.id).subscribe(
+    //   res=>{
+    //     console.log("res",res);
+    //    // this.taches=res
+  
+    //   }
+    // )
+    this.loadTaches();
+    
+  })
+  
   }
+
+
+
+  getId(id : number){
+    this.idTache = id;
+    this.tacheService.getTacheById(id).subscribe((data)=>{
+      this.tache = data      
+    })
+  }
+ /* UpdateAvailability(){
+    this.availablityservice.updateAvailablit(this.idAvailablity , this.availablity ).subscribe((response)=>{
+      this.availablityservice.getAvailablitById(this.id).subscribe(
+        res=>{
+          console.log("res",res);
+          this.listAvailablity=res
+    
+        }
+      )
+    })
+    this.route.navigate(['/list-availablity'])
+  }*/
+
 
   assignerTacheAUtilisateur(tacheId: number, userId: number): void {
     this.tacheService.assignerTacheAUtilisateur(tacheId, userId).subscribe(() => {
@@ -100,7 +141,26 @@ export class TacheComponent implements OnInit{
       console.log('Taches with status DONE for projet', projetId, ':', taches);
     });
   }
+  getAllTachesByProjetId(projetId: number): void {
+    this.tacheService.getAllTachesByProjetId(projetId).subscribe(
+      (taches: Tache[]) => {
+        this.taches = taches;
+        console.log('Taches for projet', projetId, ':', this.taches);
+      },
+      (error: any) => {
+        console.error('Error fetching taches for projet', projetId, ':', error);
+      }
+    );
+  }
+  openModal(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.modalContent); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  
+  closeModal(): void {
+    this.dialogRef.close();
+  }
+  toggleAddCardInput() {
+    this.showAddCardInput = !this.showAddCardInput;
+  }
 }
-
-
-

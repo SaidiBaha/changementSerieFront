@@ -13,5 +13,6 @@ export class Tache {
     dateFinTacheDto!: Date;
     statutTacheDto!: StatutTache;
     userIDDto!: number;
+    projetDto!:number;
     // Autres propriétés nécessaires
   }

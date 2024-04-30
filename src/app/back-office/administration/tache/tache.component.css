@@ -56,10 +56,13 @@
     margin-left: 5%;
     margin-block-end: 2%;
   }
+  .svg-icon path {
+    stroke: #3b4e6a; /* Gray stroke color */
+}
   
   .lable {
     line-height: 22px;
-    font-size: 17px;
+    font-size: 15px;
     color: #3b4e6a;
     font-family: sans-serif;
     letter-spacing: 1px;
@@ -96,3 +99,64 @@
     }
      
   }
+  .card {
+    position: relative;
+  }
+  
+  .card-header {
+    position: relative; /* Changement de position */
+  }
+  
+  .dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+  }
+  
+  .dropdown-menu button {
+    display: block;
+    width: 100%;
+  }
+  .dropdown-toggle::after {
+    display: none; /* Cacher la flèche vers le bas */
+  }
+  .buttonUpdate {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 6px;
+    gap: 4px;
+    height: 32px;
+    border: none;
+    background: #f1f2f4;
+    border-radius: 10px;
+    cursor: pointer; 
+    margin-left: 5%;
+    margin-block-end: 2%;
+  }  
+ /* Styles pour l'élément input avec la classe addCard */
+.addCard {
+  width: 90%; /* Définit la largeur de l'input à 90% de la largeur de son conteneur */
+  border: none; /* Supprime le contour par défaut de l'input */
+  outline: none; /* Supprime également la mise en évidence lorsqu'on clique sur l'input */
+  padding: 10px; /* Ajoute un peu d'espacement intérieur pour un meilleur aspect */
+  font-size: 17px; /* Définit la taille de la police */
+  border-radius: 10px; /* Ajoute un arrondi aux coins de l'input */
+  box-sizing: border-box; /* Garantit que la largeur inclut les bordures et les remplissages */
+  margin-left: 5%;
+  margin-block-end: 2%;
+}
+
+
+  

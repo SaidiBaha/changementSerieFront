@@ -27,7 +27,7 @@ export class ProjectComponent implements OnInit{
  
 
 
-  constructor(private projetservice:ProjetService,private authService: AuthentificationService ,router:Router){}
+  constructor(private projetservice:ProjetService,private authService: AuthentificationService ,private router:Router){}
 
 
   ngOnInit(): void {
@@ -129,6 +129,9 @@ export class ProjectComponent implements OnInit{
     } else {
       this.createProjet(this.projet);
     }
+  }
+  navigateToTache(idProjet: number): void {
+    this.router.navigate(['/dashboard/administration/tache', idProjet]);
   }
 
 }
