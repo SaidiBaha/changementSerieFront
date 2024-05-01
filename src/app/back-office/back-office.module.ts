@@ -27,8 +27,7 @@ import { FormsModule } from '@angular/forms';
         LayoutComponent,
         SideNavComponent,
         TopNavComponent,
-        UserProfileComponent,
-        ChangePasswordComponent,
+       
      
 
     ],

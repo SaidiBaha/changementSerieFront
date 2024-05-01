@@ -34,9 +34,9 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  modifierMotDePasse(): void {
-    this.router.navigate(['changePassword']);
+ 
+
+  navigateToChangePsw(): void {
+    this.router.navigate(['/dashboard/profil/changePassword']);
   }
-
-
 }
