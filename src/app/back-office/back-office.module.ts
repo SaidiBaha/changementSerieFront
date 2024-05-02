@@ -13,8 +13,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserProfileComponent } from './profil/user-profile/user-profile.component';
-import { ChangePasswordComponent } from './profil/change-password/change-password.component';
 import { FormsModule } from '@angular/forms';
 
 
@@ -27,6 +25,7 @@ import { FormsModule } from '@angular/forms';
         LayoutComponent,
         SideNavComponent,
         TopNavComponent,
+       
        
      
 
