@@ -32,7 +32,7 @@ export class ForgotPasswordComponent {
     // Assurez-vous que cette étape est masquée
     },
       (error) => {
-        // Gérer les erreurs d'envoi de l        'e-mail ici
+        // Gérer les erreurs d'envoi de l'e-mail ici
         console.log("test1");
         if (error && error.message) {
           this.error = error.message;

@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {  Router } from '@angular/router';
 import { Reclamation } from 'src/shared/models/Reclamation';
 import { ReclamationService } from 'src/shared/services/Reclamation.service';
+import { AuthentificationService } from 'src/shared/services/authentification.service';
 
 @Component({
   selector: 'app-list-reclamation',
@@ -11,14 +12,17 @@ import { ReclamationService } from 'src/shared/services/Reclamation.service';
 })
 export class ListReclamationComponent implements OnInit {
   @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>;
+  @ViewChild("addModalContent", { static: true }) addModalContent!: TemplateRef<any>;
+
 
   reclamations: Reclamation[]=[];
   reclamation:Reclamation=new Reclamation();
   idRec:number;
   dialogRef: MatDialogRef<any>;
+  userId:number;
+  addModalOpened = false;
 
-
-  constructor(private reclamationService: ReclamationService,private router:Router,private dialog: MatDialog) { }
+  constructor(private reclamationService: ReclamationService,private dialog: MatDialog,private authService:AuthentificationService) { }
 
   ngOnInit(): void {
     this.getAllReclamations();
@@ -30,9 +34,15 @@ export class ListReclamationComponent implements OnInit {
       this.reclamations = data;
     });
   }
+  getCurrentUserId():void{
+  const userId = this.authService.getCurrentUserId(); // Appelez la méthode getCurrentUserId() à partir de l'instance de votre service
+     console.log('Current user ID:', userId);
+   
+  }
 
   saveReclamation(reclamation: Reclamation) {
-    this.reclamationService.saveReclamation(reclamation, reclamation.userDto).subscribe(
+    const userId = this.authService.getCurrentUserId(); 
+    this.reclamationService.saveReclamation(reclamation,this.userId).subscribe(
       (data: Reclamation) => {
         console.log('Reclamation saved successfully:', data);
         // Ajoutez ici la logique pour gérer la réponse de sauvegarde si nécessaire
@@ -75,7 +85,10 @@ export class ListReclamationComponent implements OnInit {
     this.idRec = this.reclamation.idDto;
     this.dialogRef = this.dialog.open(this.modalContent); // Vous devez remplacer ceci par le contenu de votre modal
   }
-  
+  openAddModal(): void {
+    this.idRec = this.reclamation.idDto;
+    this.dialogRef = this.dialog.open(this.addModalContent); // Vous devez remplacer ceci par le contenu de votre modal
+  }
   closeModal(): void {
     this.dialogRef.close();
   }

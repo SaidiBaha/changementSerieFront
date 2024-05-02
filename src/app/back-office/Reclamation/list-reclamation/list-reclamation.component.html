@@ -2,7 +2,7 @@
     <h2 class="mb-3">Mes Réclamations</h2>
     <div class="text-end mb-3">
    
-      <button type="button" class="btn btn-primary mb-3" (click)="openModal()">Ajouter une réclamation</button>
+      <button type="button" class="btn btn-primary mb-3" (click)="openAddModal()">Ajouter une réclamation</button>
  
     </div>
     <div class="table-responsive">
@@ -31,6 +31,7 @@
       </table>
   </div>
 </div>
+<!-- UPDATE -->
 <ng-template #modalContent>
 <div style="width: 400px; height: 400px;">
     <mat-label>Modifier Réclamation</mat-label>
@@ -62,4 +63,37 @@
     </button></div>
   </div>
 </ng-template>
+
+<!-- AJOUTER -->
+<ng-template #addModalContent>
+    <div style="width: 400px; height: 400px;">
+        <mat-label>Ajouter une Réclamation</mat-label>
+    
+        <div class="form-group text-center">
+            <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreReclam"
+                [(ngModel)]="reclamation.titreReclam" placeholder="titreReclam" required #titleInput>
+        </div>
+    
+        <div class="form-group text-center">
+            <textarea type="text" class="form-control form-control-sm w-75 mx-auto" name="description" style="height: 60px;"
+                [(ngModel)]="reclamation.description" placeholder="description" required #descriptionInput></textarea>
+        </div>
+    <div>
+        <mat-form-field >
+         
+           <mat-select placeholder="Degré d'urgence" [(ngModel)]="reclamation.degreUrgenceDto" >
+            <mat-option value="NORMAL">Normale</mat-option>
+            <mat-option value="URGENTE">Urgente</mat-option>
+            <mat-option value="TRES_URGENTE">Trés Urgente</mat-option>
+          </mat-select>        
+        </mat-form-field></div>
+        <div>
+        <button class="buttonUpdate" (click)="saveReclamation(reclamation);closeModal()">
+        <span mat-raised-button color="primary" >
+          
+          <mat-icon style="color: rgb(0, 128, 98); width: fit-content;" >save</mat-icon></span>
+        
+        </button></div>
+      </div>
+    </ng-template>
     
