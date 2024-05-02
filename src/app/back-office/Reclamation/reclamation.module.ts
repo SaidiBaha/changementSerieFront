@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddReclamationComponent } from './add-reclamation/add-reclamation.component';
+
 import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     ListReclamationComponent,
-    AddReclamationComponent,
+  
   ],
   imports: [
     CommonModule,

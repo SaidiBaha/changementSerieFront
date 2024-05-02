@@ -83,7 +83,5 @@ export class ListReclamationComponent implements OnInit {
 
 
 
-  navigateToAdd(): void {
-    this.router.navigate(['/dashboard/reclamation/addRec']);
-  }
+ 
 }
