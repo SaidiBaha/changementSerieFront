@@ -34,15 +34,16 @@ export class ListReclamationComponent implements OnInit {
       this.reclamations = data;
     });
   }
-  getCurrentUserId():void{
-  const userId = this.authService.getCurrentUserId(); // Appelez la méthode getCurrentUserId() à partir de l'instance de votre service
-     console.log('Current user ID:', userId);
+  // getCurrentUserId():void{
+  // const userId = this.authService.getCurrentUserId(); // Appelez la méthode getCurrentUserId() à partir de l'instance de votre service
+  //    console.log('Current user ID:', userId);
    
-  }
+  // }
 
   saveReclamation(reclamation: Reclamation) {
-    const userId = this.authService.getCurrentUserId(); 
-    this.reclamationService.saveReclamation(reclamation,this.userId).subscribe(
+    const userId = this.authService.getCurrentUserId();
+    const numericUserId = Number(userId);
+    this.reclamationService.saveReclamation(reclamation,numericUserId).subscribe(
       (data: Reclamation) => {
         console.log('Reclamation saved successfully:', data);
         // Ajoutez ici la logique pour gérer la réponse de sauvegarde si nécessaire
