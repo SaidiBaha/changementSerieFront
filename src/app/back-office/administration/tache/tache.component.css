@@ -157,6 +157,43 @@
   margin-left: 5%;
   margin-block-end: 2%;
 }
+.options{
+  font-size: 9px;
+  outline: none; 
+  border: none; 
+  background-color: transparent;
+margin-block-start: 2%;
+margin-left: 80%;
 
+}
 
+.btnoption {
+  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    height: 32px;
+    border: none;
+    background: #f1f2f4;
+    border-radius: 5px;
+    cursor: pointer; 
+    
+    margin-block-end: 2%;
+  }
+  .svg-icon path {
+    stroke: #3b4e6a; /* Gray stroke color */
+}
+  
+ 
+  
+  .btnoption:hover {
+    background: #d0d4db;
+  }
+  
+  .btnoption:hover .svg-icon {
+    width: 40px; /* Double la largeur */
+      height: 40px; /* Double la hauteur */
+  }
+  
   

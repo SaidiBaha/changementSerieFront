@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { TacheComponent } from './tache/tache.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
         ModalComponent,
         ProjectComponent,
         DemandechangementComponent,
-        TacheComponent
+        TacheComponent,
     ],
     imports: [
         CommonModule,
@@ -36,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
         ReactiveFormsModule,
         MatFormFieldModule,
         MatIconModule,
+        MatMenuModule
         
     ]
 })

@@ -11,7 +11,7 @@ export class TacheService {
   private baseUrl = 'springMVC/api/v1/tache';
 
   constructor(private httpRepositoryService: HttpRepositoryService) { }
-  saveTache(tache: Tache, projetId: number) {
+  saveTache(tache: Tache, projetId: number ) {
     return this.httpRepositoryService.post<Tache>(`${this.baseUrl}/save/${projetId}`, tache);
   }
 

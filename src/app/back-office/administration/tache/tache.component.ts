@@ -5,14 +5,16 @@ import { Tache } from 'src/shared/models/Tache';
 import { TacheService } from 'src/shared/services/tache.service';
 import { ModalComponent } from '../modal/modal.component';
 
+
 @Component({
   selector: 'app-tache',
   templateUrl: './tache.component.html',
   styleUrls: ['./tache.component.css']
 })
 export class TacheComponent implements OnInit{
-  @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
-  taches: Tache[] = [];
+ @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
+ @ViewChild("modalOPtion", { static: true }) modalOPtion!: TemplateRef<any>; 
+ taches: Tache[] = [];
   tache: Tache =new Tache();
   idTache: number;
   id:number;
@@ -20,6 +22,7 @@ export class TacheComponent implements OnInit{
   nouveauStatut: string = '';
   dialogRef: MatDialogRef<any>;
   showAddCardInput: boolean = false;
+userId: number;
 
   constructor(private tacheService: TacheService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
 
@@ -162,5 +165,9 @@ export class TacheComponent implements OnInit{
   }
   toggleAddCardInput() {
     this.showAddCardInput = !this.showAddCardInput;
+  }
+  openModaloptions(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.modalOPtion); // Vous devez remplacer ceci par le contenu de votre modal
   }
 }

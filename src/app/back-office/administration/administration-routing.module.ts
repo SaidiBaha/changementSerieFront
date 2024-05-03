@@ -27,6 +27,7 @@ const routes: Routes = [
     path: 'tache/:projetId',
     component: TacheComponent,
   },
+  
 
 
 ];
