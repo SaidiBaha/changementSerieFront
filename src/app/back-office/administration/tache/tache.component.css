@@ -213,3 +213,10 @@ select:focus {
 select::-ms-expand {
   display: none;
 }
+.close{
+  outline: none;
+  border: none;
+  background-color: transparent;
+margin-left: 85%;  
+}
+

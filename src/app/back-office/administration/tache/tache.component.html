@@ -124,6 +124,9 @@
 
 
 <ng-template #modalOPtion>
+  <button class="close" (click)="closeModal()">
+    <mat-icon>close</mat-icon>
+  </button>
   <tr>
     <button class="btnoption" (click)="openModalUser(); getId(tache.idDto)">
       <mat-icon style="margin-right: 5px;">person_add</mat-icon>
