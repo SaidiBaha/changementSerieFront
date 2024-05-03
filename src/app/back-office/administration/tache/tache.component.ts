@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tache } from 'src/shared/models/Tache';
 import { TacheService } from 'src/shared/services/tache.service';
 import { ModalComponent } from '../modal/modal.component';
+import { User } from 'src/shared/models/User';
+import { UserService } from 'src/shared/services/user.service';
 
 
 @Component({
@@ -14,6 +16,8 @@ import { ModalComponent } from '../modal/modal.component';
 export class TacheComponent implements OnInit{
  @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
  @ViewChild("modalOPtion", { static: true }) modalOPtion!: TemplateRef<any>; 
+ @ViewChild("affecteuser", { static: true }) affecteuser!: TemplateRef<any>; 
+users:User[]=[];
  taches: Tache[] = [];
   tache: Tache =new Tache();
   idTache: number;
@@ -24,10 +28,20 @@ export class TacheComponent implements OnInit{
   showAddCardInput: boolean = false;
 userId: number;
 
-  constructor(private tacheService: TacheService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
+  constructor(private tacheService: TacheService,private userService:UserService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
 
   ngOnInit(): void {
     this.loadTaches();
+    this.getUsers();
+    }
+    getUsers(){
+      this.userService.getUsers().subscribe(
+  
+        res=>{
+          console.log("res",res);
+          this.users=res
+        }
+      )
     }
  loadTaches():void{
   const projetId = this.route.snapshot.params['projetId'];
@@ -119,8 +133,23 @@ userId: number;
     })
     this.route.navigate(['/list-availablity'])
   }*/
+  selectedUserId: string; // Définissez le type de votre ID utilisateur ici
+  onUserSelected() {
+    console.log(this.selectedUserId); // Affiche l'ID de l'utilisateur sélectionné dans la console
+    // Vous pouvez faire d'autres traitements avec this.selectedUserId ici
+  }
+  
+  assignerTache(): void {
+    if (this.idTache && this.selectedUserId) {
+      const tacheId = this.idTache;
+      const userId = Number(this.selectedUserId); // Assurez-vous que userId est un nombre
 
-
+      this.assignerTacheAUtilisateur(tacheId, userId);
+    } else {
+      console.error('Tache ID or User ID not selected.');
+    }
+  }
+  
   assignerTacheAUtilisateur(tacheId: number, userId: number): void {
     this.tacheService.assignerTacheAUtilisateur(tacheId, userId).subscribe(() => {
       console.log('Tache assigned to user successfully:', tacheId, userId);
@@ -170,4 +199,9 @@ userId: number;
     this.idTache = this.tache.idDto;
     this.dialogRef = this.dialog.open(this.modalOPtion); // Vous devez remplacer ceci par le contenu de votre modal
   }
+  openModalUser(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.affecteuser); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  
 }

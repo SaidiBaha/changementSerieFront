@@ -130,21 +130,7 @@
   .dropdown-toggle::after {
     display: none; /* Cacher la flèche vers le bas */
   }
-  .buttonUpdate {
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 6px;
-    gap: 4px;
-    height: 32px;
-    border: none;
-    background: #f1f2f4;
-    border-radius: 10px;
-    cursor: pointer; 
-    margin-left: 5%;
-    margin-block-end: 2%;
-  }  
+  
  /* Styles pour l'élément input avec la classe addCard */
 .addCard {
   width: 90%; /* Définit la largeur de l'input à 90% de la largeur de son conteneur */
@@ -196,4 +182,34 @@ margin-left: 80%;
       height: 40px; /* Double la hauteur */
   }
   
-  
+  /* Style de base pour le select */
+select {
+  width: 100%; /* Largeur à 100% de son conteneur */
+  padding: 10px; /* Espacement intérieur */
+  font-size: 16px; /* Taille de police */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 5px; /* Coins arrondis */
+  appearance: none; /* Masquer l'apparence native du select */
+  background-color: #fff; /* Couleur de fond */
+}
+
+/* Style des options dans le select */
+select option {
+  padding: 10px;
+}
+
+/* Style lorsqu'on survole une option */
+select option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style de la bordure lorsqu'on met le focus sur le select */
+select:focus {
+  border-color: #007bff; /* Bordure bleue lorsqu'il a le focus */
+  outline: none; /* Supprimer l'outline par défaut */
+}
+
+/* Style de la flèche du select (pour les navigateurs qui ne supportent pas l'option 'appearance: none') */
+select::-ms-expand {
+  display: none;
+}
