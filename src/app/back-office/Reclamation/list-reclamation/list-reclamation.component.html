@@ -65,19 +65,28 @@
 </ng-template>
 
 <!-- AJOUTER -->
+<form [formGroup]="reclamationForm">
 <ng-template #addModalContent>
     <div style="width: 400px; height: 400px;">
         <mat-label>Ajouter une Réclamation</mat-label>
-    
+     
         <div class="form-group text-center">
-            <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreReclam"
-                [(ngModel)]="reclamation.titreReclam" placeholder="titreReclam" required #titleInput>
+          <label>Titre</label>
+          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreReclam" [(ngModel)]="reclamation.titreReclam" placeholder="titreReclam" required #titleInput>
+
+
         </div>
-    
+   
         <div class="form-group text-center">
+          <label>Description</label>
             <textarea type="text" class="form-control form-control-sm w-75 mx-auto" name="description" style="height: 60px;"
                 [(ngModel)]="reclamation.description" placeholder="description" required #descriptionInput></textarea>
         </div>
+        <div >
+        <label for="firstNameDto">User</label>
+        <select class="input" id="firstNameDto" formControlName="firstNameDto" [(ngModel)]="selectedUser" required>
+          <option *ngFor="let user of users" [value]="user.emailDto">{{user.emailDto}}</option>
+        </select></div>
     <div>
         <mat-form-field >
          
@@ -95,5 +104,5 @@
         
         </button></div>
       </div>
-    </ng-template>
+    </ng-template></form>
     

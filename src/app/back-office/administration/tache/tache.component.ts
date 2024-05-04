@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tache } from 'src/shared/models/Tache';
 import { TacheService } from 'src/shared/services/tache.service';
 import { ModalComponent } from '../modal/modal.component';
+import { User } from 'src/shared/models/User';
 
 @Component({
   selector: 'app-tache',
@@ -12,6 +13,9 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class TacheComponent implements OnInit{
   @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
+  @ViewChild("modalOPtion", { static: true }) modalOPtion!: TemplateRef<any>; 
+  @ViewChild("affecteuser", { static: true }) affecteuser!: TemplateRef<any>; 
+  users:User[]=[];
   taches: Tache[] = [];
   tache: Tache =new Tache();
   idTache: number;
@@ -19,6 +23,7 @@ export class TacheComponent implements OnInit{
   showDropdownMenu: boolean = false;
   nouveauStatut: string = '';
   dialogRef: MatDialogRef<any>;
+  showAddCardInput: boolean = false;
   constructor(private tacheService: TacheService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
 
   ngOnInit(): void {
@@ -116,6 +121,23 @@ export class TacheComponent implements OnInit{
   }*/
 
 
+  selectedUserId: string; // Définissez le type de votre ID utilisateur ici
+  onUserSelected() {
+    console.log(this.selectedUserId); // Affiche l'ID de l'utilisateur sélectionné dans la console
+    // Vous pouvez faire d'autres traitements avec this.selectedUserId ici
+  }
+  
+  assignerTache(): void {
+    if (this.idTache && this.selectedUserId) {
+      const tacheId = this.idTache;
+      const userId = Number(this.selectedUserId); // Assurez-vous que userId est un nombre
+
+      this.assignerTacheAUtilisateur(tacheId, userId);
+    } else {
+      console.error('Tache ID or User ID not selected.');
+    }
+  }
+  
   assignerTacheAUtilisateur(tacheId: number, userId: number): void {
     this.tacheService.assignerTacheAUtilisateur(tacheId, userId).subscribe(() => {
       console.log('Tache assigned to user successfully:', tacheId, userId);
@@ -157,6 +179,17 @@ export class TacheComponent implements OnInit{
   
   closeModal(): void {
     this.dialogRef.close();
+  }
+  toggleAddCardInput() {
+    this.showAddCardInput = !this.showAddCardInput;
+  }
+  openModaloptions(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.modalOPtion); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  openModalUser(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.affecteuser); // Vous devez remplacer ceci par le contenu de votre modal
   }
 }
 

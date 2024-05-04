@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { HttpRepositoryService } from "src/core/httpRepository.service";
+import { User } from "../models/User";
 
 
 @Injectable({
@@ -11,6 +12,7 @@ export class AuthentificationService {
     private BASE_URI = 'springMVC/api/v1/auth';
     private FORGOT_PASSWORD_URI = `springMVC/forgotPassword`;
     currentUser: any = null;
+    private baseUrl='springMVC/api/v1/users';
 
     constructor(private httpRepositoryService: HttpRepositoryService) { }
 
@@ -131,5 +133,8 @@ export class AuthentificationService {
       repeatPassword: changePassword.repeatPassword
     };
     return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/changePassword/${email}`, body);
+  }
+  getAllAdminUsers() {
+    return this.httpRepositoryService.get<User[]>(`${this.baseUrl}/admin-users`);
   }
 }

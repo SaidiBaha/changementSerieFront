@@ -14,9 +14,13 @@ export class ReclamationService {
 
   constructor(private httpRepositoryService: HttpRepositoryService,private http: HttpClient) { }
 
-  saveReclamation(reclamation: Reclamation, userId: number){
-    return this.httpRepositoryService.post<Reclamation>(`${this.baseUrl}/save/${userId}`, reclamation);
+  // saveReclamation(reclamation: Reclamation, userId: number){
+  //   return this.httpRepositoryService.post<Reclamation>(`${this.baseUrl}/save/${userId}`, reclamation);
+  // }
+  saveReclamation(dto: Reclamation, userId: number, emailRes: string) {
+    return this.httpRepositoryService.post<Reclamation>(`${this.baseUrl}/save/${userId}/${emailRes}`, dto);
   }
+  
 
   getReclamationById(id: number){
     return this.httpRepositoryService.get<Reclamation>(`${this.baseUrl}/${id}`);
