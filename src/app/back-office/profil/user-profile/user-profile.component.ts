@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { User } from 'src/shared/models/User';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
 import { UserService } from 'src/shared/services/user.service';
@@ -10,7 +9,7 @@ import { UserService } from 'src/shared/services/user.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent  implements OnInit {
+export class UserProfileComponent implements OnInit {
 
 
   user: User | undefined;
@@ -35,8 +34,9 @@ export class UserProfileComponent  implements OnInit {
     );
   }
 
-  modifierMotDePasse(): void {
-    this.router.navigate(['/dashboard/utilisateur/changepsw']);
-  }
+ 
 
+  navigateToChangePsw(): void {
+    this.router.navigate(['/dashboard/profil/changePassword']);
+  }
 }

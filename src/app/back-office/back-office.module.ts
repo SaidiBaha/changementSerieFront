@@ -13,6 +13,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,6 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         LayoutComponent,
         SideNavComponent,
         TopNavComponent,
+       
+       
      
 
     ],
@@ -38,7 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatMenuModule,
         MatExpansionModule,
         FlexLayoutModule,
-        MatButtonModule,
+        MatButtonModule,FormsModule
     ]
    
 })

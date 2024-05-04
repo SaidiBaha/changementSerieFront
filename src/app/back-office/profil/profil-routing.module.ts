@@ -4,19 +4,18 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
-
   {
-    path: 'userProfile',
-    component: UserProfileComponent,
+    path:'profile',component:UserProfileComponent
   },
   {
-    path:'changepsw',
-    component:ChangePasswordComponent
-  }
+    path:'changePassword',component:ChangePasswordComponent
+  },
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UtilisateurRoutingModule { }
+export class ProfilRoutingModule { }

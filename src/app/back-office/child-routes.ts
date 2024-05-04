@@ -20,9 +20,13 @@ export const childRoutes = [
   data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
   },
   
-  {path: 'utilisateur',
-  loadChildren: () => import('./utilisateur/utilisateur.module').then(m => m.UtilisateurModule),
+  {path: 'profil',
+  loadChildren: () => import('./profil/profil.module').then(m => m.ProfilModule),
+  data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
+  },
+ 
+  {path: 'reclamation',
+  loadChildren: () => import('./Reclamation/reclamation.module').then(m => m.ReclamationModule),
   data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
   }
-  
 ];
