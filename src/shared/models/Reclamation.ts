@@ -4,7 +4,7 @@ export class Reclamation {
   description: string;
   degreUrgenceDto: string;
   userDto: number;
-  userResDto:number;
+  emailResDto:number;
 }
   export enum DegreUrgence {
     NORMAL='NORMAL',
