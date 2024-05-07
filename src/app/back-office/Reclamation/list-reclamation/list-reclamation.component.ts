@@ -29,13 +29,13 @@ export class ListReclamationComponent implements OnInit {
 
   constructor(private reclamationService: ReclamationService,
               private dialog: MatDialog,
-              private authService:AuthentificationService,
-              private activatedRoute: ActivatedRoute) {
+              private authService:AuthentificationService
+              ) {
                 this.reclamationForm= new FormGroup({
                   titreReclam:new FormControl('',Validators.required),
                   description:new FormControl('',Validators.required),
                   degreUrgenceDto:new FormControl('',Validators.required),
-                  firstNameDto:new FormControl('',Validators.required)
+                  emailResDto:new FormControl('',Validators.required)
                 });
 
 
@@ -67,14 +67,15 @@ export class ListReclamationComponent implements OnInit {
 
 
 
-   saveReclamation(reclamation: Reclamation) {
+   saveReclamation() {
     const userId = this.authService.getCurrentUserId();
      const numericUserId = Number(userId);
      console.log(this.selectedUser);
      console.log("test");
-    this.reclamationService.saveReclamation(reclamation,numericUserId,this.selectedUser).subscribe(
+    this.reclamationService.saveReclamation(this.reclamation,numericUserId,this.selectedUser).subscribe(
       (data: Reclamation) => {
          console.log('Reclamation saved successfully:', data);
+         this.getAllReclamations();
          // Ajoutez ici la logique pour gérer la réponse de sauvegarde si nécessaire
        },
        error => {

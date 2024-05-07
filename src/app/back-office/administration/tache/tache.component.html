@@ -16,9 +16,8 @@
       </tbody>
     </table>
 
-    <input *ngIf="showAddCardInput" type="text" class="addCard">
 
-  <button class="button" (click)="toggleAddCardInput()">
+  <button class="button" (click)="openModaladdtache()">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20" fill="none" class="svg-icon">
       <g stroke-width="1.5" stroke-linecap="round" stroke="#de8a2a">
         <path d="m9.99998 7.5v5"></path>
@@ -46,8 +45,7 @@
           </tr>
         </tbody>
       </table>
-      <input *ngIf="showAddCardInput" type="text" class="addCard">
-      <button class="button" (click)="toggleAddCardInput()">
+      <button class="button" (click)="openModaladdtache()">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20" fill="none" class="svg-icon"><g stroke-width="1.5" stroke-linecap="round" stroke="#de8a2a"><path d="m9.99998 7.5v5"></path><path d="m7.5 9.99998h5"></path></g></svg>
         <span class="lable">Ajouter une carte</span>
       </button>
@@ -72,8 +70,7 @@
         </tr>
       </tbody>
     </table>
-    <input *ngIf="showAddCardInput" type="text" class="addCard">
-  <button class="button" (click)="toggleAddCardInput()">
+  <button class="button" (click)="openModaladdtache()">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20" fill="none" class="svg-icon"><g stroke-width="1.5" stroke-linecap="round" stroke="#de8a2a"><path d="m9.99998 7.5v5"></path><path d="m7.5 9.99998h5"></path></g></svg>
       <span class="lable">Ajouter une carte</span>
     </button>
@@ -135,10 +132,59 @@
     
 </tr>
   <tr>
-    <button class="btnoption"(click)="openModal();getId(tache.idDto)">
-              <span *ngIf="tache"  style="margin-right: 5px;">
-                <mat-icon  >create</mat-icon>
+    <button class="btnoption" (click)="openModal();getId(tache.idDto)">
+                <mat-icon style="margin-right: 5px;" >create</mat-icon>
                 Modifier status tache
-              </span></button>
+              </button>
 </tr>
+<tr>
+  <button class="btnoption" (click)="openModaldescription();getId(tache.idDto)">
+              <mat-icon style="margin-right: 5px;">remove_red_eye</mat-icon>
+              Voir Détails
+            </button>
+</tr>
+</ng-template>
+<ng-template #addtache >
+  <div class="group" style="margin-block-end: 10%;padding: 5%;">
+    <input required="" type="text" class="input">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Titre</label>
+  </div>
+  <div class="group" style="margin-block-end: 10%;padding: 5%;">
+    <input required="" type="text" class="input">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Description</label>
+  </div>
+  <div class="group" style="margin-block-end: 10%;padding: 5%;"><label for="debutDto"  >Date de début</label></div> 
+  <div class="group"  style="margin-block-end: 10%;padding: 5%;">  
+  <input type="datetime-local" class="input" id="debutDto" formControlName="debutDto" required>
+</div>
+<div class="group" style="margin-block-end: 10%;padding: 5%;">    
+  <label for="finDto">Date de fin</label>
+</div>
+<div class="group"  style="margin-block-end: 10%;padding: 5%;">
+    <input type="datetime-local" class="input" id="finDto" formControlName="finDto" required>
+  </div>
+  <button class="buttonsave"  >
+    <div class="button-wrapper">
+      <div class="text">Enregistrer</div>
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+        </span>
+      </div>
+    </button>
+    
+</ng-template>
+<ng-template #description>
+  <div>
+    <h2>Détails de la Tâche</h2>
+    <p><strong>Titre :</strong> {{ tache.titreTacheDto }}</p>
+    <p><strong>Description :</strong> {{ tache.descriptionTacheDto }}</p>
+    <p><strong>Date de début :</strong> {{ tache.dateDebutTacheDto | date: 'short' }}</p>
+    <p><strong>Date de fin :</strong> {{ tache.dateFinTacheDto | date: 'short' }}</p>
+    <p><strong>User :</strong> {{ tache.userId }}</p>
+
+  </div>
 </ng-template>

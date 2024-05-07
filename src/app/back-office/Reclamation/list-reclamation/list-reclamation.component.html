@@ -4,7 +4,7 @@
     <h2 class="mb-3" style="color: #194a7e; padding: 2%;">Les Réclamations</h2>
     <div class="text-end mb-3">
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" (click)="openAddModal()" data-toggle="tooltip" data-placement="top" title="Ajouter une réclamation" >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="auto" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24px" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
       </button>
  
     </div>
@@ -64,75 +64,76 @@
 <!-- UPDATE -->
 <ng-template #modalContent>
 <div style="width: 400px; height: 400px;">
-    <mat-label>Modifier Réclamation</mat-label>
+  <mat-label>Modifier Réclamation</mat-label>
 
-    <div class="form-group text-center">
-        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreReclam"
-            [(ngModel)]="reclamation.titreReclam" placeholder="titreReclam" required #titleInput>
-    </div>
-
-    <div class="form-group text-center">
-        <textarea type="text" class="form-control form-control-sm w-75 mx-auto" name="description" style="height: 60px;"
-            [(ngModel)]="reclamation.description" placeholder="description" required #descriptionInput></textarea>
-    </div>
-<div>
-    <mat-form-field >
-     
-       <mat-select placeholder="Degré d'urgence" [(ngModel)]="reclamation.degreUrgenceDto" >
-        <mat-option value="NORMAL">Normale</mat-option>
-        <mat-option value="URGENTE">Urgente</mat-option>
-        <mat-option value="TRES_URGENTE">Trés Urgente</mat-option>
-      </mat-select>        
-    </mat-form-field></div>
-    <div>
-    <button class="buttonUpdate" (click)="updateReclamation(reclamation);closeModal()">
-    <span mat-raised-button color="primary" >
-      
-      <mat-icon style="color: rgb(0, 128, 98); width: fit-content;" >save</mat-icon></span>
-    
-    </button></div>
+  <div class="form-group text-center">
+      <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreReclam"
+          [(ngModel)]="reclamation.titreReclam" placeholder="titreReclam" required #titleInput>
   </div>
+
+  <div class="form-group text-center">
+      <textarea type="text" class="form-control form-control-sm w-75 mx-auto" name="description" style="height: 60px;"
+          [(ngModel)]="reclamation.description" placeholder="description" required #descriptionInput></textarea>
+  </div>
+<div>
+  <mat-form-field >
+   
+     <mat-select placeholder="Degré d'urgence" [(ngModel)]="reclamation.degreUrgenceDto" >
+      <mat-option value="NORMAL">Normale</mat-option>
+      <mat-option value="URGENTE">Urgente</mat-option>
+      <mat-option value="TRES_URGENTE">Trés Urgente</mat-option>
+    </mat-select>        
+  </mat-form-field></div>
+  <div>
+  <button class="buttonUpdate" (click)="updateReclamation(reclamation);closeModal()">
+  <span mat-raised-button color="primary" >
+    
+    <mat-icon style="color: rgb(0, 128, 98); width: fit-content;" >save</mat-icon></span>
+  
+  </button></div>
+</div>
 </ng-template>
 
 <!-- AJOUTER -->
-<form [formGroup]="reclamationForm">
-<ng-template #addModalContent>
-    <div style="width: 400px; height: 400px;">
-        <mat-label>Ajouter une Réclamation</mat-label>
-     
-        <div class="form-group text-center">
-          <label>Titre</label>
-          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreReclam" [(ngModel)]="reclamation.titreReclam" placeholder="titreReclam" required #titleInput>
-
-
+   <form [formGroup]="reclamationForm">
+    <ng-template #addModalContent>
+      <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
+        <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter une Réclamation</mat-label>
+  
+        <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+          <label style="margin-bottom: 5px;">Titre</label>
+          <input type="text" class="form-control form-control-sm" formControlName="titreReclam" placeholder="titreReclam" required [(ngModel)]="reclamation.titreReclam">
         </div>
-   
-        <div class="form-group text-center">
-          <label>Description</label>
-            <textarea type="text" class="form-control form-control-sm w-75 mx-auto" name="description" style="height: 60px;"
-                [(ngModel)]="reclamation.description" placeholder="description" required #descriptionInput></textarea>
+  
+        <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+          <label style="margin-bottom: 5px;">Description</label>
+          <textarea type="text" class="form-control form-control-sm" formControlName="description" style="height: 60px;" placeholder="description" required [(ngModel)]="reclamation.description"></textarea>
         </div>
-        <div >
-        <label for="firstNameDto">User</label>
-        <select class="input" id="firstNameDto" formControlName="firstNameDto" [(ngModel)]="selectedUser" required>
-          <option *ngFor="let user of users" [value]="user.emailDto">{{user.emailDto}}</option>
-        </select></div>
-    <div>
-        <mat-form-field >
-         
-           <mat-select placeholder="Degré d'urgence" [(ngModel)]="reclamation.degreUrgenceDto" >
-            <mat-option value="NORMAL">Normale</mat-option>
-            <mat-option value="URGENTE">Urgente</mat-option>
-            <mat-option value="TRES_URGENTE">Trés Urgente</mat-option>
-          </mat-select>        
-        </mat-form-field></div>
-        <div>
-        <button class="buttonUpdate" (click)="saveReclamation(reclamation);closeModal()">
-        <span mat-raised-button color="primary" >
-          
-          <mat-icon style="color: rgb(0, 128, 98); width: fit-content;" >save</mat-icon></span>
-        
-        </button></div>
+  
+        <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+          <label for="emailResDto" style="margin-bottom: 5px;">Utilisateur</label>
+          <select class="input" id="emailResDto" formControlName="emailResDto" [(ngModel)]="selectedUser" required>
+            <option *ngFor="let user of users" [value]="user.emailDto">{{user.emailDto}}</option>
+          </select>
+        </div>
+  
+        <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+          <label style="margin-bottom: 5px;">Degré d'urgence</label>
+          <mat-form-field>
+            <mat-select formControlName="degreUrgenceDto" [(ngModel)]="reclamation.degreUrgenceDto">
+              <mat-option value="NORMAL">Normale</mat-option>
+              <mat-option value="URGENTE">Urgente</mat-option>
+              <mat-option value="TRES_URGENTE">Trés Urgente</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="saveReclamation(); closeModal()">
+          <span mat-raised-button color="primary">
+            <mat-icon style="width: fit-content;">save</mat-icon>
+          </span>
+        </button>
       </div>
-    </ng-template></form>
-    
+    </ng-template>
+  </form>
+  

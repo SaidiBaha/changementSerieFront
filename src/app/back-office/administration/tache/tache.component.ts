@@ -17,6 +17,8 @@ export class TacheComponent implements OnInit{
  @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
  @ViewChild("modalOPtion", { static: true }) modalOPtion!: TemplateRef<any>; 
  @ViewChild("affecteuser", { static: true }) affecteuser!: TemplateRef<any>; 
+ @ViewChild("addtache", { static: true }) addtache!: TemplateRef<any>; 
+ @ViewChild("description", { static: true }) description!: TemplateRef<any>; 
 users:User[]=[];
  taches: Tache[] = [];
   tache: Tache =new Tache();
@@ -202,6 +204,14 @@ userId: number;
   openModalUser(): void {
     this.idTache = this.tache.idDto;
     this.dialogRef = this.dialog.open(this.affecteuser); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  openModaladdtache(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.addtache); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  openModaldescription(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.description); // Vous devez remplacer ceci par le contenu de votre modal
   }
   
 }
