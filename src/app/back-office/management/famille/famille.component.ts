@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Famille } from 'src/shared/models/Famille';
 import { FamilleService } from 'src/shared/services/famille.service';
 
 import { ModalComponent } from '../../administration/modal/modal.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -12,15 +14,24 @@ import { ModalComponent } from '../../administration/modal/modal.component';
   styleUrls: ['./famille.component.css']
 })
 export class FamilleComponent implements OnInit{
+  @ViewChild("modalFamilleContent", { static: true }) modalFamilleContent!: TemplateRef<any>;
+  @ViewChild("updateModalContent", { static: true }) updateModalContent!: TemplateRef<any>;
   familles: Famille[] = [];
   selectedFamille?: Famille;
   isEditMode = false;
   idFamille!: number;
   famille: Famille = new Famille();
-
+  familleGroup:FormGroup;
+  dialogRef: MatDialogRef<any>;
   @ViewChild("dialog1", {static: false}) dialog!: ModalComponent;
 
-  constructor(private familleService: FamilleService) {}
+  constructor(private familleService: FamilleService,
+    private dialogg: MatDialog
+  ) {
+    this.familleGroup=new FormGroup({
+      nomFamilleDto:new FormControl('',Validators.required)
+    });
+  }
 
   ngOnInit(): void {
     this.getAllFamilles();
@@ -71,20 +82,34 @@ export class FamilleComponent implements OnInit{
   }*/
 
 
+  // openModal(): void {
+  //   const modalDiv =  document.getElementById('exampleModal');
+  //   if(modalDiv!=null){
+  //     modalDiv.style.display= 'block';
+  //   }
+  //  }
+
+
   openModal(): void {
-    const modalDiv =  document.getElementById('exampleModal');
-    if(modalDiv!=null){
-      modalDiv.style.display= 'block';
-    }
-   }
-   closeModal() {
-   
-    const modalDiv =  document.getElementById('exampleModal');
-    if(modalDiv!=null){
-      modalDiv.style.display= 'none';
-    }
+    this.idFamille = this.famille.idDto;
+    this.dialogRef = this.dialogg.open(this.modalFamilleContent); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  openUpdateModal(): void {
+    this.idFamille = this.famille.idDto;
+    this.dialogRef = this.dialogg.open(this.updateModalContent); // Vous devez remplacer ceci par le contenu de votre modal
   }
 
+
+  //  closeModal() {
+   
+  //   const modalDiv =  document.getElementById('exampleModal');
+  //   if(modalDiv!=null){
+  //     modalDiv.style.display= 'none';
+  //   }
+  // }
+  closeModal(): void {
+    this.dialogRef.close();
+  }
   submitFamille() {
     if (this.isEditMode) {
       this.updateFamille();
