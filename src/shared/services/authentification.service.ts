@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { HttpRepositoryService } from "src/core/httpRepository.service";
+import { User } from "../models/User";
 
 
 @Injectable({
@@ -9,6 +10,7 @@ import { HttpRepositoryService } from "src/core/httpRepository.service";
 export class AuthentificationService {
 
     private BASE_URI = 'springMVC/api/v1/auth';
+    private baseUrl='springMVC/api/v1/users';
     currentUser: any = null;
 
     constructor(private httpRepositoryService: HttpRepositoryService) { }
@@ -108,5 +110,6 @@ export class AuthentificationService {
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     return connectedUser;
   }
+
 
 }

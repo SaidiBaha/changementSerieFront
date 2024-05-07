@@ -13,6 +13,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 
 import { MatInputModule } from '@angular/material/input';
+import { TacheComponent } from './tache/tache.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 
 
 @NgModule({
@@ -20,7 +24,9 @@ import { MatInputModule } from '@angular/material/input';
         AdminComponent,
         ModalComponent,
         ProjectComponent,
-        DemandechangementComponent
+        DemandechangementComponent,
+        TacheComponent,
+        ListReclamationComponent
     ],
     imports: [
         CommonModule,
@@ -32,6 +38,8 @@ import { MatInputModule } from '@angular/material/input';
         MatInputModule,
         ReactiveFormsModule,
         MatFormFieldModule,
+        MatIconModule,
+        MatMenuModule
         
     ]
 })

@@ -261,7 +261,7 @@ completeChecklistForPlanning(): void {
 
       // Réactivez le bouton après la navigation
       this.checklistRemplie = false;
-      this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
+     // this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
     },
     error => {
       console.error('Erreur lors de la complétion de la checklist:', error);

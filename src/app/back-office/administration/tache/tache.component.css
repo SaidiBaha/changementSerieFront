@@ -1,0 +1,413 @@
+.table td {
+    background-color: white; /* Définit la couleur de fond à blanc pour toutes les cellules <td> */
+  }
+  
+  
+  .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+  }
+    
+    .card {
+      width: 50%;
+      height: auto;
+      background: #f1f2f4;
+      border-radius: 20px;
+     margin-block-start: 12%;
+      margin-left: 50px; /* Ajustez la valeur pour l'espacement entre les cartes */
+      position: relative;
+    }
+    
+    .shadow {
+      box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+      0 0  0 2px rgb(190, 190, 190),
+      0.3em 0.3em 1em rgba(0,0,0,0.3);
+  
+    }
+    
+    /* Ajustez la position des cartes superposées */
+    .card:nth-child(1) {
+      z-index: 3;
+    }
+    
+    .card:nth-child(2) {
+      z-index: 2;
+      transform: translateX(-30px) ; 
+    }
+    
+    .card:nth-child(3) {
+      z-index: 1;
+      transform: translateX(-60px) ; 
+    }
+    .button {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 12px;
+      gap: 4px;
+      height: 32px;
+      border: none;
+      background: #f1f2f4;
+      border-radius: 10px;
+      cursor: pointer; 
+      margin-left: 5%;
+      margin-block-end: 2%;
+    }
+    .svg-icon path {
+      stroke: #3b4e6a; /* Gray stroke color */
+  }
+    
+    .lable {
+      line-height: 22px;
+      font-size: 15px;
+      color: #3b4e6a;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .button:hover {
+      background: #d0d4db;
+    }
+    
+    .button:hover .svg-icon {
+      width: 40px; /* Double la largeur */
+        height: 40px; /* Double la hauteur */
+    }
+    
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+    
+      25% {
+        transform: rotate(10deg);
+      }
+    
+      50% {
+        transform: rotate(0deg);
+      }
+    
+      75% {
+        transform: rotate(-10deg);
+      }
+    
+      100% {
+        transform: rotate(0deg);
+      }
+       
+    }
+    .card {
+      position: relative;
+    }
+    
+    .card-header {
+      position: relative; /* Changement de position */
+    }
+    
+    .dropdown-toggle {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      display: none;
+    }
+    
+    .dropdown-menu button {
+      display: block;
+      width: 100%;
+    }
+    .dropdown-toggle::after {
+      display: none; /* Cacher la flèche vers le bas */
+    }
+    
+   /* Styles pour l'élément input avec la classe addCard */
+  .addCard {
+    width: 90%; /* Définit la largeur de l'input à 90% de la largeur de son conteneur */
+    border: none; /* Supprime le contour par défaut de l'input */
+    outline: none; /* Supprime également la mise en évidence lorsqu'on clique sur l'input */
+    padding: 10px; /* Ajoute un peu d'espacement intérieur pour un meilleur aspect */
+    font-size: 17px; /* Définit la taille de la police */
+    border-radius: 10px; /* Ajoute un arrondi aux coins de l'input */
+    box-sizing: border-box; /* Garantit que la largeur inclut les bordures et les remplissages */
+    margin-left: 5%;
+    margin-block-end: 2%;
+  }
+  .options{
+    font-size: 9px;
+    outline: none; 
+    border: none; 
+    background-color: transparent;
+  margin-block-start: 2%;
+  margin-left: 80%;
+  
+  }
+  
+  .btnoption {
+    width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     
+      height: 32px;
+      border: none;
+      background: #f1f2f4;
+      border-radius: 5px;
+      cursor: pointer; 
+      
+      margin-block-end: 2%;
+    }
+    .svg-icon path {
+      stroke: #3b4e6a; /* Gray stroke color */
+  }
+    
+   
+    
+    .btnoption:hover {
+      background: #d0d4db;
+    }
+    
+    .btnoption:hover .svg-icon {
+      width: 40px; /* Double la largeur */
+        height: 40px; /* Double la hauteur */
+    }
+    
+    /* Style de base pour le select */
+  select {
+    width: 100%; /* Largeur à 100% de son conteneur */
+    padding: 10px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de police */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    appearance: none; /* Masquer l'apparence native du select */
+    background-color: #fff; /* Couleur de fond */
+  }
+  
+  /* Style des options dans le select */
+  select option {
+    padding: 10px;
+  }
+  
+  /* Style lorsqu'on survole une option */
+  select option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Style de la bordure lorsqu'on met le focus sur le select */
+  select:focus {
+    border-color: #007bff; /* Bordure bleue lorsqu'il a le focus */
+    outline: none; /* Supprimer l'outline par défaut */
+  }
+  
+  /* Style de la flèche du select (pour les navigateurs qui ne supportent pas l'option 'appearance: none') */
+  select::-ms-expand {
+    display: none;
+  }
+  .close{
+    outline: none;
+    border: none;
+    background-color: transparent;
+  margin-left: 85%;  
+  }
+  .group {
+    position: relative;
+   }
+   
+   .input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+   }
+   
+   .input:focus {
+    outline: none;
+   }
+   
+   label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+   }
+   
+   .input:focus ~ label, .input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+   }
+   
+   .bar {
+    position: relative;
+    display: block;
+    width: 200px;
+   }
+   
+   .bar:before, .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+   }
+   
+   .bar:before {
+    left: 50%;
+   }
+   
+   .bar:after {
+    right: 50%;
+   }
+   
+   .input:focus ~ .bar:before, .input:focus ~ .bar:after {
+    width: 50%;
+   }
+   
+   .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+   }
+   
+   .input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+   }
+   
+   @keyframes inputHighlighter {
+    from {
+     background: #5264AE;
+    }
+   
+    to {
+     width: 0;
+     background: transparent;
+    }
+   }
+   .buttonsave {
+    width: 100px;
+    height: 35px;
+    outline: none;
+    border: none;
+    background: #1163ff;;
+    position: relative;
+    text-align: center;
+    border-radius: 0.45em;
+    font-family: "Arial";
+    transition: background 0.3s;
+  }
+  
+  .buttonsave::before {
+    position: absolute;
+    content: attr(data-tooltip);
+    width: var(--tooltip-width);
+    height: var(--tooltip-height);
+    background-color: var(--tooltip-color);
+    font-size: 0.9rem;
+    color: #111;
+    border-radius: .25em;
+    line-height: var(--tooltip-height);
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+    left: calc(50% - var(--tooltip-width) / 2);
+  }
+  
+  .buttonsave::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: var(--tooltip-color);
+    left: calc(50% - 10px);
+    bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+  }
+  
+  .buttonsave::after,.buttonsave::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+  }
+  
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .buttonsave-wrapper,.text,.icon {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    color: #fff;
+  }
+  
+  .text {
+    top: 0
+  }
+  
+  .text,.icon {
+    transition: top 0.5s;
+  }
+  
+  .icon {
+    color: #fff;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .buttonsave:hover {
+    background: #6c18ff;
+  }
+  
+  .buttonsave:hover .text {
+    top: -100%;
+  }
+  
+  .buttonsave:hover .icon {
+    top: 0;
+  }
+  
+  
+  
+  .buttonsave:hover:after {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+  }
+  
+  .buttonsave:hover:before {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+  }

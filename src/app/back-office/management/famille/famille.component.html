@@ -6,7 +6,7 @@
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip"
         data-placement="top" title="Ajouter famille" (click)="openModal()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
-          stroke-linecap="round" stroke="currentColor" height="auto" fill="none" class="svg">
+          stroke-linecap="round" stroke="currentColor" height="24px" fill="none" class="svg">
           <line y2="19" y1="5" x2="12" x1="12"></line>
           <line y2="12" y1="12" x2="19" x1="5"></line>
         </svg>
@@ -26,7 +26,7 @@
             <td style="text-align: center;">{{ famille.nomFamilleDto }}</td>
             <div class="action-buttons">
               <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top"
-                  title="Modifier famille" (click)="openModal()">create</i></button>
+                  title="Modifier famille" (click)="openUpdateModal()">create</i></button>
               <button class="deleteButton" (click)="deleteFamille(famille.idDto)" data-toggle="tooltip"
                 data-placement="top" title="Supprimer famille">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 50 59" class="bin">
@@ -47,7 +47,7 @@
         </tbody>
       </table>
     </div>
-    <app-modal-g [title]="'Sauvegarder Famille'" #dialog1>
+    <!-- <app-modal-g [title]="'Sauvegarder Famille'" #dialog1>
       <div class="modal-body">
         <form novalidate>
 
@@ -66,7 +66,7 @@
 
         </form>
       </div>
-    </app-modal-g>
+    </app-modal-g> -->
 
 
 
@@ -80,3 +80,49 @@
 
   </div>
 </div>
+<!-- Ajouter Famille -->
+<form [formGroup]="familleGroup">
+  <ng-template #modalFamilleContent>
+    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
+      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter une famille</mat-label>
+
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Nom de la famille</label>
+        <input type="text" class="form-control form-control-sm" formControlName="nomFamilleDto" placeholder="Nom de la famille" required [(ngModel)]="famille.nomFamilleDto">
+      </div>
+
+     
+    
+     
+
+      <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="createFamille(famille); closeModal()">
+        <span mat-raised-button color="primary">
+          <mat-icon style="width: fit-content;">save</mat-icon>
+        </span>
+      </button>
+    </div>
+  </ng-template>
+</form>
+<!-- Update Famille -->
+<form [formGroup]="familleGroup">
+  <ng-template #updateModalContent>
+    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
+      <mat-label style="margin-bottom: 20px; font-weight: bold;">Modifier la famille</mat-label>
+
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Nom de la famille</label>
+        <input type="text" class="form-control form-control-sm" formControlName="nomFamilleDto" placeholder="Nom de la famille" required [(ngModel)]="famille.nomFamilleDto">
+      </div>
+
+     
+    
+     
+
+      <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="updateFamille(); closeModal()">
+        <span mat-raised-button color="primary">
+          <mat-icon style="width: fit-content;">save</mat-icon>
+        </span>
+      </button>
+    </div>
+  </ng-template>
+</form>

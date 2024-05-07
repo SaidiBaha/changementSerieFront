@@ -11,7 +11,7 @@
  
     </div>
     <div class="table-responsive">
-      <table class="table table-striped" tyle="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
+      <table class="table table-striped" style="margin-block-end: 3%;">
         <thead>
                       <tr>
                         <th>Titre Projet</th> 
@@ -56,6 +56,10 @@
                       </svg>
                     
                     </button>
+                    <button (click)="navigateToTache(projet.idDto)" class="tachebtn">
+                      <mat-icon>checklist</mat-icon> 
+                    </button>
+                    
                   </div>
               </tr>
             </tbody>
