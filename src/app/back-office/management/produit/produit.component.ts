@@ -1,7 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Checklist } from 'src/shared/models/Checklist';
 import { Produit } from 'src/shared/models/Produit';
+import { ChecklistService } from 'src/shared/services/checklist.service';
 import { ProduitService } from 'src/shared/services/produit.service';
 
 @Component({
@@ -17,10 +19,14 @@ export class ProduitComponent implements OnInit {
   idProduit!: number;
   produitGroup:FormGroup;
   dialogRef: MatDialogRef<any>;
-  constructor(private produitservice: ProduitService, private dialog: MatDialog) {
+  selectedChecklistId:string='';
+checklists:Checklist[]=[];
+
+  constructor(private produitservice: ProduitService, private dialog: MatDialog,private checklistService:ChecklistService) {
     this.produitGroup=new FormGroup({
       nomProduitDto:new FormControl('',Validators.required),
-      refProduitDto:new FormControl('',Validators.required)
+      refProduitDto:new FormControl('',Validators.required),
+      checklistDto:new FormControl('',Validators.required)
     });
   
 
@@ -28,16 +34,28 @@ export class ProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProduits();
+   this.loadChecklist();
+  }
+  loadChecklist(){
+    this.checklistService.getAllChecklists().subscribe(
+  
+      res=>{
+        console.log("les checklists",res);
+        this.checklists=res
+      }
+    )
   }
 
 
   getAllProduits(): void {
     this.produitservice.getAllProduits().subscribe(data => {
+      console.log("les produits",data);
       this.produits = data;
     });
   }
   createProduit(produit: Produit): void {
-    this.produitservice.createProduit(produit).subscribe({
+    const checklistId = Number(this.selectedChecklistId);
+    this.produitservice.createProduit(produit,checklistId).subscribe({
       next: (data) => {
         this.produits.push(data);
         // this.dialog.close();

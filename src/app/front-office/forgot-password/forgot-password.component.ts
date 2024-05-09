@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { AuthentificationService } from 'src/shared/services/authentification.service';
+import { Component } from '@angular/core';
+import { ForgetpassxordService } from 'src/shared/services/forgetpassword.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,6 +7,7 @@ import { AuthentificationService } from 'src/shared/services/authentification.se
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
+
   email: string = '';
   otp: number;
   newPassword: string = '';
@@ -16,13 +17,13 @@ export class ForgotPasswordComponent {
   showSend:boolean=true;
   message: string = '';
   error: string | null = null;
-  constructor(private authService: AuthentificationService) {}
+  constructor(private forgetpsw: ForgetpassxordService) {}
 
-  @ViewChild('otpInput') otpInputElement: ElementRef;
+ 
   
   sendEmail(email: string): void {
     console.log("Envoi de l'email...");
-    this.authService.sendOTP(email).subscribe(
+    this.forgetpsw.sendOTP(email).subscribe(
       (response) => {
          // Une fois que l'e-mail est envoyé avec succès, affichez le formulaire OTP
       this.showOTPInput = true;
@@ -32,7 +33,7 @@ export class ForgotPasswordComponent {
     // Assurez-vous que cette étape est masquée
     },
       (error) => {
-        // Gérer les erreurs d'envoi de l'e-mail ici
+        // Gérer les erreurs d'envoi de l        'e-mail ici
         console.log("test1");
         if (error && error.message) {
           this.error = error.message;
@@ -45,7 +46,7 @@ export class ForgotPasswordComponent {
   }
 
   verifyOTP(otp: number, email: string): void {
-    this.authService.verifyOTP(otp, email).subscribe(
+    this.forgetpsw.verifyOTP(otp, email).subscribe(
       (response) => {
         // Traitement de la réponse en cas de succès de la vérification de l'OTP
         console.log('OTP vérifié avec succès:', response);
@@ -78,7 +79,7 @@ export class ForgotPasswordComponent {
       repeatPassword: this.repeatPassword
     };
     // Appelez la méthode changePassword du service avec l'email et le modèle ChangePassword
-    this.authService.changePassword(changePasswordData, this.email).subscribe(
+    this.forgetpsw.changePassword(changePasswordData, this.email).subscribe(
       (response) => {
         this.showChangePasswordForm = true;
         // Traitement de la réponse en cas de succès de changement de mot de passe
@@ -97,5 +98,5 @@ export class ForgotPasswordComponent {
       otpElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-  
+
 }

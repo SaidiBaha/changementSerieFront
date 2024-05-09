@@ -5,5 +5,5 @@ export class LigneCheck {
     nomTestAFaireDto: string;
     validationLigneCheckDto: boolean;
     checklistDto: number;
-    posages: Posage[];
+    posagesDto: Posage[];
 }

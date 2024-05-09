@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
 import { User } from '../models/User';
+import { ChangePasswordRequest } from '../models/ChangePasswordRequest ';
 import { Observable } from 'rxjs';
-import { ChangePasswordRequest } from '../models/ChangePasswordRequest';
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,15 @@ export class UserService {
   deleteUser(id: number) {
     return this.httpRepositoryService.delete<void>(`${this.BASE_URI}/${id}`);
   }
+
   changePassword(request: ChangePasswordRequest,connectedUser: any): Observable<any> {
     return this.httpRepositoryService.patch(`${this.BASE_URI}/changePassword`, { request, connectedUser } );
   }
+
+
+  getAllAdminUsers() {
+    return this.httpRepositoryService.get<User[]>(`${this.BASE_URI}/admin-users`);
+  }
+
+  
 }

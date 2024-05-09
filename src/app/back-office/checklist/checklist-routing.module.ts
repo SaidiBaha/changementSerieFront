@@ -7,6 +7,8 @@ import { AddLigneCheckComponent } from './add-ligne-check/add-ligne-check.compon
 import { ChecklistDetailsComponent } from './checklist-details/checklist-details.component';
 import { ListPosageComponent } from './list-posage/list-posage.component';
 import { AddPosageComponent } from './add-posage/add-posage.component';
+import { ListCecklistCompleteComponent } from './list-cecklist-complete/list-cecklist-complete.component';
+import { AddChecklistCompleteComponent } from './add-checklist-complete/add-checklist-complete.component';
 
 const routes: Routes = [
   {
@@ -49,6 +51,18 @@ const routes: Routes = [
     path: 'addPosage',
     component: AddPosageComponent,
   },
+  {
+    path: 'listcheckComplete',
+    component: ListCecklistCompleteComponent,
+  },
+
+  {
+    path: 'remlirCheck/:checklistId',
+    component: AddChecklistCompleteComponent,
+  },
+
+  
+
  /* {
     path: 'ligneCheck/:ligneChecklistId/posages',
     component: ListPosageComponent,

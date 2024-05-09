@@ -4,6 +4,7 @@ import {AdminComponent} from "./admin/admin.component";
 import { ProjectComponent } from './project/project.component';
 import { DemandechangementComponent } from './demandechangement/demandechangement.component';
 import { TacheComponent } from './tache/tache.component';
+import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,10 @@ const routes: Routes = [
     path: 'tache/:projetId',
     component: TacheComponent,
   },
-  
+  {
+    path: 'listRec',
+    component: ListReclamationComponent,
+  }
 
 
 ];

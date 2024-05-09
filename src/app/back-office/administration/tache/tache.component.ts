@@ -5,6 +5,8 @@ import { Tache } from 'src/shared/models/Tache';
 import { TacheService } from 'src/shared/services/tache.service';
 import { ModalComponent } from '../modal/modal.component';
 import { User } from 'src/shared/models/User';
+import { UserService } from 'src/shared/services/user.service';
+
 
 @Component({
   selector: 'app-tache',
@@ -12,11 +14,13 @@ import { User } from 'src/shared/models/User';
   styleUrls: ['./tache.component.css']
 })
 export class TacheComponent implements OnInit{
-  @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
-  @ViewChild("modalOPtion", { static: true }) modalOPtion!: TemplateRef<any>; 
-  @ViewChild("affecteuser", { static: true }) affecteuser!: TemplateRef<any>; 
-  users:User[]=[];
-  taches: Tache[] = [];
+ @ViewChild("modalContent", { static: true }) modalContent!: TemplateRef<any>; // Assurez-vous d'ajouter TemplateRef
+ @ViewChild("modalOPtion", { static: true }) modalOPtion!: TemplateRef<any>; 
+ @ViewChild("affecteuser", { static: true }) affecteuser!: TemplateRef<any>; 
+ @ViewChild("addtache", { static: true }) addtache!: TemplateRef<any>; 
+ @ViewChild("description", { static: true }) description!: TemplateRef<any>; 
+users:User[]=[];
+ taches: Tache[] = [];
   tache: Tache =new Tache();
   idTache: number;
   id:number;
@@ -24,10 +28,22 @@ export class TacheComponent implements OnInit{
   nouveauStatut: string = '';
   dialogRef: MatDialogRef<any>;
   showAddCardInput: boolean = false;
-  constructor(private tacheService: TacheService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
+userId: number;
+
+  constructor(private tacheService: TacheService,private userService:UserService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
 
   ngOnInit(): void {
     this.loadTaches();
+    this.getUsers();
+    }
+    getUsers(){
+      this.userService.getUsers().subscribe(
+  
+        res=>{
+          console.log("res",res);
+          this.users=res
+        }
+      )
     }
  loadTaches():void{
   const projetId = this.route.snapshot.params['projetId'];
@@ -59,7 +75,10 @@ export class TacheComponent implements OnInit{
     });
   }
 
-  createTache(tacheData: Tache, projetId: number): void {
+  createTache(tacheData: Tache): void {
+    const projetId = this.route.snapshot.params['projetId'];
+    console.log("test");
+    console.log(projetId);
     this.tacheService.saveTache(tacheData, projetId).subscribe(data => {
       this.taches.push(data);
     }, error => {
@@ -84,21 +103,23 @@ export class TacheComponent implements OnInit{
   //     console.log('Tache status updated successfully:', id, tacheData);
   //   });
   // }
+  
   updateTacheStatus() {
-  this.tacheService.updateTacheStatus(this.idTache,this.tache).subscribe((response)=>{
-    // this.tacheService.getTacheById(this.id).subscribe(
-    //   res=>{
-    //     console.log("res",res);
-    //    // this.taches=res
-  
-    //   }
-    // )
-    this.loadTaches();
+    console.log("test")
+    this.tacheService.updateTacheStatus(this.idTache,this.tache).subscribe((response)=>{
+      // this.tacheService.getTacheById(this.id).subscribe(
+      //   res=>{
+      //     console.log("res",res);
+      //    // this.taches=res
     
-  })
+      //   }
+      // )
+      this.loadTaches();
+      
+    })
+    
+    }
   
-  }
-
 
 
   getId(id : number){
@@ -119,8 +140,6 @@ export class TacheComponent implements OnInit{
     })
     this.route.navigate(['/list-availablity'])
   }*/
-
-
   selectedUserId: string; // Définissez le type de votre ID utilisateur ici
   onUserSelected() {
     console.log(this.selectedUserId); // Affiche l'ID de l'utilisateur sélectionné dans la console
@@ -191,7 +210,13 @@ export class TacheComponent implements OnInit{
     this.idTache = this.tache.idDto;
     this.dialogRef = this.dialog.open(this.affecteuser); // Vous devez remplacer ceci par le contenu de votre modal
   }
+  openModaladdtache(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.addtache); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  openModaldescription(): void {
+    this.idTache = this.tache.idDto;
+    this.dialogRef = this.dialog.open(this.description); // Vous devez remplacer ceci par le contenu de votre modal
+  }
+  
 }
-
-
-

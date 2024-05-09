@@ -6,9 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -20,10 +18,9 @@ import { MatListModule } from '@angular/material/list';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatIconModule,
+  
     ToastrModule.forRoot(),  
-    HttpClientModule,
-    MatCardModule,MatListModule
+    HttpClientModule
 
   ],
  

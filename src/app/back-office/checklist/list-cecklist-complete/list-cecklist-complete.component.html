@@ -1,0 +1,38 @@
+<div class="container mt-3">
+  <h2 class="mb-3">Liste des Checklist Complétées</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Titre Planning</th>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Titre Checklist</th>
+          <th>Description Checklist</th>
+          <th>Outillage</th>
+          <th>Matricule Validation 1</th>
+          <th>Constats</th>
+          <th>Reste à faire</th>
+          <th>Type Zone</th>
+          <!-- Ajoutez d'autres colonnes si nécessaire -->
+        </tr>
+      </thead>
+      <tbody *ngFor="let checklist of checklistCompletees">
+        <tr>
+          <td>{{ checklist.titrePlanning }}</td>
+          <td>{{ checklist.debut }}</td>
+          <td>{{ checklist.fin }}</td>
+          <td>{{ checklist.titreChecklist }}</td>
+          <td>{{ checklist.descriptionChecklist }}</td>
+          <td>{{ checklist.outillage }}</td>
+          <td>{{ checklist.matriculeValidation1 }}</td>
+          <td>{{ checklist.constats }}</td>
+          <td>{{ checklist.resteAfaire }}</td>
+          <td>{{ checklist.typeZone }}</td>
+          <!-- Assurez-vous d'ajuster les noms des propriétés en fonction de votre modèle ChecklistCompletee -->
+          <!-- Ajoutez d'autres colonnes si nécessaire -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

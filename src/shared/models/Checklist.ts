@@ -1,3 +1,5 @@
+import { PlanningChangementSerie } from "./PlanningChangementSerie "
+
 export class Checklist {
     idDto:number
     titreDto:string
@@ -13,6 +15,8 @@ export class Checklist {
     familleDto:number
     selectedFamilleId: number;
     selectedTesteurId: number;
+    planningDto:PlanningChangementSerie;
+
 
 }
 

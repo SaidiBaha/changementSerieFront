@@ -1,0 +1,220 @@
+.button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #257bc8;
+    background-color: #257bc8;
+    border-radius: 20px; /* Rendre les coins ronds */
+  }
+  
+  .button, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .button .button__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #20384f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 20px 20px; /* Rendre le coin droit rond */
+  }
+  
+  .button .svg {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .button:hover {
+    background: #20384f;
+  }
+  
+  .button:hover .button__text {
+    color: transparent;
+  }
+  
+  .button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button:active .button__icon {
+    background-color: #3d2e86;
+  }
+  
+  .button:active {
+    border: 1px solid #000e04;
+  }
+  .bookmarkBtn {
+    width: 160px;
+    height: 80px;
+    border-radius: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+  }
+   
+  .icon {
+    border-radius: 1px;
+  }
+  
+  .text {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    transition-duration: 0.3s;
+    font-size: 1.04em;
+  }
+  
+  .bookmarkBtn:hover .IconContainer {
+    width: 90px;
+    transition-duration: 0.3s;
+  }
+  
+  .bookmarkBtn:hover .text {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: 0.3s;
+  }
+  
+  .bookmarkBtn:active {
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.03)
+  }
+  
+  .title {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  
+  .sub {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .sub.mb {
+    margin-bottom: 1px;
+  }
+  
+  .sub a {
+    color: rgb(23, 111, 211);
+  }
+  
+  .avatar {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(23, 111, 211);
+    border-radius: 50%;
+    align-self: center;
+    padding: 6px;
+    cursor: pointer;
+    box-shadow: 12.5px 12.5px 10px rgba(0, 0, 0, 0.015),100px 100px 80px rgba(0, 0, 0, 0.03);
+  }
+  
+  .form button {
+    align-self: flex-end;
+  }
+  
+  .input, button {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 16px 10px;
+    background-color: rgb(247, 243, 243);
+    border-radius: 10px;
+    box-shadow: 12.5px 12.5px 10px rgba(0, 0, 0, 0.015),100px 100px 80px rgba(0, 0, 0, 0.03);
+  }
+  
+  button {
+    margin-top: 12px;
+    background-color: rgb(23, 111, 211);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .input:focus {
+    border: 1px solid rgb(23, 111, 211);
+  }
+  
+  #file {
+    display: none;
+  }
+  .custom-button {
+    width: 30%;
+    align-self: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: green; /* Changez cette couleur selon vos préférences */
+  }
+  .cancelbutton{
+    width: 30%;
+    align-self: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelbutton:hover {
+    background-color: red; /* Changez cette couleur selon vos préférences */
+  }
+  .custom-button {
+    width: 30%;
+    align-self: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: green; /* Changez cette couleur selon vos préférences */
+  }
+  .cancelbutton{
+    width: 30%;
+    align-self: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelbutton:hover {
+    background-color: red; /* Changez cette couleur selon vos préférences */
+  }
+  .action-buttons {
+    display: flex;
+    align-items: center; /* Pour aligner les boutons verticalement au centre */
+  }
+  

@@ -10,9 +10,8 @@ import { User } from "../models/User";
 export class AuthentificationService {
 
     private BASE_URI = 'springMVC/api/v1/auth';
-    private FORGOT_PASSWORD_URI = `springMVC/forgotPassword`;
-    currentUser: any = null;
     private baseUrl='springMVC/api/v1/users';
+    currentUser: any = null;
 
     constructor(private httpRepositoryService: HttpRepositoryService) { }
 
@@ -75,7 +74,6 @@ export class AuthentificationService {
 
   private lastName: string = '';  // Ajoutez cette ligne pour stocker le nom de l'utilisateur
   private email: string = '';
-
   // Autres méthodes et propriétés du service...
 
   setLastName(lastName: string): void {
@@ -85,7 +83,6 @@ export class AuthentificationService {
   getLastName(): string {
     return this.lastName;
   }
-  
 
  //hedhi pour Remplacez  par l'email de l'utilisateur connecté
 
@@ -99,42 +96,20 @@ export class AuthentificationService {
   getEmail(): string | null {
     return this.user ? this.user.username : null;
   }
-  /*Oumaima's work*/
+
+
+
+
+
+
+// hehdi lezem nfasakhha
+//lazem nikhdem b token ki nji nbadel f pasw
   getConnectedUser() {
     // Supposons que vous stockez les informations de l'utilisateur connecté dans le localStorage après l'authentification
     // Vous pouvez ajuster cette méthode selon la manière dont vous stockez et récupérez les informations de l'utilisateur dans votre application
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     return connectedUser;
   }
-  
-  sendOTP(email: string): Observable<any> {
-    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/verifyMail2/${email}`,{} );
-  }
 
-  // verifyOTP(otp: number, email: string): Observable<any> {
-  //   return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/verifyOtp/${otp}/${email}`, { otp,email });
-  // }
 
-  verifyOTP(otp: number, email: string): Observable<any> {
-    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/verifyOtp2/${otp}/${email}`, {});
-  }
-  
- /* changePassword(newPassword: string, repeatPassword: string, email: string): Observable<any> {
-    const body = {
-      newPassword: newPassword,
-      repeatPassword: repeatPassword // Ajouter repeatPassword dans le corps de la requête
-    };
-    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/changePassword/${email}`, body);
-  }*/
-
-  changePassword(changePassword: any, email: string): Observable<any> {
-    const body = {
-      password: changePassword.password,
-      repeatPassword: changePassword.repeatPassword
-    };
-    return this.httpRepositoryService.post<any>(`${this.FORGOT_PASSWORD_URI}/changePassword/${email}`, body);
-  }
-  getAllAdminUsers() {
-    return this.httpRepositoryService.get<User[]>(`${this.baseUrl}/admin-users`);
-  }
 }

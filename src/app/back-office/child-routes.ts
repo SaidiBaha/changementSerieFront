@@ -19,12 +19,9 @@ export const childRoutes = [
   loadChildren: () => import('./planning-changement/planning-changement.module').then(m => m.PlanningChangementModule),
   data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
   },
-  {path: 'profil',
-  loadChildren: () => import('./profil/profil.module').then(m => m.ProfilModule),
-  data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
-  },
-  {path: 'reclamation',
-  loadChildren: () => import('./Reclamation/reclamation.module').then(m => m.ReclamationModule),
+  
+  {path: 'utilisateur',
+  loadChildren: () => import('./utilisateur/utilisateur.module').then(m => m.UtilisateurModule),
   data: { icon: '/assets/icons/dashboard.png', text: 'Dashboard', show: false }
   }
 ];

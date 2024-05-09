@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
-import Swal from 'sweetalert2';
-import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +13,6 @@ export class LoginComponent {
     password: ''
   };
   errorMessage: string = '';  // Ajoutez cette ligne pour stocker le message d'erreur
-  dialog: any;
 
   
   constructor(private authentificationService: AuthentificationService,
@@ -82,15 +78,10 @@ export class LoginComponent {
       } else {
         this.errorMessage = 'Une erreur est survenue lors de l\'authentification.';
       }
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Authentication failed. Please check your credentials.",
-        
-      });
     }
   });
   }
+
   
 
 }

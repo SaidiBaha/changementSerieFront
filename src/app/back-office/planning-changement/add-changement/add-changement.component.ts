@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Famille } from 'src/shared/models/Famille';
 import { PlanningChangementSerie } from 'src/shared/models/PlanningChangementSerie ';
 import { Produit } from 'src/shared/models/Produit';
@@ -23,7 +24,8 @@ export class AddChangementComponent implements OnInit {
   constructor(
     private planningService: PlanningChangementSerieService,
     private familleService: FamilleService,
-    private produitService: ProduitService
+    private produitService: ProduitService,
+    private toastr: ToastrService 
   ) {
     this.planningForm = new FormGroup({
       titreDto: new FormControl('', Validators.required),
@@ -52,7 +54,9 @@ export class AddChangementComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+
+  // fonction hedhi matraja3li chy ki ybda famech model de checklist
+ /* onSubmit() {
     if (this.planningForm.valid) {
       const planning: PlanningChangementSerie = this.planningForm.value;
       this.planningService.createPlanningWithFilteredChecklists(planning, this.selectedFamille, this.selectedProduit).subscribe(() => {
@@ -60,6 +64,20 @@ export class AddChangementComponent implements OnInit {
         this.planningForm.reset();
       });
     }
+  }*/
+
+  onSubmit() {
+    if (this.planningForm.valid) {
+      const planning: PlanningChangementSerie = this.planningForm.value;
+      this.planningService.createPlanningWithFilteredChecklists(planning, this.selectedFamille, this.selectedProduit).subscribe(() => {
+        this.toastr.success('Planning created successfully!', 'Success'); // Afficher un message de succès
+        this.planningForm.reset();
+      });
+    } else {
+      this.toastr.error('Veuillez remplir tous les champs avant de soumettre le formulaire.', 'Erreur'); // Afficher un message d'erreur
+    }
   }
+
+
 
 }

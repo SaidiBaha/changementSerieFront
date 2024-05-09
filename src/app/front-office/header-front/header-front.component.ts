@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-front.component.css']
 })
 export class HeaderFrontComponent {
+
+
   scrollToSection(sectionId: string) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -16,4 +18,5 @@ export class HeaderFrontComponent {
     var footer = document.getElementById('footer');
     footer.scrollIntoView({ behavior: 'smooth' });
 }
+
 }

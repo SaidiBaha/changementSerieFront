@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
 import { PlanningChangementSerie } from '../models/PlanningChangementSerie ';
 import { PlanningInfoDto } from '../models/PlanningInfo';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -54,6 +55,10 @@ export class PlanningChangementSerieService {
 
   getPlanningInfo(id: number) {
     return this.httpRepositoryService.get<PlanningInfoDto>(`${this.BASE_URI}/${id}/info`);
+  }
+
+  getChecklistIdsByPlanningId(planningId: number): Observable<number[]> {
+    return this.httpRepositoryService.get<number[]>(`${this.BASE_URI}/${planningId}/checklists`);
   }
   
 }

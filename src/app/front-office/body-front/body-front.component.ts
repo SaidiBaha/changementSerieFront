@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-body-front',
@@ -18,6 +18,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
   ]
 })
 export class BodyFrontComponent implements OnInit{
+
   pictures: { url: string; alt: string }[] = [
     { url: 'assets/indust.png', alt: 'Image' },
     { url: 'assets/sag1.png', alt: 'Image 2' },
@@ -33,7 +34,7 @@ export class BodyFrontComponent implements OnInit{
   currentIndex = 0;
   translateValue = '0';
 
-  ngOnInit() {
+  ngOnInit(): void {
     setInterval(() => {
       this.nextSlide();
     }, 2000); // Change slide every 3 seconds (adjust as needed)
@@ -51,4 +52,5 @@ export class BodyFrontComponent implements OnInit{
   toggleList() {
     this.showList = !this.showList;
   }
+
 }

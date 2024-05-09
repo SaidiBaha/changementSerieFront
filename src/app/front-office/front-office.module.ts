@@ -5,14 +5,11 @@ import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-
 import { HomepageFrontComponent } from './homepage-front/homepage-front.component';
 import { HeaderFrontComponent } from './header-front/header-front.component';
-import { BodyFrontComponent } from './body-front/body-front.component';
-import { FooterFrontComponent } from './footer-front/footer-front.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
-import { ChangeForgotPasswordComponent } from './change-forgot-password/change-forgot-password.component';
+import { FooterFrontComponent } from './footer-front/footer-front.component';
+import { BodyFrontComponent } from './body-front/body-front.component';
 
 
 
@@ -20,23 +17,19 @@ import { ChangeForgotPasswordComponent } from './change-forgot-password/change-f
   declarations: [
     LoginComponent,
     RegisterComponent,
-   
     HomepageFrontComponent,
     HeaderFrontComponent,
-    BodyFrontComponent,
-    FooterFrontComponent,
     ForgotPasswordComponent,
-    VerifyOtpComponent,
-    ChangeForgotPasswordComponent,
-  
-  
+    FooterFrontComponent,
+    BodyFrontComponent,
+    
+   
    
   ],
   imports: [
     CommonModule,
     FormsModule,
     FrontOfficeRoutingModule
-  ],
-
+  ]
 })
 export class FrontOfficeModule { }

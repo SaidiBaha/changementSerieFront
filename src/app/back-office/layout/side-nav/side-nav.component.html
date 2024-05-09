@@ -1,98 +1,96 @@
+
+
 <mat-nav-list class="global-nav">
   <mat-accordion class="example-headers-align" multi >
 
     <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
+      <mat-expansion-panel-header >
+        <mat-panel-title style="color: #194a7e;">
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;">person</mat-icon>
            Utilisateur
         </mat-panel-title>
       </mat-expansion-panel-header>
+      
 
-      <a mat-list-item  routerLink="profil/profile">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a mat-list-item style="margin-left: 5%;" routerLink="utilisateur/userProfile">
+        <mat-icon class="sidenav-icon">account_circle</mat-icon>
        Profil
       </a>
-      <a mat-list-item  routerLink="reclamation/listRec">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a mat-list-item style="margin-left: 5%;" routerLink="administration/listRec">
+        <mat-icon class="sidenav-icon">report_problem</mat-icon>
        Réclamation
       </a>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
+        <mat-panel-title style="color: #194a7e;">
           <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
          Administration
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <a mat-list-item  routerLink="administration/admin">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a mat-list-item  routerLink="administration/admin" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">group</mat-icon>
         Utilisateurs
       </a>
-      <a mat-list-item  routerLink="administration/projet">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a mat-list-item  routerLink="administration/projet" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">assignment</mat-icon>
         Les Projets 
       </a>
-      <!-- <a mat-list-item  routerLink="administration/tache">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        Les Taches 
-      </a> -->
-      <a mat-list-item  routerLink="administration/changement">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        les changements 
+      <a mat-list-item  routerLink="administration/changement" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">sync_alt</mat-icon>
+        Les changements 
       </a>
+    
       
     </mat-expansion-panel>
 
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
-         management
+        <mat-panel-title style="color: #194a7e;">
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >assignment</mat-icon>
+          Directions
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <a mat-list-item  routerLink="management/famille">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        famille
+      <a mat-list-item  routerLink="management/famille" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">people</mat-icon>
+        Familles
       </a>
-      <a mat-list-item  routerLink="management/produit">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        produit
+      <a mat-list-item  routerLink="management/produit" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">router</mat-icon>
+        Produits
       </a>
-      <a mat-list-item  routerLink="management/testeur" >
-        <mat-icon class="sidenav-icon"></mat-icon>
-        testeur
+      <a mat-list-item  routerLink="management/testeur" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">engineering</mat-icon>
+        Testeurs
       </a>
     </mat-expansion-panel>
 
 
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
-         Planning de Changement
-        </mat-panel-title>
+        <mat-panel-title style="color: #194a7e;">
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >event_note</mat-icon>
+          Planification du changements        </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <a mat-list-item  routerLink="planning-changement/planning">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a mat-list-item  routerLink="planning-changement/planning" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">list</mat-icon>
         Liste des changements
       </a>
-      <a mat-list-item  routerLink="planning-changement/addPlanning">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        Ajouter une changement
+      <a mat-list-item  routerLink="planning-changement/addPlanning" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">add</mat-icon>
+        Ajouter un changement
       </a>
-      <a mat-list-item  routerLink="planning-changement/changementDetails">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        list des changement
+      <a mat-list-item  routerLink="planning-changement/changementDetails" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">list_alt</mat-icon>
+        List des changements à faire
       </a>
-      <a mat-list-item  routerLink="planning-changement/changementInfo">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        info sur les changements 
-      </a>
+      <a mat-list-item  routerLink="planning-changement/changementInfo" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">info</mat-icon>
+Informations sur les changements      </a>
       
     </mat-expansion-panel>
 
@@ -100,19 +98,23 @@
 
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >home</mat-icon>
-         checklist
+        <mat-panel-title style="color: #194a7e;">
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >checklist</mat-icon>
+         Checklists
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <a mat-list-item  routerLink="checklist/listcheck">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a style="margin-left: 5%;" mat-list-item  routerLink="checklist/listcheck">
+        <mat-icon class="sidenav-icon">list_alt</mat-icon>
         Liste des checklists
       </a>
-      <a mat-list-item  routerLink="checklist/addCheck">
-        <mat-icon class="sidenav-icon"></mat-icon>
+      <a mat-list-item  routerLink="checklist/addCheck" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">playlist_add</mat-icon>
         Ajouter une Checklist
+      </a>
+      <a mat-list-item  routerLink="checklist/listcheckComplete">
+        <mat-icon class="sidenav-icon"></mat-icon>
+       liste des checklistCompelete
       </a>
       
     </mat-expansion-panel>

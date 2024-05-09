@@ -1,45 +1,45 @@
 <div class="carousel-container" #carouselContainer>
-  <div class="carousel-wrapper" [style.transform]="'translateX(' + translateValue + ')'" [@carouselAnimation]="{}">
-    <div class="carousel-slide" *ngFor="let picture of pictures">
-      <img [src]="picture.url" >
+    <div class="carousel-wrapper" [style.transform]="'translateX(' + translateValue + ')'" [@carouselAnimation]="{}">
+      <div class="carousel-slide" *ngFor="let picture of pictures">
+        <img [src]="picture.url" >
+      </div>
     </div>
   </div>
-</div>
-
-
-<section id="nos-services">
-
-<div class="service-title" id="nos-services">
-  <h2>Nos Services</h2>
-</div>
-
-<div class="service-container">
-  <div class="service-tile" style="background-image: url('assets/energie.png');">
-    <div class="service-icon">
-      <i class="material-icons">offline_bolt</i> <!-- Icône du "offline Bolt" -->
-    </div>
-    <div class="service-text">Energie & Télecom</div>
-    <ul class="service-list" [ngClass]="{'show': showList}">
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-    </ul>
-</div>
-  <div class="service-tile" style="background-image: url('assets/telecom.png');">
-    <div class="service-icon">
-      <i class="material-icons">hub</i> 
-
-        </div>Solution audio & video </div>
-
-  <div class="service-tile" style="background-image: url('assets/broadband.png');">
-    <div class="service-icon">
-      <i class="material-icons">router</i> 
-          </div>Solution Broadband</div>
   
-</div>
-
-</section>
-
-
-
-
+  
+  <section id="nos-services">
+  
+  <div class="service-title" id="nos-services">
+    <h2>Nos Services</h2>
+  </div>
+  
+  <div class="service-container">
+    <div class="service-tile" style="background-image: url('assets/energie.png');">
+      <div class="service-icon">
+        <i class="material-icons">offline_bolt</i> <!-- Icône du "offline Bolt" -->
+      </div>
+      <div class="service-text">Energie & Télecom</div>
+      <ul class="service-list" [ngClass]="{'show': showList}">
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+      </ul>
+  </div>
+    <div class="service-tile" style="background-image: url('assets/telecom.png');">
+      <div class="service-icon">
+        <i class="material-icons">hub</i> 
+  
+          </div>Solution audio & video </div>
+  
+    <div class="service-tile" style="background-image: url('assets/broadband.png');">
+      <div class="service-icon">
+        <i class="material-icons">router</i> 
+            </div>Solution Broadband</div>
+    
+  </div>
+  
+  </section>
+  
+  
+  
+  
