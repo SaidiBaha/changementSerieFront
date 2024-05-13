@@ -75,7 +75,10 @@ userId: number;
     });
   }
 
-  createTache(tacheData: Tache, projetId: number): void {
+  createTache(tacheData: Tache): void {
+    const projetId = this.route.snapshot.params['projetId'];
+    console.log("test");
+    console.log(projetId);
     this.tacheService.saveTache(tacheData, projetId).subscribe(data => {
       this.taches.push(data);
     }, error => {
@@ -100,21 +103,23 @@ userId: number;
   //     console.log('Tache status updated successfully:', id, tacheData);
   //   });
   // }
+  
   updateTacheStatus() {
-  this.tacheService.updateTacheStatus(this.idTache,this.tache).subscribe((response)=>{
-    // this.tacheService.getTacheById(this.id).subscribe(
-    //   res=>{
-    //     console.log("res",res);
-    //    // this.taches=res
-  
-    //   }
-    // )
-    this.loadTaches();
+    console.log("test")
+    this.tacheService.updateTacheStatus(this.idTache,this.tache).subscribe((response)=>{
+      // this.tacheService.getTacheById(this.id).subscribe(
+      //   res=>{
+      //     console.log("res",res);
+      //    // this.taches=res
     
-  })
+      //   }
+      // )
+      this.loadTaches();
+      
+    })
+    
+    }
   
-  }
-
 
 
   getId(id : number){

@@ -36,5 +36,11 @@ export class UserService {
   changePassword(request: ChangePasswordRequest,connectedUser: any): Observable<any> {
     return this.httpRepositoryService.patch(`${this.BASE_URI}/changePassword`, { request, connectedUser } );
   }
+
+
+  getAllAdminUsers() {
+    return this.httpRepositoryService.get<User[]>(`${this.BASE_URI}/admin-users`);
+  }
+
   
 }

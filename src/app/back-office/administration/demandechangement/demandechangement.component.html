@@ -1,89 +1,92 @@
 <div class="container mt-3">
-  <h2 class="mb-3">Mes Projet</h2>
-  <div class="text-end mb-3">
+    <h2 class="mb-3">Mes Projet</h2>
+    <div class="text-end mb-3">
+   
+      <button type="button" class="btn btn-primary mb-3" (click)="openModal()">Ajouter une Demmande </button>
  
-    <button type="button" class="btn btn-primary mb-3" (click)="openModal()">Ajouter une Demmande </button>
-
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+        
+          <th>Titre</th>
+          <th>Date Début</th>
+          <th>Date Fin</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let demande of demandes">
+         
+          <td>{{ demande.titreDto }}</td>
+          <td>{{ demande.debutDto }}</td>
+          <td>{{ demande.finDto }}</td>
+          <td>{{ demande.descriptionDto }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="openModal(demande)">Modifier</button>
+            <button type="button" class="btn btn-danger" (click)="deleteDemande(demande.idDto)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="table-responsive">
-    <table class="table table-striped">
-    <thead>
-      <tr>
-      
-        <th>Titre</th>
-        <th>Date Début</th>
-        <th>Date Fin</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let demande of demandes">
-       
-        <td>{{ demande.titreDto }}</td>
-        <td>{{ demande.debutDto }}</td>
-        <td>{{ demande.finDto }}</td>
-        <td>{{ demande.descriptionDto }}</td>
-        <td>
-          <button type="button" class="btn btn-info" (click)="openModal(demande)">Modifier</button>
-          <button type="button" class="btn btn-danger" (click)="deleteDemande(demande.idDto)">Supprimer</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
 
-
-          
-<app-modal [title]="'Ajouter une nouvelle Projet'"  #dialog>
-  <div class="modal-body">
-    <form novalidate>
-      <div class="row">
-          <div class="col-md-12 grid-margin">
-              <div class="card rounded">
-                  <div class="card-header">
-                      <h4 class="card-title">ADD User</h4>
-                  </div>
-                  <div class="card-body">
-                    
-                    <div class="form-group text-center">
-                      <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreDto"
-                          [(ngModel)]="demande.titreDto" placeholder="titre" required #titleInput>
-                  </div>
-
-                    <div class="form-group text-center">
-                        <input type="date" class="form-control form-control-sm w-75 mx-auto" name="debutDto"
-                            [(ngModel)]="demande.debutDto" placeholder="debut" required #titleInput>
-                    </div>
-                    <div class="form-group text-center">
-                      <input type="date" class="form-control form-control-sm w-75 mx-auto" name="finDto"
-                          [(ngModel)]="demande.finDto" placeholder="fin" required #titleInput>
-                  </div>
-                    <div class="form-group text-center">
-                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="descriptionDto"
-                            [(ngModel)]="demande.descriptionDto" placeholder="description" required #titleInput>
-                    </div>
-
-                    
 
             
+  <app-modal [title]="'Ajouter une nouvelle Projet'"  #dialog>
+    <div class="modal-body">
+      <form novalidate>
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card rounded">
+                    <div class="card-header">
+                        <h4 class="card-title">ADD User</h4>
+                    </div>
+                    <div class="card-body">
+                      
+                      <div class="form-group text-center">
+                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreDto"
+                            [(ngModel)]="demande.titreDto" placeholder="titre" required #titleInput>
+                    </div>
+
+                      <div class="form-group text-center">
+                          <input type="date" class="form-control form-control-sm w-75 mx-auto" name="debutDto"
+                              [(ngModel)]="demande.debutDto" placeholder="debut" required #titleInput>
+                      </div>
+                      <div class="form-group text-center">
+                        <input type="date" class="form-control form-control-sm w-75 mx-auto" name="finDto"
+                            [(ngModel)]="demande.finDto" placeholder="fin" required #titleInput>
+                    </div>
+                      <div class="form-group text-center">
+                          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="descriptionDto"
+                              [(ngModel)]="demande.descriptionDto" placeholder="description" required #titleInput>
+                      </div>
+
+                      
+
+              
 
 
 
-                 
+                   
 
-        
-  
-                      <div class="form-group text-center"> 
-                         
-                        <button type="submit" class="btn btn-danger" (click)="submitDemande()">Submit</button>
-                        <!-- <button type="submit" class="btn btn-danger" aria-label="Close"   (click)="  createUser()">Submit</button> -->
-                        </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </form>
-  </div>
-</app-modal>
+          
+    
+                        <div class="form-group text-center"> 
+                           
+                          <button type="submit" class="btn btn-danger" (click)="submitDemande()">Submit</button>
+                          <!-- <button type="submit" class="btn btn-danger" aria-label="Close"   (click)="  createUser()">Submit</button> -->
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+  </app-modal>
+
+
+

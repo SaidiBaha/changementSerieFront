@@ -55,4 +55,3 @@ export class TacheService {
     return this.httpRepositoryService.get<Tache[]>(`${this.baseUrl}/all/${projetId}`);
   }
 }
-

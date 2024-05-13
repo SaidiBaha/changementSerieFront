@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
-import { Reclamation } from '../models/Reclamation';
+import { Reclamation } from '../models/Reclamation ';
+
 
 
 

@@ -2,10 +2,12 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {  ActivatedRoute, Router } from '@angular/router';
-import { Reclamation } from 'src/shared/models/Reclamation';
+import { Reclamation } from 'src/shared/models/Reclamation ';
+
 import { User } from 'src/shared/models/User';
 import { ReclamationService } from 'src/shared/services/Reclamation.service';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
+import { UserService } from 'src/shared/services/user.service';
 
 @Component({
   selector: 'app-list-reclamation',
@@ -27,8 +29,9 @@ export class ListReclamationComponent implements OnInit {
   users:User[]=[];
   
 
-  constructor(private reclamationService: ReclamationService,
+  constructor(private userService: UserService,
               private dialog: MatDialog,
+              private reclamationService: ReclamationService,
               private authService:AuthentificationService
               ) {
                 this.reclamationForm= new FormGroup({
@@ -60,7 +63,7 @@ export class ListReclamationComponent implements OnInit {
    
   // }
   loadUsers() {
-    this.authService.getAllAdminUsers().subscribe(users => {
+    this.userService.getAllAdminUsers().subscribe(users => {
       this.users = users;
     });
   }

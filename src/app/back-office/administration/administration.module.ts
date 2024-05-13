@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TacheComponent } from './tache/tache.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
         ProjectComponent,
         DemandechangementComponent,
         TacheComponent,
+        ListReclamationComponent
     ],
     imports: [
         CommonModule,

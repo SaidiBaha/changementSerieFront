@@ -22,7 +22,6 @@ import { Projet } from "../models/Projet";
   getProjetById(id: number) {
     return this.httpRepositoryService.get<Projet>(`${this.BASE_URI}/${id}`);
   }
-  
 
   getAllProjets() {
     return this.httpRepositoryService.get<Projet[]>(`${this.BASE_URI}/all`);
