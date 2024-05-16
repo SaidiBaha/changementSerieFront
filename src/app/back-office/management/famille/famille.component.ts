@@ -117,4 +117,9 @@ export class FamilleComponent implements OnInit{
       this.createFamille(this.famille);
     }
   }
+  rechercher(nomFamille: string): void {
+    this.familleService.rechercherFamilles(nomFamille)
+      .subscribe(familles => this.familles = familles);
+  }
+
 }
