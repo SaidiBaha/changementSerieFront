@@ -16,8 +16,8 @@ export class ProduitService {
 
   
 
-  createProduit(produit: Produit) {
-      return this.httpRepositoryService.post<Produit>(`${this.BASE_URI}/create`, produit);
+  createProduit(produit: Produit,checklistId:number) {
+      return this.httpRepositoryService.post<Produit>(`${this.BASE_URI}/create/${checklistId}`, produit);
     }
   
 getProduitById(id: number) {
