@@ -104,5 +104,12 @@ openNotificationDetails(notification: Notif) {
       this.loadNotifications(); // Recharger les notifications après avoir marqué une comme lue
     });
   }
+  //Oumaima
+  logOutUser() {
+    this.authentificationService.logOutUser();
+   
+  }
+
+
 
 }

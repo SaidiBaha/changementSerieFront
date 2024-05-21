@@ -2,6 +2,7 @@
   <div class="cardtable" style="height: 500px;">
     <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Familles</h2>
     <div class="text-end mb-3">
+      
 
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip"
         data-placement="top" title="Ajouter famille" (click)="openModal()">
@@ -88,7 +89,7 @@
 
       <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
         <label style="margin-bottom: 5px;">Nom de la famille</label>
-        <input type="text" class="form-control form-control-sm" formControlName="nomFamilleDto" placeholder="Nom de la famille" required [(ngModel)]="famille.nomFamilleDto">
+        <input type="text"  class="form-control form-control-sm" formControlName="nomFamilleDto" placeholder="Nom de la famille" required [(ngModel)]="famille.nomFamilleDto" >
       </div>
 
      

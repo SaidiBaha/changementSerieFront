@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { HttpRepositoryService } from "src/core/httpRepository.service";
 import { User } from "../models/User";
+import { Router } from "@angular/router";
 
 
 @Injectable({
@@ -10,10 +11,10 @@ import { User } from "../models/User";
 export class AuthentificationService {
 
     private BASE_URI = 'springMVC/api/v1/auth';
-    private baseUrl='springMVC/api/v1/users';
+   
     currentUser: any = null;
 
-    constructor(private httpRepositoryService: HttpRepositoryService) { }
+    constructor(private httpRepositoryService: HttpRepositoryService,private router:Router) { }
 
 
     register(data: any): Observable<any> {
@@ -111,5 +112,10 @@ export class AuthentificationService {
     return connectedUser;
   }
 
+//Oumaima 
+logOutUser(){
+ localStorage.removeItem('token') ;
+ this.router.navigate(['']);
 
+}
 }

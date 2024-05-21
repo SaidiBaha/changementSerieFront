@@ -77,6 +77,7 @@ export class LoginComponent {
         this.errorMessage = error.error.errors[0];
       } else {
         this.errorMessage = 'Une erreur est survenue lors de l\'authentification.';
+       
       }
     }
   });

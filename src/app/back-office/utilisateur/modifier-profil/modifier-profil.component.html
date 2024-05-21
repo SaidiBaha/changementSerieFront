@@ -1,0 +1,29 @@
+<div class="row m-3">
+    <div class="card col-md-4 text-center mr-3">
+      <div class="col">
+        <div class="mb-3 mt-3">
+          <img src="assets/personne.png" class="rounded-circle" width="200px" height="200px"/>
+        </div>
+        <div class="mb-3" *ngIf="user">
+          <h2>{{user.firstNameDto}} {{user.lastNameDto}} </h2>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-7">
+      <div style="display: flex; justify-content: center;">
+        <form style="width: 300px;">
+          <input type="text" [(ngModel)]="user.firstNameDto" name="firstName" placeholder="Prénom" required><br><br>
+          <input type="text" [(ngModel)]="user.lastNameDto" name="lastName" placeholder="Nom" required><br><br>
+          <input type="email" [(ngModel)]="user.emailDto" name="email" placeholder="Email" required><br><br>
+          <input type="text" [(ngModel)]="user.matriculeDto" name="matricule" placeholder="Matricule" required><br><br>
+          <button class="buttonAdd" (click)="updateUser()"> 
+            <span mat-raised-button color="primary">
+              <mat-icon style="width: fit-content;">save</mat-icon>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,6 +1,6 @@
 
   
-  <div class="register-container">
+  <!-- <div class="register-container">
     <div class="register-content">
       <h2>Créer un compte</h2>
       <form (ngSubmit)="register()">
@@ -8,8 +8,41 @@
         <input type="text" [(ngModel)]="user.lastname" name="lastName" placeholder="Nom" required>
         <input type="email" [(ngModel)]="user.email" name="email" placeholder="Email" required>
         <input type="password" [(ngModel)]="user.password" name="password" placeholder="Mot de passe" required>
-        <button type="submit" class="register-button">S'inscrire</button>
+        <button type="submit" class="register-button">S'inscrire</button> -->
     <!--    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>  -->
+      <!-- </form>
+      <p class="login-link">Vous avez déjà un compte? <a href="/login">Connectez-vous</a></p>
+    </div>
+  </div>
+  <div *ngIf="registrationSuccess" class="notification success">
+    Inscription réussie ! Bienvenue à bord.
+  </div>
+   -->
+   <div class="register-container">
+    <div class="register-content">
+      <h2>Créer un compte</h2>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <input type="text" [(ngModel)]="user.firstname" name="firstName" placeholder="Prénom" required>
+        <div *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)" class="error-message">
+          Prénom requis
+        </div>
+        
+        <input type="text" [(ngModel)]="user.lastname" name="lastName" placeholder="Nom" required>
+        <div *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)" class="error-message">
+          Nom requis
+        </div>
+        
+        <input type="email" [(ngModel)]="user.email" name="email" placeholder="Email" required email>
+        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="error-message">
+          Email invalide
+        </div>
+        
+        <input type="password" [(ngModel)]="user.password" name="password" placeholder="Mot de passe" required minlength="8">
+        <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="error-message">
+          Mot de passe requis (minimum 8 caractères)
+        </div>
+        
+        <button type="submit" class="register-button" [disabled]="registerForm.invalid">S'inscrire</button>
       </form>
       <p class="login-link">Vous avez déjà un compte? <a href="/login">Connectez-vous</a></p>
     </div>

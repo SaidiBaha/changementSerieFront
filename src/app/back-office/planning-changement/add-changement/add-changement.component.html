@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   
     <form [formGroup]="planningForm" (ngSubmit)="onSubmit()"class="form" style="width: 90%;">
       <h2>Ajouter un changement</h2>
@@ -39,4 +39,68 @@
   </div>
 
   
+   -->
+   <style>
+    .error-message {
+      color: red;
+    }
+  </style>
+  
+  <div class="container">
+    <form [formGroup]="planningForm" (ngSubmit)="onSubmit()" class="form" style="width: 90%;">
+      <h2>Ajouter un changement</h2>
+      <label for="titreDto">Titre</label>
+      <input type="text" class="input" id="titreDto" formControlName="titreDto">
+      <div *ngIf="planningForm.get('titreDto').invalid && planningForm.get('titreDto').touched" class="error-message">
+        Titre requis
+      </div>
+  
+      <label for="debutDto">Date de début</label>
+      <input type="datetime-local" class="input" id="debutDto" formControlName="debutDto">
+      <div *ngIf="planningForm.get('debutDto').invalid && planningForm.get('debutDto').touched" class="error-message">
+        Date de début requise
+      </div>
+  
+      <label for="finDto">Date de fin</label>
+      <input type="datetime-local" class="input" id="finDto" formControlName="finDto">
+      <div *ngIf="planningForm.get('finDto').invalid && planningForm.get('finDto').touched" class="error-message">
+        Date de fin requise
+      </div>
+  
+      <label for="descriptionDto">Description</label>
+      <textarea class="input" id="descriptionDto" formControlName="descriptionDto"></textarea>
+      <div *ngIf="planningForm.get('descriptionDto').invalid && planningForm.get('descriptionDto').touched" class="error-message">
+        Description requise
+      </div>
+  
+      <label for="nomFamille">Famille</label>
+      <select class="input" id="nomFamille" formControlName="nomFamille">
+        <option *ngFor="let famille of familles" [value]="famille.nomFamilleDto">{{famille.nomFamilleDto}}</option>
+      </select>
+      <div *ngIf="planningForm.get('nomFamille').invalid && planningForm.get('nomFamille').touched" class="error-message">
+        Famille requise
+      </div>
+  
+      <label for="nomProduit">Produit</label>
+      <select class="input" id="nomProduit" formControlName="nomProduit">
+        <option *ngFor="let produit of produits" [value]="produit.nomProduitDto">{{produit.nomProduitDto}}</option>
+      </select>
+      <div *ngIf="planningForm.get('nomProduit').invalid && planningForm.get('nomProduit').touched" class="error-message">
+        Produit requis
+      </div>
+  
+      <div class="action-buttons">
+        <button class="custom-button" style="width: 15%;align-self: center;margin-left: 70%;" data-toggle="tooltip" data-placement="top" title="Sauvgarder Changement">
+          <span>
+            <i class="fa fa-floppy-o"></i>
+          </span>
+        </button>
+        <button class="cancelbutton" style="width: 15%;align-self: center;margin-left: 3%;" data-toggle="tooltip" data-placement="top" title="Retour a la liste de checklist">
+          <span>
+            <i class="fa fa-times"></i> 
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
   

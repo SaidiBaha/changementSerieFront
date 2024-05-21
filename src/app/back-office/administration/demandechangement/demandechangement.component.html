@@ -1,5 +1,10 @@
+<style>
+  .error-message {
+    color: red;
+  }
+</style>
 <div class="container mt-3">
-    <h2 class="mb-3">Mes Projet</h2>
+    <h2 class="mb-3">Mes demandes</h2>
     <div class="text-end mb-3">
    
       <button type="button" class="btn btn-primary mb-3" (click)="openModal()">Ajouter une Demmande </button>
@@ -46,26 +51,35 @@
                         <h4 class="card-title">ADD User</h4>
                     </div>
                     <div class="card-body">
-                      
                       <div class="form-group text-center">
                         <input type="text" class="form-control form-control-sm w-75 mx-auto" name="titreDto"
-                            [(ngModel)]="demande.titreDto" placeholder="titre" required #titleInput>
-                    </div>
-
+                          [(ngModel)]="demande.titreDto" placeholder="titre" required #titreInput="ngModel">
+                        <div *ngIf="titreInput.invalid && (titreInput.dirty || titreInput.touched)" class="error-message">
+                          Titre requis
+                        </div>
+                      </div>
+        
                       <div class="form-group text-center">
-                          <input type="date" class="form-control form-control-sm w-75 mx-auto" name="debutDto"
-                              [(ngModel)]="demande.debutDto" placeholder="debut" required #titleInput>
+                        <input type="date" class="form-control form-control-sm w-75 mx-auto" name="debutDto"
+                          [(ngModel)]="demande.debutDto" placeholder="debut" required #debutInput="ngModel">
+                        <div *ngIf="debutInput.invalid && (debutInput.dirty || debutInput.touched)" class="error-message">
+                          Date de début requise
+                        </div>
                       </div>
                       <div class="form-group text-center">
                         <input type="date" class="form-control form-control-sm w-75 mx-auto" name="finDto"
-                            [(ngModel)]="demande.finDto" placeholder="fin" required #titleInput>
-                    </div>
-                      <div class="form-group text-center">
-                          <input type="text" class="form-control form-control-sm w-75 mx-auto" name="descriptionDto"
-                              [(ngModel)]="demande.descriptionDto" placeholder="description" required #titleInput>
+                          [(ngModel)]="demande.finDto" placeholder="fin" required #finInput="ngModel">
+                        <div *ngIf="finInput.invalid && (finInput.dirty || finInput.touched)" class="error-message">
+                          Date de fin requise
+                        </div>
                       </div>
-
-                      
+                      <div class="form-group text-center">
+                        <input type="text" class="form-control form-control-sm w-75 mx-auto" name="descriptionDto"
+                          [(ngModel)]="demande.descriptionDto" placeholder="description" required #descriptionInput="ngModel">
+                        <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)"
+                          class="error-message">
+                          Description requise
+                        </div></div>
 
               
 

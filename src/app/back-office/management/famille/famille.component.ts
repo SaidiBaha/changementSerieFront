@@ -19,7 +19,7 @@ export class FamilleComponent implements OnInit{
   familles: Famille[] = [];
   selectedFamille?: Famille;
   isEditMode = false;
-  idFamille!: number;
+  idFamille: number;
   famille: Famille = new Famille();
   familleGroup:FormGroup;
   dialogRef: MatDialogRef<any>;
@@ -56,6 +56,7 @@ export class FamilleComponent implements OnInit{
   }
 
   updateFamille(): void {
+    console.log(this.idFamille);
     this.familleService.updateFamilles(this.idFamille, this.famille).subscribe(() => {
       this.dialog.close();
       this.getAllFamilles();
@@ -111,6 +112,7 @@ export class FamilleComponent implements OnInit{
     this.dialogRef.close();
   }
   submitFamille() {
+    console.log(this.idFamille);
     if (this.isEditMode) {
       this.updateFamille();
     } else {

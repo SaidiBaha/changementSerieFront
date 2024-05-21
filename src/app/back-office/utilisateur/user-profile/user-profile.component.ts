@@ -38,5 +38,8 @@ export class UserProfileComponent  implements OnInit {
   modifierMotDePasse(): void {
     this.router.navigate(['/dashboard/utilisateur/changepsw']);
   }
+  modifierProfil(): void {
+    this.router.navigate(['/dashboard/utilisateur/modifierProfil']);
+  }
 
 }

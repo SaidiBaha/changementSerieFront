@@ -20,8 +20,11 @@ import { Component, OnInit } from '@angular/core';
 export class BodyFrontComponent implements OnInit{
 
   pictures: { url: string; alt: string }[] = [
+    { url: 'assets/sag.png', alt: 'Image01' },
+    { url: 'assets/testcopie.png', alt: 'Image0' },
+    { url: 'assets/test-main.jpg', alt: 'Image0' },
     { url: 'assets/indust.png', alt: 'Image' },
-    { url: 'assets/sag1.png', alt: 'Image 2' },
+    //{ url: 'assets/sag1.png', alt: 'Image 2' },
    
     { url: 'assets/sage2.png', alt: 'Image 3' },
     { url: 'assets/sage3.png', alt: 'Image 4' },

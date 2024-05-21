@@ -17,16 +17,24 @@
   <div class="login-wrapper">
     <div class="login-content"id="login">
       <div class="brand">
-        <a href="#">Soft UI Dashboard PRO</a>
+        <a href="#">Sagemcom</a>
       </div>
       <h2>Welcome back</h2>
       <p>Enter your email and password to sign in</p>
       <form (ngSubmit)="authenticate()" class="login-form">
         <div class="form-group">
-          <input type="email" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required>
+          <input type="email" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+            <div *ngIf="email.errors['required']">Email nécessaire.</div>
+            <div *ngIf="email.errors['email']">Invalide email format.</div>
+          </div>
         </div>
         <div class="form-group">
-          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required #password="ngModel">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+            <div *ngIf="password.errors['required']">Mot de passe nécessaire.</div>
+            
+          </div>
         </div>
         <div class="form-footer">
           <label class="checkbox-container">
@@ -35,7 +43,9 @@
             <span class="checkmark"></span>
           </label>
           <button type="submit" class="btn-signin">SIGN IN</button>
-          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <strong></strong> {{ errorMessage }}
+          </div>
         </div>
       </form>
       <div class="signup-link">
