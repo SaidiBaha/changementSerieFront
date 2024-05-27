@@ -13,6 +13,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { WelcomeCardComponent } from './layout/welcome-card/welcome-card.component';
 
 
 
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         LayoutComponent,
         SideNavComponent,
         TopNavComponent,
+        WelcomeCardComponent,
      
 
     ],

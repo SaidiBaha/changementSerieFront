@@ -21,13 +21,12 @@
             <span>{{ notification.message }}</span>
         </button>
     </ng-container> -->
-    <ng-container *ngFor="let notification of notifications">
-      <button mat-menu-item  (click)="openNotificationDetails(notification)">
-        <mat-icon *ngIf="!notification.read">email</mat-icon>
-        <mat-icon *ngIf="notification.read">drafts</mat-icon>
-        <span>{{ notification.message }}</span>
+    <ng-container *ngFor="let notification of notifications" style="border-radius: 20px; background: transparent;">
+      <button mat-menu-item (click)="openNotificationDetails(notification)">
+          <mat-icon [style.color]="'#0084ff'">{{ !notification.read ? 'email' : 'drafts' }}</mat-icon>
+          <span style="color: #083560;">{{ notification.message }}</span>
       </button>
-    </ng-container>
+  </ng-container>
 </mat-menu>
 
 

@@ -17,18 +17,21 @@ th, td {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .tableTitle{
-  margin-left: 3.5%;
+  width: 73%;
+  margin-left: 13.5%;
   margin-right: 3.5%;
 margin-top: 4%;
 margin-block-end: 2%;
 }
 
 .tableRespo{
+  width: 88%;
 margin-left: 6%;
 margin-right: 6%;
 margin-block-end: 2%;
 }
 .tableposage{
+width: 93%;
 margin-left: 3.5%;
 margin-right: 3.5%;
 margin-block-end: 2%;

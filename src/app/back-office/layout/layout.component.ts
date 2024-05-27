@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-layout',
@@ -11,7 +12,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   sideNavMode: 'side' | 'over' = 'side';
   toolBarHeight = 64;
   private readonly mediaWatcher: Subscription;
-  constructor(media: MediaObserver) {
+  constructor(private router: Router,media: MediaObserver) {
     this.mediaWatcher = media.asObservable().subscribe((changes) => {
       changes.forEach(change => {
         if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
@@ -32,7 +33,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit() { }
-
+  isDashboardRoute(): boolean {
+    return this.router.url === '/dashboard';
+  }
   ngOnDestroy(): void {
     this.mediaWatcher.unsubscribe();
   }

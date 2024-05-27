@@ -20,7 +20,7 @@ export class TesteurService {
   }
 
   getAllTesteurs() {
-      return this.httpRepositoryService.get<Testeur[]>(`${this.BASE_URI}`);
+      return this.httpRepositoryService.get<Testeur[]>(`${this.BASE_URI}/getAll`);
   }
 
   updateTesteur(id: number, testeurDto: Testeur) {

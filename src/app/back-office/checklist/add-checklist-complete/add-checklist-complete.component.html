@@ -5,7 +5,7 @@
     <tbody>
       <tr>
         <td style="width: 30%;text-align: center;"> <img src="assets/Capturesag.PNG" alt="logo" width="60%"
-            height="100%"></td>
+          height="100%"></td>
         <td
           style="background-color:#880404; color: #ffffff; font-family: Calibri, sans-serif; font-weight: bold; font-size: 22px;text-align: center;">
           {{ checklistVide.checklist.planningDto.titreDto }}</td>
@@ -72,10 +72,10 @@
 
   <table class="tableposage" >
     <thead>
-      <tr>
-        <th style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px">A vérifier</th>
+      <tr >
+        <th style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;width: 50%;">A vérifier</th>
 
-        <th>Posages</th>
+        <th style="text-align: center; font-family: Calibri, sans-serif;font-weight: bold; font-size: 17px;width: 50%;">Posages</th>
       </tr>
     </thead>
     <tbody>
@@ -84,7 +84,7 @@
 
         <td style="width: 100%;">
           <!-- Utiliser flexbox pour afficher les posages à côté -->
-          <div style="display: flex; flex-direction: row; width: 100%;">
+          <div style="display: flex; flex-direction: row;">
             <!-- Afficher chaque posage -->
             <div *ngFor="let posage of ligne.posagesDto" style="width: 33.33%; margin-right: 10px;"> <!-- Diviser en trois colonnes si vous avez trois éléments -->
               <!-- Afficher le posage -->
