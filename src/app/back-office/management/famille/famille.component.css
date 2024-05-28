@@ -803,6 +803,8 @@ border-radius: 20px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
   overflow: hidden;
+  width: 50px;
+  height: 50px;
 }
 
 .buttonAdd::before {
@@ -810,13 +812,13 @@ border-radius: 20px;
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 50px;
+  width: auto;
   height: 50px;
   border-radius: inherit;
   scale: 0;
   z-index: -1;
   background-color:  #257bc8;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 3s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .buttonAdd:hover::before {
@@ -825,7 +827,7 @@ border-radius: 20px;
 
 .buttonAdd:hover {
   color: #212121;
-  scale: 1.1;
+  scale: 1;
   box-shadow: 0 0px 20px #257bc8;
 }
 

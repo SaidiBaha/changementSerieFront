@@ -1,9 +1,10 @@
 <div class="container mt-3">
-  <div class="cardtable">
-    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Produit</h2>
-    <div class="text-end mb-3">
+  <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Produit</h2>
+
+  <div class="cardtable" >
+    <div class="text-end mb-3" style="padding-top:2% ;">
     
-      <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter produit" (click)="openModal()">
+      <button type="button" class="button" style="margin-left: 92%;" data-toggle="tooltip" data-placement="top" title="Ajouter produit" (click)="openModal()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24px" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
       </button>
 
@@ -21,7 +22,7 @@
           <tr *ngFor="let produit of produits">
             <td>{{ produit.nomProduitDto }}</td>
             <td>{{ produit.refProduitDto }}</td>
-            <div class="action-buttons">
+            <div class="action-buttons" >
                 <button class="updatebtn" (click)="openUpdateModal()"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier produit" >create</i></button>
               <td> <button class="deleteButton" (click)="deleteproduit(produit.idDto)"data-toggle="tooltip" data-placement="top" title="Supprimer produit"  >
                 <svg
@@ -58,8 +59,8 @@
    <!-- Ajouter Produit -->
 <form [formGroup]="produitGroup">
   <ng-template #modalProduitContent>
-    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
-      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter un produit</mat-label>
+    <div style="width: 400px; height: auto; display: flex; flex-direction: column; align-items: center;">
+      <mat-label  style="margin-bottom: 20px;font-size: 22px;color: #194a7e;">Ajouter un produit</mat-label>
 
       <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
         <label style="margin-bottom: 5px;">Nom du produit</label>
@@ -78,7 +79,7 @@
     
      
 
-      <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="createProduit(produit); closeModal()">
+    <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="createProduit(produit); closeModal()">
         <span mat-raised-button color="primary">
           <mat-icon style="width: fit-content;">save</mat-icon>
         </span>
@@ -89,8 +90,8 @@
 <!-- Update Famille -->
 <form [formGroup]="produitGroup">
   <ng-template #updateModalContent>
-    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
-      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter un produit</mat-label>
+    <div style="width: 400px; height: auto; display: flex; flex-direction: column; align-items: center;">
+      <mat-label  style="margin-bottom: 20px;font-size: 22px;color: #194a7e;">Modifier un produit</mat-label>
 
       <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
         <label style="margin-bottom: 5px;">Nom du produit</label>
@@ -110,7 +111,7 @@
     
      
 
-      <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="updateProduit(); closeModal()">
+    <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="updateProduit(); closeModal()">
         <span mat-raised-button color="primary">
           <mat-icon style="width: fit-content;">save</mat-icon>
         </span>

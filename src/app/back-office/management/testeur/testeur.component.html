@@ -1,7 +1,8 @@
 <div class="container">
+  <h2 class="mb-3" style="color: #194a7e;">Liste des Testeurs</h2>
+
   <div class="cardtable">
-    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Liste des Testeurs</h2>
-    <div class="text-end mb-3">
+    <div class="text-end mb-3" style="padding-top: 2%;">
     
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter testeur" (click)="openModal()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"  fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
@@ -64,27 +65,38 @@
  <!-- Ajouter Famille -->
  <form [formGroup]="testeurGroup">
   <ng-template #modalProduitContent>
-    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
-      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter un testeur</mat-label>
+    <div style="width: 400px; height: auto; display: flex; flex-direction: column; align-items: center;">
+      <mat-label  style="margin-bottom: 20px;font-size: 22px;color: #194a7e;">Ajouter Testeur</mat-label>
 
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
-        <label style="margin-bottom: 5px;">Nom du produit</label>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
+        <label style="margin-bottom: 5px;">Nom du Testeur</label>
+      </div>
+
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="nomTesteurDto" placeholder="Nom du testeur" required [(ngModel)]="testeur.nomTesteurDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
-        <label style="margin-bottom: 5px;">Réference du testeur</label>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
+        <label style="margin-bottom: 5px;">Réference du Testeur</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Réference du testeur" required [(ngModel)]="testeur.refTesteurDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <label style="margin-bottom: 5px;">Ligne CMS ou Integration</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="ligneCMSorIntegDto" placeholder="Ligne CMS ou Integration" required [(ngModel)]="testeur.ligneCMSorIntegDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <label style="margin-bottom: 5px;">Atelier</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Atelier" required [(ngModel)]="testeur.atelierDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <label style="margin-bottom: 5px;">UF</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
         <input type="text" class="form-control form-control-sm" formControlName="ufDto" placeholder="UF" required [(ngModel)]="testeur.ufDto">
       </div>
     
@@ -101,32 +113,41 @@
 <!-- Update Famille -->
 <form [formGroup]="testeurGroup">
   <ng-template #updateModalContent>
-    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
-      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter un testeur</mat-label>
+    <div style="width: 400px; height: auto; display: flex; flex-direction: column; align-items: center;">
+      <mat-label  style="margin-bottom: 20px;font-size: 22px;color: #194a7e;">Modifier Testeur</mat-label>
 
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
-        <label style="margin-bottom: 5px;">Nom du produit</label>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
+        <label style="margin-bottom: 5px;">Nom du Testeur</label>
+      </div>
+
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="nomTesteurDto" placeholder="Nom du testeur" required [(ngModel)]="testeur.nomTesteurDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
-        <label style="margin-bottom: 5px;">Réference du testeur</label>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
+        <label style="margin-bottom: 5px;">Réference du Testeur</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Réference du testeur" required [(ngModel)]="testeur.refTesteurDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <label style="margin-bottom: 5px;">Ligne CMS ou Integration</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="ligneCMSorIntegDto" placeholder="Ligne CMS ou Integration" required [(ngModel)]="testeur.ligneCMSorIntegDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <label style="margin-bottom: 5px;">Atelier</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Atelier" required [(ngModel)]="testeur.atelierDto">
       </div>
-      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;margin-block-end: 2%;">
         <label style="margin-bottom: 5px;">UF</label>
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
         <input type="text" class="form-control form-control-sm" formControlName="ufDto" placeholder="UF" required [(ngModel)]="testeur.ufDto">
       </div>
 
-     
-    
      
 
       <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="updateTesteur(); closeModal()">
