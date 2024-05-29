@@ -9,6 +9,8 @@ import { ListPosageComponent } from './list-posage/list-posage.component';
 import { AddPosageComponent } from './add-posage/add-posage.component';
 import { ListCecklistCompleteComponent } from './list-cecklist-complete/list-cecklist-complete.component';
 import { AddChecklistCompleteComponent } from './add-checklist-complete/add-checklist-complete.component';
+import { ListChecklistCompleteValidation1Component } from './list-checklist-complete-validation1/list-checklist-complete-validation1.component';
+import { AddChecklistCompleteValidation2Component } from './add-checklist-complete-validation2/add-checklist-complete-validation2.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,14 @@ const routes: Routes = [
   {
     path: 'remlirCheck/:checklistId',
     component: AddChecklistCompleteComponent,
+  },
+  {
+    path: 'listcheckVal1',
+    component: ListChecklistCompleteValidation1Component,
+  },
+  {
+    path: 'addChecklistVal2/:checklistCompleteeId/:checklistId',
+    component: AddChecklistCompleteValidation2Component,
   },
 
   

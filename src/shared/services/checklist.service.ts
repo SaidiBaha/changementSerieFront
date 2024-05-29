@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 import { ChecklistCompletee } from "../models/ChecklistCompletee";
 import { ValidationsInput } from "../models/ValidationsInput";
 import { ChecklistVide } from "../models/ChecklistVide";
+import { ChecklistCompleteeIds } from "../models/ChecklistCompleteeIds";
 
 
 
@@ -63,12 +64,19 @@ export class ChecklistService {
 getAllChecklistCompleteeByUserId(userId: number): Observable<ChecklistCompletee[]> {
   return this.http.get<ChecklistCompletee[]>(`${this.baseUrl}/complete/user/${userId}`);
 }
+// fonctions de remplire checklist et list des checklist remlie et complete 
+
+getAllChecklistCompleteeByPlanningId(PlanningId: number): Observable<ChecklistCompletee[]> {
+  return this.http.get<ChecklistCompletee[]>(`${this.baseUrl}/complete/planning/${PlanningId}`);
+}
 /*
 getAllChecklistCompleteeByUserId(userId: number) {
   return this.httpRepositoryService.get<ChecklistCompletee>(`${this.BASE_URI}/complete/user/${userId}`);
 }*/
 
-
+updateChecklistcomplete(checklistCompleteId: number, validationsInput: ValidationsInput[]): Observable<any> {
+  return this.http.post<any>(`${this.baseUrl}/update/${checklistCompleteId}`, { validationsInput });
+}
 
 
 //fonction pour romplir checklist
@@ -79,5 +87,17 @@ completeChecklistForPlanning(userId: number, planningId: number, data: any): Obs
 getChecklistDetailsForUser(userId: number, checklistId: number): Observable<ChecklistVide> {
   return this.http.get<ChecklistVide>(`${this.baseUrl}/users/${userId}/checklists/${checklistId}`);
 }
+
+getChecklistcompleteForValidation2(checklistCompleteId: number): Observable<ChecklistVide> {
+  return this.http.get<ChecklistVide>(`${this.baseUrl}/checklistCompletee/${checklistCompleteId}`);
+  
+}
+
+getChecklistCompleteeIds(checklistCompleteeId: number): Observable<ChecklistCompleteeIds> {
+ 
+ return this.http.get<ChecklistCompleteeIds>(`${this.baseUrl}/ids/${checklistCompleteeId}`);
+
+}
+
 
 }

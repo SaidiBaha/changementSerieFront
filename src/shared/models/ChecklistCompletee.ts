@@ -1,5 +1,5 @@
 export class ChecklistCompletee {
-    idDto:number
+    id:number
     userId:number
     titrePlanning:string
     debut:Date

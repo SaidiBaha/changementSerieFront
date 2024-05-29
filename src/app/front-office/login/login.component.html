@@ -17,10 +17,10 @@
   <div class="login-wrapper">
     <div class="login-content"id="login">
       <div class="brand">
-        <a href="#">Soft UI Dashboard PRO</a>
+        <a href="#">Sagemcom </a>
       </div>
-      <h2>Welcome back</h2>
-      <p>Enter your email and password to sign in</p>
+      <h2>Content de te revoir</h2>
+      <p>Entrez votre email et votre mot de passe pour vous connecter</p>
       <form (ngSubmit)="authenticate()" class="login-form">
         <div class="form-group">
           <input type="email" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required>
@@ -30,17 +30,17 @@
         </div>
         <div class="form-footer">
           <label class="checkbox-container">
-            Remember me
+            Souviens-toi de moi
             <input type="checkbox">
             <span class="checkmark"></span>
           </label>
-          <button type="submit" class="btn-signin">SIGN IN</button>
+          <button type="submit" class="btn-signin">SE CONNECTER</button>
           <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
         </div>
       </form>
       <div class="signup-link">
-        Don't have an account? <a href="/register">Sign up</a>
-        <p>Forgot your password? <a href="/forgot-password">Reset it here</a></p>
+        Vous n'avez pas de compte ? <a href="/register">S'inscrire</a>
+        <p>Mot de passe oublié? <a href="/forgot-password">Réinitialisez-le ici</a></p>
       </div>
     </div>
   </div>

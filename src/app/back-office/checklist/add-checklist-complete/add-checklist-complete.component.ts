@@ -3,7 +3,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChecklistCompletee } from 'src/shared/models/ChecklistCompletee';
 import { ChecklistVide } from 'src/shared/models/ChecklistVide';
-import { TypeValidation, ValidationsInput } from 'src/shared/models/ValidationsInput';
+import { TypeValidation, TypeValidation2, ValidationsInput } from 'src/shared/models/ValidationsInput';
 import { PlanningChangementSerieService } from 'src/shared/services/PlanningChangement.service';
 import { AuthentificationService } from 'src/shared/services/authentification.service';
 import { ChecklistService } from 'src/shared/services/checklist.service';
@@ -145,7 +145,8 @@ initValidationsInput(): void {
           id: 0, // Remplacez 0 par l'ID réel si nécessaire
           ligneChecklistId: ligne.idDto,
           posageId: posage.idDto,
-          validationType: null // Choisissez la valeur par défaut selon vos besoins
+          validationType: null ,// Choisissez la valeur par défaut selon vos besoins
+          validationType2:null
         });
       });
     });
@@ -156,6 +157,10 @@ initValidationsInput(): void {
     const validationInput = this.validationsInput.find(input => input.posageId === posageId);
     return validationInput ? validationInput.validationType : TypeValidation.OK;
   }
+  getTypeValidation2(posageId: number): TypeValidation2 {
+    const validationInput = this.validationsInput.find(input => input.posageId === posageId);
+    return validationInput ? validationInput.validationType2 : TypeValidation2.OK;
+  }
 
   // Fonction pour mettre à jour la valeur de TypeValidation dans validationsInput
   updateValidationType(newValue: TypeValidation, posageId: number): void {
@@ -164,9 +169,16 @@ initValidationsInput(): void {
       this.validationsInput[validationInputIndex].validationType = newValue;
     } else {
       // Ajouter une nouvelle entrée dans validationsInput si elle n'existe pas
-      this.validationsInput.push({ id: 0, ligneChecklistId: 0, posageId, validationType: newValue });
+      this.validationsInput.push({ id: 0, ligneChecklistId: 0, posageId, validationType: newValue,validationType2:null });
     }
   }
+    // Fonction pour mettre à jour la valeur de TypeValidation dans validationsInput
+    updateValidationType2(newValue: TypeValidation2, posageId: number): void {
+      const validationInputIndex = this.validationsInput.findIndex(input => input.posageId === posageId);
+      if (validationInputIndex !== -1) {
+        this.validationsInput[validationInputIndex].validationType2 = newValue;
+      } 
+    }
 
 
 /*
@@ -270,6 +282,23 @@ completeChecklistForPlanning(): void {
       // Réactivez le bouton en cas d'erreur
       this.checklistRemplie = false;
       // Gérer l'erreur si nécessaire
+    }
+  );
+}
+
+
+
+
+
+updateChecklist(): void {
+  this.checklistService.updateChecklistcomplete(104, this.validationsInput).subscribe(
+    response => {
+      console.log('Checklist mise à jour avec succès', response);
+      // Traitez la réponse ou effectuez d'autres actions nécessaires
+    },
+    error => {
+      console.error('Erreur lors de la mise à jour de la checklist', error);
+      // Gérez l'erreur de manière appropriée
     }
   );
 }

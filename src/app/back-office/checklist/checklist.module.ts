@@ -13,6 +13,8 @@ import { AddPosageComponent } from './add-posage/add-posage.component';
 import { PosageDetailsComponent } from './posage-details/posage-details.component';
 import { ListCecklistCompleteComponent } from './list-cecklist-complete/list-cecklist-complete.component';
 import { AddChecklistCompleteComponent } from './add-checklist-complete/add-checklist-complete.component';
+import { ListChecklistCompleteValidation1Component } from './list-checklist-complete-validation1/list-checklist-complete-validation1.component';
+import { AddChecklistCompleteValidation2Component } from './add-checklist-complete-validation2/add-checklist-complete-validation2.component';
 
 
 
@@ -29,7 +31,9 @@ import { AddChecklistCompleteComponent } from './add-checklist-complete/add-chec
     AddPosageComponent,
     PosageDetailsComponent,
     ListCecklistCompleteComponent,
-    AddChecklistCompleteComponent
+    AddChecklistCompleteComponent,
+    ListChecklistCompleteValidation1Component,
+    AddChecklistCompleteValidation2Component
   ],
   imports: [
     CommonModule,

@@ -106,6 +106,9 @@ userId: number;
   
   updateTacheStatus() {
     console.log("test")
+    console.log(this.idTache)
+    console.log(this.tache)
+
     this.tacheService.updateTacheStatus(this.idTache,this.tache).subscribe((response)=>{
       // this.tacheService.getTacheById(this.id).subscribe(
       //   res=>{
