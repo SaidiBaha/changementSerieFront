@@ -1,0 +1,142 @@
+<div *ngIf="checklistCompleteDetails">
+  <h2>Checklist Completee Details</h2>
+  <p><strong>Titre:</strong> {{ checklistCompleteDetails.checklistCompletee.titreChecklist }}</p>
+  <p><strong>Description:</strong> {{ checklistCompleteDetails.checklistCompletee.descriptionChecklist }}</p>
+  <p><strong>constats:</strong> {{ checklistCompleteDetails.checklistCompletee.constats }}</p>
+  <p><strong>resteAfaire:</strong> {{ checklistCompleteDetails.checklistCompletee.resteAfaire }}</p>
+  
+
+  <h3>Validations</h3>
+  <div *ngFor="let validationDetail of checklistCompleteDetails.validations">
+    <p><strong>Validation Type:</strong> {{ validationDetail.validation.validationType }}</p>
+    <p><strong>Nom Test À Faire:</strong> {{ validationDetail.nomTestAFaire }}</p>
+    <p><strong>Nom Interface:</strong> {{ validationDetail.nomInterface }}</p>
+  </div>
+</div>
+
+
+<div class="card">
+  <div *ngIf="checklistCompleteDetails">
+    <div class="table-responsive">
+      <table class="tableTitle">
+        <tbody>
+          <tr>
+            <td style="width: 30%; text-align: center;">
+              <img src="assets/Capturesag.PNG" alt="logo" width="60%" height="100%">
+            </td>
+            <td style="background-color:#880404; color: #ffffff; font-family: Calibri, sans-serif; font-weight: bold; font-size: 22px; text-align: center;">
+              {{ checklistCompleteDetails.checklistCompletee.titreChecklist }}
+            </td>
+            <td style="text-align: center; width: 25%; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">
+              <span style="color:#880404; text-decoration: underline; text-align: center;">Outillage :</span> {{ checklistCompleteDetails.checklistCompletee.outillage }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">
+              <span style="color:#880404; text-align: center;">Description :</span> {{ checklistCompleteDetails.checklistCompletee.descriptionChecklist }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="tableRespo">
+        <thead>
+          <tr>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">Produit</th>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">Date</th>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">H.début Préparation</th>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">H.fin Préparation</th>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">Matricule(s) Tech Prév.</th>
+            <th colspan="2" style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">Visa Chef secteur Curatif</th>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">Visa Resp.Prév</th>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">Id planning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2" style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 15px; color: rgb(20, 11, 100);">
+              <p>{{ checklistCompleteDetails.checklistCompletee.debut | date:'dd-MM-yyyy' }}</p>
+              <p>{{ checklistCompleteDetails.checklistCompletee.debut | date:'HH:mm:ss' }}</p>
+            </td>
+            <td rowspan="2" style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 15px; color: rgb(20, 11, 100);">
+              <p>{{ checklistCompleteDetails.checklistCompletee.fin | date:'dd-MM-yyyy' }}</p>
+              <p>{{ checklistCompleteDetails.checklistCompletee.fin | date:'HH:mm:ss' }}</p>
+            </td>
+            <td rowspan="2"></td>
+            <td style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">1ere Validation</td>
+            <td style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">2eme Validation</td>
+            <td rowspan="2"></td>
+            <td rowspan="2">{{ checklistCompleteDetails.checklistCompletee.planningChangementSerie.id }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="tableposage">
+        <thead>
+          <tr>
+            <th style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px">A vérifier</th>
+            <th>Posages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let validation of checklistCompleteDetails.validations">
+            <td style="font-family: Calibri, sans-serif; font-size: 15px; color: rgb(72, 71, 71);">{{ validation.nomTestAFaire }}</td>
+            <td style="width: 100%;">
+              <!-- Utiliser flexbox pour afficher les posages à côté -->
+              <div style="display: flex; flex-direction: row; width: 100%;">
+                <!-- Afficher chaque posage -->
+                <div style="width: 33.33%; margin-right: 10px;">
+                  <!-- Afficher le posage -->
+                  <p>{{ validation.nomInterface }}</p>
+                  <!-- Ajouter les champs pour validationType et validationType2 -->
+                  <p><strong>Type Validation 1:</strong> {{ validation.validation.validationType }}</p>
+                  <p><strong>Type Validation 2:</strong> {{ validation.validation.validationType2 }}</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="tableRemar">
+        <tr>
+          <td style="color:#08b455;">OK</td>
+          <td style="color:#888888">Conforme</td>
+        </tr>
+        <tr>
+          <td style="color:red">NOK</td>
+          <td style="color:#888888">Non Conforme</td>
+        </tr>
+        <tr>
+          <td style="color:#7a7878">NA</td>
+          <td style="color:#888888">Non Applicable</td>
+        </tr>
+      </table>
+
+      <table class="tableposage">
+        <tr>
+          <td style="width: 12%;">
+            <label for="constats" style="text-align: center; font-family: Calibri, sans-serif; font-weight: bold; font-size: 17px;">Constats :</label>
+          </td>
+          <td>
+            {{ checklistCompleteDetails.checklistCompletee.constats }}
+          </td>
+        </tr>
+        <tr>
+          
+          <td>
+            {{ checklistCompleteDetails.checklistCompletee.resteAfaire }}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <p style="text-align: center; font-family: Calibri, sans-serif; font-size: 22px; margin-top: 2%;">Document SAGEM Tunisie Communication / Reproduction et divulgation interdites</p>
+   
+  </div>
+</div>

@@ -10,6 +10,7 @@ import { ChangementDetailsComponent } from './changement-details/changement-deta
 import { ChangementinfoComponent } from './changementinfo/changementinfo.component';
 
 
+
 @NgModule({
   declarations: [
     PlanningComponent,
@@ -22,6 +23,7 @@ import { ChangementinfoComponent } from './changementinfo/changementinfo.compone
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+   
     PlanningChangementRoutingModule
   ]
 })

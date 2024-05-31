@@ -11,6 +11,7 @@ import { ListCecklistCompleteComponent } from './list-cecklist-complete/list-cec
 import { AddChecklistCompleteComponent } from './add-checklist-complete/add-checklist-complete.component';
 import { ListChecklistCompleteValidation1Component } from './list-checklist-complete-validation1/list-checklist-complete-validation1.component';
 import { AddChecklistCompleteValidation2Component } from './add-checklist-complete-validation2/add-checklist-complete-validation2.component';
+import { ChecklistRemplirDetailsComponent } from './checklist-remplir-details/checklist-remplir-details.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,10 @@ const routes: Routes = [
   {
     path: 'addChecklistVal2/:checklistCompleteeId/:checklistId',
     component: AddChecklistCompleteValidation2Component,
+  },
+  {
+    path: 'checklistRemplirDetails',
+    component: ChecklistRemplirDetailsComponent,
   },
 
   

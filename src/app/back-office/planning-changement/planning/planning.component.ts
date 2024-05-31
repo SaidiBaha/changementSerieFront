@@ -5,6 +5,7 @@ import { PlanningChangementSerie } from 'src/shared/models/PlanningChangementSer
 import { PlanningChangementSerieService } from 'src/shared/services/PlanningChangement.service';
 import { NotificationDetailsComponent } from '../notification-details/notification-details.component';
 
+
 @Component({
   selector: 'app-planning',
   templateUrl: './planning.component.html',
@@ -44,5 +45,10 @@ export class PlanningComponent implements OnInit {
       data: { planning: planning }
     });
   }
+
+
+
+
+
 
 }

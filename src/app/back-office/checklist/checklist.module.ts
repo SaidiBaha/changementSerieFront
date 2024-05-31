@@ -15,6 +15,7 @@ import { ListCecklistCompleteComponent } from './list-cecklist-complete/list-cec
 import { AddChecklistCompleteComponent } from './add-checklist-complete/add-checklist-complete.component';
 import { ListChecklistCompleteValidation1Component } from './list-checklist-complete-validation1/list-checklist-complete-validation1.component';
 import { AddChecklistCompleteValidation2Component } from './add-checklist-complete-validation2/add-checklist-complete-validation2.component';
+import { ChecklistRemplirDetailsComponent } from './checklist-remplir-details/checklist-remplir-details.component';
 
 
 
@@ -33,7 +34,8 @@ import { AddChecklistCompleteValidation2Component } from './add-checklist-comple
     ListCecklistCompleteComponent,
     AddChecklistCompleteComponent,
     ListChecklistCompleteValidation1Component,
-    AddChecklistCompleteValidation2Component
+    AddChecklistCompleteValidation2Component,
+    ChecklistRemplirDetailsComponent
   ],
   imports: [
     CommonModule,

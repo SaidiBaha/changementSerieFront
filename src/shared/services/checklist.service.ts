@@ -99,5 +99,9 @@ getChecklistCompleteeIds(checklistCompleteeId: number): Observable<ChecklistComp
 
 }
 
+getChecklistCompleteDetails(checklistCompleteId: number): Observable<any> {
+  return this.http.get(`${this.baseUrl}/checklistCompleteDetails/${checklistCompleteId}`);
+}
+
 
 }
