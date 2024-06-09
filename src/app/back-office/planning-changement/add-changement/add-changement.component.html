@@ -20,10 +20,7 @@
           <option *ngFor="let famille of familles" [value]="famille.nomFamilleDto">{{famille.nomFamilleDto}}</option>
         </select>
       
-        <label for="nomProduit">Produit</label>
-        <select class="input" id="nomProduit" formControlName="nomProduit" [(ngModel)]="selectedProduit" required>
-          <option *ngFor="let produit of produits" [value]="produit.nomProduitDto">{{produit.nomProduitDto}}</option>
-        </select>
+       
         <div class="action-buttons">
         <button class="custom-button" style="width: 15%;align-self: center;margin-left: 70%;" data-toggle="tooltip" data-placement="top" title="Sauvgarder Changement">
           <span >

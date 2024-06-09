@@ -7,5 +7,21 @@ export class PlanningChangementSerie {
     finDto: Date;
     descriptionDto: string;
     changementEffectueDto:boolean
+    nombreModelChecklist:number;
+
+    etatChangement:EtatChangement;
+    
+    nombreChecklistRemplieValidation1:number;
+    nombreChecklistRemplieValidation2:number;
+
     checklistsDto: Checklist[];
+    avancement: number=0;
   }
+
+  export enum EtatChangement {
+    PREPARATION = 'PREPARATION',
+    VERIFICATION = 'VERIFICATION',
+    CHANGEMENTEFFECTUE = 'CHANGEMENTEFFECTUE'
+
+
+}

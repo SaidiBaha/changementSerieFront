@@ -32,14 +32,14 @@ export class AddChangementComponent implements OnInit {
       debutDto: new FormControl('', Validators.required),
       finDto: new FormControl('', Validators.required),
       descriptionDto: new FormControl('', Validators.required),
-      nomFamille: new FormControl('', Validators.required),
-      nomProduit: new FormControl('', Validators.required)
+      nomFamille: new FormControl('', Validators.required)
+    
     });
   }
 
   ngOnInit(): void {
     this.loadFamilles();
-    this.loadProduits();
+  
   }
 
   loadFamilles() {
@@ -48,11 +48,7 @@ export class AddChangementComponent implements OnInit {
     });
   }
 
-  loadProduits() {
-    this.produitService.getAllProduits().subscribe(produits => {
-      this.produits = produits;
-    });
-  }
+ 
 
 
   // fonction hedhi matraja3li chy ki ybda famech model de checklist
@@ -69,7 +65,7 @@ export class AddChangementComponent implements OnInit {
   onSubmit() {
     if (this.planningForm.valid) {
       const planning: PlanningChangementSerie = this.planningForm.value;
-      this.planningService.createPlanningWithFilteredChecklists(planning, this.selectedFamille, this.selectedProduit).subscribe(() => {
+      this.planningService.createPlanningWithFilteredChecklists(planning, this.selectedFamille).subscribe(() => {
         this.toastr.success('Planning created successfully!', 'Success'); // Afficher un message de succès
         this.planningForm.reset();
       });

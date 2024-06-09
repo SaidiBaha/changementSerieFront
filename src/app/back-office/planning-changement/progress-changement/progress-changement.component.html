@@ -1,0 +1,8 @@
+<div class="progress-container">
+    <div class="progress-line">
+      <div id="progress-bar" class="progress-bar" [style.width.%]="progressWidth"></div>
+      <div id="preparation" class="progress-step preparation" [class.completed]="etatChangement !== EtatChangement.PREPARATION">PREPARATION</div>
+      <div id="verification" class="progress-step verification" [class.completed]="etatChangement == EtatChangement.VERIFICATION ">VERIFICATION</div>
+      <div id="changement" class="progress-step changement" [class.completed]="etatChangement === EtatChangement.CHANGEMENTEFFECTUE">CHANGEMENTEFFECTUE</div>
+    </div>
+</div>

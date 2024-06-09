@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChecklistCompletee } from 'src/shared/models/ChecklistCompletee';
 import { ChecklistCompleteeIds } from 'src/shared/models/ChecklistCompleteeIds';
 import { ChecklistService } from 'src/shared/services/checklist.service';
@@ -11,17 +11,24 @@ import { ChecklistService } from 'src/shared/services/checklist.service';
 })
 export class ListChecklistCompleteValidation1Component implements OnInit{
   checklistCompletees: ChecklistCompletee[] = [];
+  planningId!: number;
 
   constructor(private checklistService: ChecklistService,
+    private route: ActivatedRoute,
                private router: Router
   ) { }
 
 
   ngOnInit(): void {
-    const planningId = 24;
     
-    this.getAllChecklistCompleteeByPlanningId(planningId)  // pour le moment ba3d lazem nrodo dynamique
-
+    
+    this.planningId = this.route.snapshot.params['id'];
+    this.checklistService.getAllChecklistCompleteeByPlanningId(this.planningId)
+    .subscribe(checklistCompletees => {
+      this.checklistCompletees = checklistCompletees;
+  
+    });
+   
    
   }
 

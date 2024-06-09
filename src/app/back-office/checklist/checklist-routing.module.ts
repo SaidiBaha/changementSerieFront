@@ -64,7 +64,7 @@ const routes: Routes = [
     component: AddChecklistCompleteComponent,
   },
   {
-    path: 'listcheckVal1',
+    path: 'listcheckVal1/:id',
     component: ListChecklistCompleteValidation1Component,
   },
   {

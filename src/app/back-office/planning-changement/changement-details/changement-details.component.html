@@ -1,59 +1,51 @@
 <div class="container">
   <div class="cardtable">
-    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Liste des Plannification</h2>
-
-    <table class="table table-striped" tyle="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
+    <h2 class="mb-3" style="color: #194a7e; margin-inline-start: 2%;">Liste des Plannification</h2>
+    <table class="table table-striped" style="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
       <thead>
-      <tr>
-        <th>Titre</th>
-        <th>Début</th>
-        <th>Fin</th>
-        <th>Description</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let planning of plannings">
-        <td>{{ planning.titreDto }}</td>
-        <td>{{ planning.debutDto | date: 'short' }}</td>
-        <td>{{ planning.finDto | date: 'short' }}</td>
-        <td>{{ planning.descriptionDto }}</td>
-        <!-- Dans votre planning.component.html -->
-       
-        <div class="action-buttons">  
-        <button  class="detail-btn"  [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]" data-toggle="tooltip" data-placement="top"
-        title="Plus d'informations sur la planification">
-        <i class="fa fa-info-circle"></i>
+        <tr>
+          <th>Titre</th>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Description</th>
+          <th>Progrès</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let planning of plannings">
+          <td>{{ planning.titreDto }}</td>
+          <td>{{ planning.debutDto | date: 'short' }}</td>
+          <td>{{ planning.finDto | date: 'short' }}</td>
+          <td>{{ planning.descriptionDto }}</td>
+          <td>
+            <label for="file-{{ planning.idDto }}">Progression du changement:</label>
+            <progress id="file-{{ planning.idDto }}" max="100" [value]="planning.avancement ?? 0">{{ planning.avancement ?? 0 }}%</progress>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button class="detail-btn" [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]" data-toggle="tooltip" data-placement="top" title="Plus d'informations sur la planification">
+                <i class="fa fa-info-circle"></i>
+              </button>
+              <button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top" title="lancer Changement Process" [disabled]="planning.changementEffectueDto">
+                <i class="fa fa-edit"></i>
+              </button>
 
-        </button>
+              <button class="material-symbols" (click)="navigateTolistCheckValidation1(planning.idDto)" data-toggle="tooltip" data-placement="top" title="Liste des checklists validation 1" [disabled]="planning.changementEffectueDto">
+                <i class="fa fa-edit"></i>
+                
+                
+              </button>
 
-      
-<button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top"
-title="lancer Changement Process" [disabled]="planning.changementEffectueDto">
-<i class="fa fa-edit"></i>
-</button>
-
-
-<button class="checkedbtn" [ngClass]="{'green-color': planning.changementEffectueDto, 'grey-color': !planning.changementEffectueDto}">
-<div class="material-icons">done_all</div>
-</button>
-      </div>
-
-      
-  
-       
-      </tr>
-    </tbody>
-  </table>
+              <button class="checkedbtn" [ngClass]="{'green-color': planning.changementEffectueDto, 'grey-color': !planning.changementEffectueDto}">
+                <div class="material-icons">done_all</div>
+              </button>
+              
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-
-
-
-
-
-  
-
-  
-
 

@@ -31,6 +31,16 @@ export class ChangementDetailsComponent implements OnInit {
     this.planningService.getAllPlannings().subscribe({
       next: (data) => {
         this.plannings = data;
+        this.plannings.forEach(planning => {
+          this.planningService.getAvancementTotal(planning.idDto).subscribe({
+            next: (avancement) => {
+              planning.avancement = avancement; // Ajouter l'avancement au planning
+            },
+            error: (error) => {
+              console.error('Erreur lors de la récupération de l\'avancement:', error);
+            }
+          });
+        });
       },
       error: (error) => {
         console.error('There was an error!', error);
@@ -55,6 +65,12 @@ export class ChangementDetailsComponent implements OnInit {
         // Gérer l'erreur
       }
     });
+  }
+
+  navigateTolistCheckValidation1(planningId: number):void{
+    console.log("id :",planningId)
+
+    this.router.navigate(['/dashboard/checklist/listcheckVal1', planningId]);
   }
 
 }

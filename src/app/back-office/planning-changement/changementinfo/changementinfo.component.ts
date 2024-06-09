@@ -12,6 +12,10 @@ export class ChangementinfoComponent implements OnInit {
 
 
   planningInfo: PlanningInfoDto | undefined;
+  showProgress: boolean = false;
+  showChart: boolean = false;
+  planningId!: number;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -19,8 +23,8 @@ export class ChangementinfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const planningId = this.route.snapshot.params['id'];
-    this.planningService.getPlanningInfo(planningId).subscribe({
+    this.planningId = this.route.snapshot.params['id'];
+    this.planningService.getPlanningInfo(this.planningId).subscribe({
       next: (data) => {
         this.planningInfo = data;
       },
@@ -28,6 +32,17 @@ export class ChangementinfoComponent implements OnInit {
         console.error('There was an error!', error);
       }
     });
+  }
+
+
+  showProgressChangement(): void {
+    this.showProgress = true;
+    this.showChart = false;
+  }
+
+  showChartChangementSerie(): void {
+    this.showProgress = false;
+    this.showChart = true;
   }
 
 }

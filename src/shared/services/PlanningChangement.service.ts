@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
-import { PlanningChangementSerie } from '../models/PlanningChangementSerie ';
+import { EtatChangement, PlanningChangementSerie } from '../models/PlanningChangementSerie ';
 import { PlanningInfoDto } from '../models/PlanningInfo';
 import { Observable } from 'rxjs';
 
@@ -34,8 +34,8 @@ export class PlanningChangementSerieService {
     return this.httpRepositoryService.delete<void>(`${this.BASE_URI}/${id}`);
   }
 
-  createPlanningWithFilteredChecklists(planning: PlanningChangementSerie, nomFamille: string, nomProduit: string) {
-    return this.httpRepositoryService.post<PlanningChangementSerie>(`${this.BASE_URI}/createWithFilteredChecklists?nomFamille=${nomFamille}&nomProduit=${nomProduit}`, planning);
+  createPlanningWithFilteredChecklists(planning: PlanningChangementSerie, nomFamille: string) {
+    return this.httpRepositoryService.post<PlanningChangementSerie>(`${this.BASE_URI}/createWithFilteredChecklists?nomFamille=${nomFamille}`, planning);
   }
 
   /*markNotificationAsRead(notificationId: number) {
@@ -60,5 +60,23 @@ export class PlanningChangementSerieService {
   getChecklistIdsByPlanningId(planningId: number): Observable<number[]> {
     return this.httpRepositoryService.get<number[]>(`${this.BASE_URI}/${planningId}/checklists`);
   }
+
+
+  getAvancementChecklistValidation1(planningId: number): Observable<number> {
+    return this.httpRepositoryService.get<number>(`${this.BASE_URI}/${planningId}/avancement-checklist-validation1`);
+  }
+
+  getAvancementChecklistValidation2(planningId: number): Observable<number> {
+    return this.httpRepositoryService.get<number>(`${this.BASE_URI}/${planningId}/avancement-checklist-validation2`);
+  }
+
+  getAvancementTotal(planningId: number): Observable<number> {
+    return this.httpRepositoryService.get<number>(`${this.BASE_URI}/${planningId}/avancement-total`);
+  }
+
+  getEtatChangement(planningId: number): Observable<EtatChangement> {
+    return this.httpRepositoryService.get<EtatChangement>(`${this.BASE_URI}/${planningId}/etat-changement`);
+  }
+  
   
 }

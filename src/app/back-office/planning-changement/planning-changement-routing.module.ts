@@ -4,6 +4,7 @@ import { PlanningComponent } from './planning/planning.component';
 import { AddChangementComponent } from './add-changement/add-changement.component';
 import { ChangementDetailsComponent } from './changement-details/changement-details.component';
 import { ChangementinfoComponent } from './changementinfo/changementinfo.component';
+import { ChartChangementSerieComponent } from './chart-changement-serie/chart-changement-serie.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'changementInfo/:id',
     component: ChangementinfoComponent,
+  },
+  {
+    path: 'chart/:id',
+    component: ChartChangementSerieComponent,
   },
   
 

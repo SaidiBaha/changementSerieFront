@@ -1,0 +1,16 @@
+#divChart {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  #divChart > div {
+    width: 30%;
+    height: 400px; /* Ajustez la hauteur selon vos besoins */
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  

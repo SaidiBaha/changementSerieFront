@@ -101,7 +101,6 @@ export class ChecklistRemplirDetailsComponent implements OnInit{
  
   
  
- // Fonction pour initialiser les validationsInput avec des valeurs par défaut
 
 
  getChecklistCompleteDetails(): void {
@@ -115,9 +114,6 @@ export class ChecklistRemplirDetailsComponent implements OnInit{
     }
   );
 }
-
-  
- 
 
 
 }
