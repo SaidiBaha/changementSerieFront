@@ -34,25 +34,15 @@ export class ProgressChangementComponent implements OnInit{
   }
 
   updateProgressWidth(): void {
-    console.log("test1");
     switch (this.etatChangement) {
       case EtatChangement.PREPARATION:
         this.progressWidth = 14;
-        console.log("test2");
-        console.log(this.progressWidth); // Ajout du log ici
-        console.log(this.etatChangement);
         break;
       case EtatChangement.VERIFICATION:
-        this.progressWidth =50;
-        console.log("test3");
-        console.log(this.progressWidth); // Ajout du log ici
-        console.log(this.etatChangement);
+        this.progressWidth = 50;
         break;
       case EtatChangement.CHANGEMENTEFFECTUE:
         this.progressWidth = 100;
-        console.log("test4");
-        console.log(this.progressWidth); // Ajout du log ici
-        console.log(this.etatChangement);
         break;
     }
   }
