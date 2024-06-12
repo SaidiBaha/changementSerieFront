@@ -10,6 +10,9 @@ import { ChangementDetailsComponent } from './changement-details/changement-deta
 import { ChangementinfoComponent } from './changementinfo/changementinfo.component';
 import { ChartChangementSerieComponent } from './chart-changement-serie/chart-changement-serie.component';
 import { ProgressChangementComponent } from './progress-changement/progress-changement.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
@@ -21,14 +24,17 @@ import { ProgressChangementComponent } from './progress-changement/progress-chan
     ChangementDetailsComponent,
     ChangementinfoComponent,
     ChartChangementSerieComponent,
-    ProgressChangementComponent
+    ProgressChangementComponent,
+    CalendarComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    FullCalendarModule, 
     ReactiveFormsModule,
    
     PlanningChangementRoutingModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PlanningChangementModule { }
