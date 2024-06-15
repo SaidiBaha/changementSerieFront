@@ -3,7 +3,7 @@
     <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Liste des Testeurs</h2>
     <div class="text-end mb-3">
     
-      <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter testeur">
+      <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip" data-placement="top" title="Ajouter testeur" (click)="openModal()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="auto" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg>
       </button>
       
@@ -29,7 +29,7 @@
           <td>{{ testeur.atelierDto }}</td>
           <td>{{ testeur.ufDto }}</td>
           <div class="action-buttons">
-            <button class="updatebtn"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier testeur">create</i></button>
+            <button class="updatebtn" (click)="openUpdateModal()"><i class="material-icons" data-toggle="tooltip" data-placement="top" title="Modifier testeur">create</i></button>
           <button class="deleteButton" (click)="deleteTesteur(testeur.idDto)"data-toggle="tooltip" data-placement="top" title="Supprimer testeur"  >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,3 +61,79 @@
   </table>
 </div>
         
+ <!-- Ajouter Famille -->
+ <form [formGroup]="testeurGroup">
+  <ng-template #modalProduitContent>
+    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
+      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter un testeur</mat-label>
+
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Nom du produit</label>
+        <input type="text" class="form-control form-control-sm" formControlName="nomTesteurDto" placeholder="Nom du testeur" required [(ngModel)]="testeur.nomTesteurDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Réference du testeur</label>
+        <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Réference du testeur" required [(ngModel)]="testeur.refTesteurDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Ligne CMS ou Integration</label>
+        <input type="text" class="form-control form-control-sm" formControlName="ligneCMSorIntegDto" placeholder="Ligne CMS ou Integration" required [(ngModel)]="testeur.ligneCMSorIntegDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Atelier</label>
+        <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Atelier" required [(ngModel)]="testeur.atelierDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">UF</label>
+        <input type="text" class="form-control form-control-sm" formControlName="ufDto" placeholder="UF" required [(ngModel)]="testeur.ufDto">
+      </div>
+    
+     
+
+      <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="createTesteur(testeur); closeModal()">
+        <span mat-raised-button color="primary">
+          <mat-icon style="width: fit-content;">save</mat-icon>
+        </span>
+      </button>
+    </div>
+  </ng-template>
+</form>
+<!-- Update Famille -->
+<form [formGroup]="testeurGroup">
+  <ng-template #updateModalContent>
+    <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
+      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter un testeur</mat-label>
+
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Nom du produit</label>
+        <input type="text" class="form-control form-control-sm" formControlName="nomTesteurDto" placeholder="Nom du testeur" required [(ngModel)]="testeur.nomTesteurDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Réference du testeur</label>
+        <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Réference du testeur" required [(ngModel)]="testeur.refTesteurDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Ligne CMS ou Integration</label>
+        <input type="text" class="form-control form-control-sm" formControlName="ligneCMSorIntegDto" placeholder="Ligne CMS ou Integration" required [(ngModel)]="testeur.ligneCMSorIntegDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">Atelier</label>
+        <input type="text" class="form-control form-control-sm" formControlName="refTesteurDto" placeholder="Atelier" required [(ngModel)]="testeur.atelierDto">
+      </div>
+      <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
+        <label style="margin-bottom: 5px;">UF</label>
+        <input type="text" class="form-control form-control-sm" formControlName="ufDto" placeholder="UF" required [(ngModel)]="testeur.ufDto">
+      </div>
+
+     
+    
+     
+
+      <button class="buttonAdd" style="width: 75%; margin-top: 20px;" (click)="updateTesteur(); closeModal()">
+        <span mat-raised-button color="primary">
+          <mat-icon style="width: fit-content;">save</mat-icon>
+        </span>
+      </button>
+    </div>
+  </ng-template>
+</form>

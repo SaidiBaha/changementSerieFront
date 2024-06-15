@@ -17,6 +17,9 @@ import { TacheComponent } from './tache/tache.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -38,6 +41,10 @@ import { ListReclamationComponent } from './list-reclamation/list-reclamation.co
         MatInputModule,
         ReactiveFormsModule,
         MatFormFieldModule,
+        MatTableModule,
+        MatDatepickerModule, 
+        MatNativeDateModule, // Ajouté
+        MatInputModule, // 
         MatIconModule,
         MatMenuModule
         

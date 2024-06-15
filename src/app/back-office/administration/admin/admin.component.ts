@@ -12,116 +12,78 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  listUser!:User[];
+  listUser!: User[];
   roles = Role;
-  rolesArray = Object.values(Role); // This converts the enum to an array
- 
-  isEditMode = false; // Ajoutez cette propriété pour suivre le mode de la modal
+  rolesArray = Object.values(Role);
+  isEditMode = false;
   user: User = new User();
-  idUser! : number; 
+  idUser!: number;
 
-@ViewChild("dialog",{static:false} )dialog!:ModalComponent; //hedhi l modal gernerique
+  @ViewChild("dialog", { static: false }) dialog!: ModalComponent;
 
-
-  constructor(private userService : UserService, private route:Router) { }
+  constructor(private userService: UserService, private route: Router) { }
 
   ngOnInit(): void {
-    this.getUsers()
+    this.getUsers();
   }
 
-  getById(id : number){
+  getById(id: number) {
     this.userService.getUser(id).subscribe((user: any) => {
       console.log("user", user);
-      this.openModal(user); // Ouvre le modal en mode édition avec les données de l'utilisateur
+      this.openModal(user);
     });
   }
 
-  // hedhi fonction ki tibda 3ana modal wahda 
-/*openModal(){
-  this.dialog?.open()
-}*/
-
-openModal(user?: User) {
-  if (user) {
-    // Si un utilisateur est passé en argument, remplissez le formulaire pour la mise à jour
-    this.user = { ...user };
-    this.isEditMode = true;
-    this.idUser = user.idDto; // Assurez-vous que l'ID est conservé pour la mise à jour
-  } else {
-    // Sinon, réinitialisez le formulaire pour ajouter un nouvel utilisateur
-    this.user = new User();
-    this.isEditMode = false;
-    this.idUser = undefined;
+  openModal(user?: User) {
+    if (user) {
+      this.user = { ...user };
+      this.isEditMode = true;
+      this.idUser = user.idDto;
+    } else {
+      this.user = new User();
+      this.isEditMode = false;
+      this.idUser = undefined;
+    }
+    this.dialog?.open();
   }
-  this.dialog?.open();
-}
 
-submitUser() {
-  if (this.isEditMode) {
-    this.updateuser();
-  } else {
-    this.createUser();
+  submitUser() {
+    if (this.isEditMode) {
+      this.updateUser();
+    } else {
+      this.createUser();
+    }
   }
-}
 
-
-
-
-  getUsers(){
+  getUsers() {
     this.userService.getUsers().subscribe(
-
-      res=>{
-        console.log("res",res);
-        this.listUser=res
+      res => {
+        console.log("res", res);
+        this.listUser = res;
       }
-    )
+    );
   }
 
   createUser(): void {
-    this.userService.createUser(this.user)
-      .subscribe(response => {
-        console.log(response);
-        
-        // Faire quelque chose avec la réponse
-        // (rediriger vers une autre page, afficher un message de confirmation, etc.)
-        this.userService.getUsers().subscribe(
-          res=>{
-            console.log("res",res);
-            this.listUser=res
-          }
-        )
-      });
-      this.dialog.close()
-      this.getUsers(); // Rechargez la liste après l'ajout
+    this.userService.createUser(this.user).subscribe(response => {
+      console.log(response);
+      this.getUsers();
+      this.dialog.close();
+    });
+  }
 
-    }
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe(() => {
+      this.getUsers();
+    });
+  }
 
-
- 
-
-
-    deleteUser(id : number){
-    
-      this.userService.deleteUser(id).subscribe((response)=> {
-        this.userService.getUsers().subscribe(
-          res=>{
-            console.log("res",res);
-            
-            this.listUser=res
-          }
-        )
-        
-      })
-    }
-
-    updateuser(){
-      this.userService.updateUser(this.idUser, this.user).subscribe(() => {
-        this.dialog.close();
-        this.getUsers(); // Rechargez la liste après la mise à jour
-      });
-    }
-
-
+  updateUser() {
+    this.userService.updateUser(this.idUser, this.user).subscribe(() => {
+      this.dialog.close();
+      this.getUsers();
+    });
+  }
 
 }
 

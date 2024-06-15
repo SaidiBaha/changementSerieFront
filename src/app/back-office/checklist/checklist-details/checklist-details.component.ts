@@ -37,31 +37,35 @@ export class ChecklistDetailsComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    const checklistId = this.route.snapshot.params['id'];
-    this.checklistService.getChecklistById(checklistId).subscribe(data => {
-        this.checklist = data;
-    });
-    this.ligneChecklistService.findByChecklistId(checklistId).subscribe(data => {
-        this.ligneChecklists = data;
-        // Pour chaque ligneChecklist, récupérez les posages associés
-        this.ligneChecklists.forEach(ligneCheck => {
-            this.ligneChecklistService.getPosagesByLigneChecklistId(ligneCheck.idDto).subscribe(posagesDto => {
-                ligneCheck.posagesDto = posagesDto;
-            });
+    this.route.params.subscribe(params => {
+      const checklistId = +params['id']; // Convertir le paramètre 'id' en nombre
+      if (!isNaN(checklistId) && checklistId > 0) { // Vérifier si checklistId est un nombre valide et positif
+        this.checklistService.getChecklistById(checklistId).subscribe(data => {
+          this.checklist = data;
         });
+        this.ligneChecklistService.findByChecklistId(checklistId).subscribe(data => {
+          this.ligneChecklists = data;
+          // Pour chaque ligneChecklist, récupérez les posages associés
+          this.ligneChecklists.forEach(ligneCheck => {
+            this.ligneChecklistService.getPosagesByLigneChecklistId(ligneCheck.idDto).subscribe(posagesDto => {
+              ligneCheck.posagesDto = posagesDto;
+            });
+          });
+        });
+      } else {
+        console.error('Invalid checklistId:', checklistId);
+      }
     });
 }
 
-addPosage(ligneChecklistId: number): void {
-  // Naviguez vers le composant addPosage avec le ID de la ligneChecklist
-  this.router.navigate(['/dashboard/checklist/addPosage', { ligneChecklistId: ligneChecklistId }]);
-
-    
+addPosage(ligneChecklistId: number, checklistId: number): void {
+  // Naviguez vers le composant addPosage avec le ID de la ligneChecklist et checklistId dans l'URL
+  this.router.navigate(['/dashboard/checklist/addPosage', { ligneChecklistId: ligneChecklistId, checklistId: checklistId }]);
 }
 
-editPosage(posageId: number): void {
+editPosage(posageId: number, checklistId: number): void {
   // Naviguez vers le composant addPosage avec le ID du posage à modifier
-  this.router.navigate(['/dashboard/checklist/addPosage', { id: posageId }]);
+  this.router.navigate(['/dashboard/checklist/addPosage', { id: posageId, checklistId: checklistId  }]);
 }
 
 deletePosage(posageId: number,ligneCheckIndex: number): void {

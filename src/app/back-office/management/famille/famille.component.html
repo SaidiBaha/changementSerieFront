@@ -1,6 +1,6 @@
 <div class="container mt-3" style="height: 100px;">
   <div class="cardtable" style="height: 500px;">
-    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Familles</h2>
+    <h2 class="mb-3" style="color: #194a7e; margin-inline-start:  2%;">Gestion des Produits</h2>
     <div class="text-end mb-3">
 
       <button type="button" class="button" style="margin-left: 92%; margin-block-end: 1%;" data-toggle="tooltip"
@@ -17,7 +17,7 @@
       <table class="table table-striped" style="width:100%;margin-block-end: 3%;border-radius: 20px;">
         <thead>
           <tr>
-            <th style="text-align: center;">Nom de la Famille</th>
+            <th style="text-align: center;">Nom de Produit</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -47,26 +47,7 @@
         </tbody>
       </table>
     </div>
-    <!-- <app-modal-g [title]="'Sauvegarder Famille'" #dialog1>
-      <div class="modal-body">
-        <form novalidate>
 
-          <div class="form-group text-center">
-            <input type="text" class="form-control form-control-sm w-75 mx-auto" name="nomFamilleDto"
-              [(ngModel)]="famille.nomFamilleDto" placeholder="Nom de la famille" required>
-          </div>
-
-          <div class="form-group text-center">
-            <button class="bookmarkBtn">
-              <span class="IconContainer">
-                <i class="fa fa-floppy-o"></i>
-              </span>
-            </button>
-          </div>
-
-        </form>
-      </div>
-    </app-modal-g> -->
 
 
 
@@ -84,11 +65,11 @@
 <form [formGroup]="familleGroup">
   <ng-template #modalFamilleContent>
     <div style="width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center;">
-      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter une famille</mat-label>
+      <mat-label style="margin-bottom: 20px; font-weight: bold;">Ajouter une Produit</mat-label>
 
       <div class="form-group" style="width: 75%; display: flex; flex-direction: column;">
-        <label style="margin-bottom: 5px;">Nom de la famille</label>
-        <input type="text" class="form-control form-control-sm" formControlName="nomFamilleDto" placeholder="Nom de la famille" required [(ngModel)]="famille.nomFamilleDto">
+        <label style="margin-bottom: 5px;">Nom de le Produit</label>
+        <input type="text" class="form-control form-control-sm" formControlName="nomFamilleDto" placeholder="Nom de le Produit" required [(ngModel)]="famille.nomFamilleDto">
       </div>
 
      

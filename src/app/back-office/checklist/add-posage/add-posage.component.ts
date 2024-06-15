@@ -52,24 +52,20 @@ export class AddPosageComponent {
     private router: Router
   ) { }
 
-  // ngOnInit(): void {
-  //   // Récupération de l'ID de la ligneChecklist si disponible
-  //   this.route.params.subscribe(params => {
-  //     if (params['ligneChecklistId']) {
-  //       this.ligneChecklistId = params['ligneChecklistId'];
-  //       this.checklistId = +params['checklistId'];
-  //       // Initialisez un nouveau posage ici si nécessaire
-  //     }
-
-  //     if (params['id']) {
-  //       this.loadPosage(params['id']);
-  //     }
-  //   });
-  // }
+  
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.ligneChecklistId = +params['ligneChecklistId']; // Assuming this is still needed
-      this.checklistId = +params['checklistId'];
+      // Récupérer checklistId des paramètres de l'URL
+      this.route.params.subscribe(params => {
+        this.checklistId = +params['checklistId'];
+      });
+
+      this.route.params.subscribe(params => {
+        this.ligneChecklistId = +params['ligneChecklistId'];
+      });
+      console.log("checklistId", this.checklistId);
+      console.log("ligneChecklistId", this.ligneChecklistId);
+      
   
       if (params['id']) {
         this.loadPosage(params['id']);
@@ -89,36 +85,7 @@ export class AddPosageComponent {
     });
   }
 
-  // savePosage(): void {
-  //   if (this.posage.idDto) {
-  //     // Si un id existe, mettez à jour le posage
-  //     this.posageService.updatePosage(this.posage.idDto, this.posage).subscribe({
-  //       next: () => {
-  //         console.log('Posage mis à jour avec succès');
-  //         this.router.navigate(['/dashboard/checklist/checklistDetails']);
-  //       },
-  //       error: (err) => {
-  //         console.error('Erreur lors de la mise à jour du posage:', err);
-  //       }
-  //     });
-  //   } else {
-  //     // Sinon, créez un nouveau posage
-  //     this.posageService.createPosage(this.posage, this.ligneChecklistId).subscribe({
-  //       next: () => {
-  //         console.log('Posage créé avec succès');
-  //         this.router.navigate(['/dashboard/checklist/checklistDetails']);
-  //       },
-  //       error: (err) => {
-  //         console.error('Erreur lors de la création du posage:', err);
-  //       }
-  //     });
-  //   }
-  // }
 
-  // // Vous pouvez inclure une fonction d'annulation si nécessaire
-  // cancel(): void {
-  //   this.router.navigate(['/dashboard/checklist/checklistDetails', this.checklistId]);
-  // }
 
   savePosage(): void {
     if (this.posage.idDto) {
@@ -138,6 +105,7 @@ export class AddPosageComponent {
         next: () => {
           console.log('Posage created successfully');
           this.router.navigate(['/dashboard/checklist/checklistDetails', this.checklistId]);
+
         },
         error: (err) => {
           console.error('Error creating posage:', err);
@@ -148,7 +116,6 @@ export class AddPosageComponent {
   
   cancel(): void {
     this.router.navigate(['/dashboard/checklist/checklistDetails', this.checklistId]);
-    console.log('checklistId')
   }
 
 }

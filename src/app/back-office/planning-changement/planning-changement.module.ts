@@ -13,6 +13,11 @@ import { ProgressChangementComponent } from './progress-changement/progress-chan
 import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -31,6 +36,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     CommonModule,
     FormsModule,
     FullCalendarModule, 
+    MatTableModule,
+    MatDatepickerModule, 
+    MatNativeDateModule, // Ajouté
+    MatInputModule, // Ajouté
+    MatFormFieldModule, 
     ReactiveFormsModule,
    
     PlanningChangementRoutingModule

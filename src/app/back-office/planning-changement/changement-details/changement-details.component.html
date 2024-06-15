@@ -1,6 +1,20 @@
 <div class="container">
   <div class="cardtable">
     <h2 class="mb-3" style="color: #194a7e; margin-inline-start: 2%;">Liste des Plannification</h2>
+
+    <!-- Search Filter -->
+    <div class="row filter-row">
+      <div class="col-sm-6 col-md-3">
+        <div class="form-group form-focus inputs">
+          <mat-form-field class="example-full-width">
+            <mat-label>Search</mat-label>
+            <input type="text" matInput [(ngModel)]="searchDataValue" (ngModelChange)="searchData(searchDataValue)">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <!-- /Search Filter -->
+
     <table class="table table-striped" style="width:90%;margin-left: 5%;margin-block-end: 3%;border-radius: 20px;">
       <thead>
         <tr>
@@ -13,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let planning of plannings">
+        <tr *ngFor="let planning of dataSource.filteredData">
           <td>{{ planning.titreDto }}</td>
           <td>{{ planning.debutDto | date: 'short' }}</td>
           <td>{{ planning.finDto | date: 'short' }}</td>
@@ -30,22 +44,63 @@
               <button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top" title="lancer Changement Process" [disabled]="planning.changementEffectueDto">
                 <i class="fa fa-edit"></i>
               </button>
-
               <button class="material-symbols" (click)="navigateTolistCheckValidation1(planning.idDto)" data-toggle="tooltip" data-placement="top" title="Liste des checklists validation 1" [disabled]="planning.changementEffectueDto">
                 <i class="fa fa-edit"></i>
-                
-                
               </button>
-
               <button class="checkedbtn" [ngClass]="{'green-color': planning.changementEffectueDto, 'grey-color': !planning.changementEffectueDto}">
                 <div class="material-icons">done_all</div>
               </button>
-              
             </div>
+          </td>
+        </tr>
+        <tr *ngIf="dataSource.filteredData.length === 0">
+          <td colspan="6">
+            <h5 style="text-align: center;">No data found</h5>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Pagination Controls -->
+    <div class="table_footer">
+      <div class="row">
+        <div class="col-sm-12 col-md-5">
+          <div class="dataTables_info">
+            Affichage {{ (currentPage - 1) * pageSize + 1 }} à
+            {{ (currentPage - 1) * pageSize + dataSource.filteredData.length }} de
+            {{ totalData }} entities
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+          <div class="pagination_section">
+            <ul class="pagination">
+              <li class="page-item" [ngClass]="{ disabled: currentPage == 1 }">
+                <a (click)="getMoreData('previous')" class="page-link" href="javascript:void(0);" tabindex="-1">Previous</a>
+              </li>
+              <ng-container *ngFor="let item of pageNumberArray">
+                <li class="page-item" [class.active]="item === currentPage">
+                  <a (click)="moveToPage(item)" class="page-link" href="javascript:void(0);">{{ item }}</a>
+                </li>
+              </ng-container>
+              <li class="page-item" [ngClass]="{ disabled: currentPage == totalPages }">
+                <a (click)="getMoreData('next')" class="page-link" href="javascript:void(0);">Next</a>
+              </li>
+            </ul>
+            <div class="dataTables_length">
+              <label>
+                Montrer
+                <select [(ngModel)]="pageSize" (change)="changePageSize()">
+                  <option [ngValue]="5">5</option>
+                  <option [ngValue]="10">10</option>
+                  <option [ngValue]="25">25</option>
+                  <option [ngValue]="50">50</option>
+                </select>
+                entries
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-

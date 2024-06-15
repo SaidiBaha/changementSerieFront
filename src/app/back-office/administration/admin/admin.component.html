@@ -12,7 +12,7 @@
                       <th>Nom</th> 
                       <th>Prénom</th>
                       <th>Email</th>
-                      <th>Statut de connexion</th>
+                    
                       <th>Rôle</th>
                       <th>Action</th>
                      
@@ -25,7 +25,7 @@
                         <td>{{user.firstNameDto}}</td>
                         <td>{{user.lastNameDto}}</td>
                         <td>{{user.emailDto}}</td>
-                        <td>{{user.loginstatusDto}}</td>
+                       
                         <td>{{user.roleDto}}</td>
                         
                        
@@ -181,10 +181,7 @@
                               <input type="password" class="form-control form-control-sm w-75 mx-auto" name="password"
                                   [(ngModel)]="user.passwordDto" placeholder="password" required>
                           </div>
-                          <div class="form-group text-center">
-                              <input type="text" class="form-control form-control-sm w-75 mx-auto" name="niveau"
-                                  [(ngModel)]="user.loginstatusDto" placeholder="loginstatus">
-                          </div>
+                       
                           <div class="form-group text-center">
                               <select class="form-control form-control-sm w-75 mx-auto" name="role" [(ngModel)]="user.roleDto" placeholder="role">
                                   <option *ngFor="let role of roles | keyvalue" [ngValue]="role.key">{{ role.value }}</option>

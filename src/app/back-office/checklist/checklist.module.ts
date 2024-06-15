@@ -16,6 +16,7 @@ import { AddChecklistCompleteComponent } from './add-checklist-complete/add-chec
 import { ListChecklistCompleteValidation1Component } from './list-checklist-complete-validation1/list-checklist-complete-validation1.component';
 import { AddChecklistCompleteValidation2Component } from './add-checklist-complete-validation2/add-checklist-complete-validation2.component';
 import { ChecklistRemplirDetailsComponent } from './checklist-remplir-details/checklist-remplir-details.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -40,6 +41,7 @@ import { ChecklistRemplirDetailsComponent } from './checklist-remplir-details/ch
   imports: [
     CommonModule,
     FormsModule,
+    MatFormFieldModule,
   
     ChecklistRoutingModule
   ]
