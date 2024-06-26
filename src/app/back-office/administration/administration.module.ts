@@ -20,6 +20,8 @@ import { ListReclamationComponent } from './list-reclamation/list-reclamation.co
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { RapportPowerBiComponent } from './rapport-power-bi/rapport-power-bi.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { MatNativeDateModule } from '@angular/material/core';
         ProjectComponent,
         DemandechangementComponent,
         TacheComponent,
-        ListReclamationComponent
+        ListReclamationComponent,
+        UnauthorizedComponent,
+        RapportPowerBiComponent
     ],
     imports: [
         CommonModule,

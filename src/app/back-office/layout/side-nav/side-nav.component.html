@@ -38,10 +38,10 @@
         <mat-icon class="sidenav-icon">assignment</mat-icon>
         Les Projets 
       </a>
-      <a mat-list-item  routerLink="administration/changement" style="margin-left: 5%;">
+    <!--  <a mat-list-item  routerLink="administration/changement" style="margin-left: 5%;">
         <mat-icon class="sidenav-icon">sync_alt</mat-icon>
         Les changements 
-      </a>
+      </a> -->
     
       
     </mat-expansion-panel>
@@ -49,7 +49,7 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title style="color: #194a7e;">
-          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >assignment</mat-icon>
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >perm_data_setting</mat-icon>
           Directions
         </mat-panel-title>
       </mat-expansion-panel-header>
@@ -116,17 +116,35 @@
         Ajouter une Checklist
       </a>
       <a mat-list-item  routerLink="checklist/listcheckComplete">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        Accéder aux Checklists de Validation 1
+        <mat-icon class="sidenav-icon">sync_alt</mat-icon>
+        Accéder aux Checklists complete
       </a>
-      <a mat-list-item  routerLink="checklist/listcheckVal1">
-        <mat-icon class="sidenav-icon"></mat-icon>
-        Accéder aux Checklists de Validation 2
-      </a>
+      
       
     </mat-expansion-panel>
 
     
+
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title style="color: #194a7e;">
+          <mat-icon class="sidenav-icon" style="margin-right: 10px;" >assignment</mat-icon>
+         Rapports
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <a mat-list-item  routerLink="administration/rapportPowerBi" style="margin-left: 5%;">
+        <mat-icon class="sidenav-icon">reorder</mat-icon>
+        rapport powerbi
+      </a>
+
+    
+      
+    </mat-expansion-panel>
+
+
 
   </mat-accordion>
 

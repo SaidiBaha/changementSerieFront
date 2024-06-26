@@ -41,17 +41,12 @@
               <!--<button type="button" class="btn btn-info me-1" (click)="navigateToEditChecklist(checklist.idDto)">Modifier</button>
               <button type="button" class="btn btn-danger me-1" (click)="deleteChecklist(checklist.idDto)">Supprimer</button>-->
               <td>
-                <button class="updatebtn" (click)="navigateToChecklistValidation2(checklist.id)">
-                    <i class="material-icons" data-toggle="tooltip" data-placement="top" title="lancer la 2éme validation">
-                        create
-                    </i>
-                </button>
-
-                <button class="updatebtn" (click)="navigateToChecklistValidation2(checklist.id)">
-                  <i class="material-icons" data-toggle="tooltip" data-placement="top" title="details de la checklist ">
-                      details
+                <button class="updatebtn" (click)="navigateToChecklistValidation2(checklist.id)" [disabled]="isChecklistDisabled(checklist.id)">
+                  <i class="material-icons" data-toggle="tooltip" data-placement="top" title="lancer la 2éme validation">
+                    create
                   </i>
-              </button>
+                </button>
+               
             </td>
             
                 

@@ -18,7 +18,7 @@
        <label for="testeur" style="margin-left: 40%;">Testeur</label>
     </td>
       <td >
-      <select id="famille" class="input" [(ngModel)]="checklist.familleDto" name="famille" style="width: 40%;margin-right: 4.5%;margin-left: 7.5%;">
+      <select id="famille" class="input" [(ngModel)]="checklist.familleDto" name="Produit" style="width: 40%;margin-right: 4.5%;margin-left: 7.5%;">
         <option *ngFor="let famille of familles" [value]="famille.idDto">{{ famille.nomFamilleDto }}</option>
       </select>
       <select id="testeur" class="input" [(ngModel)]="checklist.testeurDto" name="testeur" style="width: 40%;margin-left: 1%;">

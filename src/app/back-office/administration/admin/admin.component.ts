@@ -3,6 +3,7 @@ import {UserService} from "../../../../shared/services/user.service";
 import { Role, User } from 'src/shared/models/User';
 import { Router } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
+import { AuthentificationService } from 'src/shared/services/authentification.service';
 
 
 
@@ -21,7 +22,7 @@ export class AdminComponent implements OnInit {
 
   @ViewChild("dialog", { static: false }) dialog!: ModalComponent;
 
-  constructor(private userService: UserService, private route: Router) { }
+  constructor(private userService: UserService,private authService:AuthentificationService , private route: Router) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -65,11 +66,15 @@ export class AdminComponent implements OnInit {
   }
 
   createUser(): void {
-    this.userService.createUser(this.user).subscribe(response => {
-      console.log(response);
-      this.getUsers();
-      this.dialog.close();
-    });
+    if (this.authService.getRole() === 'ADMIN') {
+      this.userService.createUser(this.user).subscribe(response => {
+        console.log(response);
+        this.getUsers();
+        this.dialog.close();
+      });
+    } else {
+      console.error('Permission denied');
+    }
   }
 
   deleteUser(id: number) {

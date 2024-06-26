@@ -67,6 +67,11 @@ export class AuthentificationService {
   }
 
 
+  /*  logout(): Observable<void> {
+      return this.httpRepositoryService.post<void>(`${this.BASE_URI}/logout`, null);
+    }*/
+
+
 //teb3a 2éme méthode 
  /* getRole(): string | null {
     return this.currentUser ? this.currentUser.role : null;

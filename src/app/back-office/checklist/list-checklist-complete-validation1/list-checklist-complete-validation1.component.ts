@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChecklistCompletee } from 'src/shared/models/ChecklistCompletee';
 import { ChecklistCompleteeIds } from 'src/shared/models/ChecklistCompleteeIds';
+import { PlanningChangementSerieService } from 'src/shared/services/PlanningChangement.service';
 import { ChecklistService } from 'src/shared/services/checklist.service';
 
 @Component({
@@ -12,9 +13,14 @@ import { ChecklistService } from 'src/shared/services/checklist.service';
 export class ListChecklistCompleteValidation1Component implements OnInit{
   checklistCompletees: ChecklistCompletee[] = [];
   planningId!: number;
+  isUpdateInProgress: boolean = false;
+
+  currentChecklistCompleteeId: number | null = null;
+  disabledChecklistIds: number[] = [];
 
   constructor(private checklistService: ChecklistService,
     private route: ActivatedRoute,
+    private planningService:PlanningChangementSerieService,
                private router: Router
   ) { }
 
@@ -27,6 +33,9 @@ export class ListChecklistCompleteValidation1Component implements OnInit{
     .subscribe(checklistCompletees => {
       this.checklistCompletees = checklistCompletees;
   
+    });
+    this.planningService.getIsUpdateInProgress().subscribe((value: boolean) => {
+      this.isUpdateInProgress = value;
     });
    
    
@@ -41,34 +50,6 @@ export class ListChecklistCompleteValidation1Component implements OnInit{
   }
 
 
- /* navigateToChecklistValidation2(id: number): void {
-    console.log('Checklist ID:', id);
-    if (id !== undefined && id !== null) {
-        console.log("Navigation vers l'ID", id);
-        this.router.navigate(['/dashboard/checklist/addChecklistVal2', id]);
-    } else {
-        console.error('Checklist ID is undefined or null');
-    }
-}*/
-
-/*
-navigateToChecklistValidation2(checklistCompleteeId: number): void {
-  console.log('ChecklistCompletee ID:', checklistCompleteeId);
-  if (checklistCompleteeId !== undefined && checklistCompleteeId !== null) {
-    this.checklistService.getChecklistCompleteeIds(checklistCompleteeId).subscribe(
-      ids => {
-        console.log("Navigation vers l'ID de Checklist:", ids.checklistId, "et l'ID de PlanningChangementSerie:", ids.planningChangementSerieId);
-        this.router.navigate(['/dashboard/checklist/addChecklistVal2', ids.checklistId, { planningId: ids.planningChangementSerieId }]);
-      },
-      error => {
-        console.error('Error fetching IDs:', error);
-      }
-    );
-  } else {
-    console.error('ChecklistCompletee ID is undefined or null');
-  }
-}*/
-
 
 navigateToChecklistValidation2(checklistCompleteeId: number): void {
   console.log('ChecklistCompletee ID:', checklistCompleteeId);
@@ -82,6 +63,7 @@ navigateToChecklistValidation2(checklistCompleteeId: number): void {
           ['/dashboard/checklist/addChecklistVal2', ids.checklistCompleteeId, ids.checklistId],
           { queryParams: { planningId: ids.planningId } }
         );
+        this.disabledChecklistIds.push(checklistCompleteeId);
       },
       error => {
         console.error('Error fetching IDs:', error);
@@ -91,7 +73,8 @@ navigateToChecklistValidation2(checklistCompleteeId: number): void {
     console.error('ChecklistCompletee ID is undefined or null');
   }
 }
-
-
+isChecklistDisabled(checklistCompleteeId: number): boolean {
+  return this.disabledChecklistIds.includes(checklistCompleteeId);
+}
 
 }

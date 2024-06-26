@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRepositoryService } from 'src/core/httpRepository.service';
 import { EtatChangement, PlanningChangementSerie } from '../models/PlanningChangementSerie ';
 import { PlanningInfoDto } from '../models/PlanningInfo';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -78,5 +78,14 @@ export class PlanningChangementSerieService {
     return this.httpRepositoryService.get<EtatChangement>(`${this.BASE_URI}/${planningId}/etat-changement`);
   }
   
+// des fonction pour mettre le bouton de ListchecklistVal2 est [disabled]
+  private _isUpdateInProgress: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  setIsUpdateInProgress(value: boolean): void {
+    this._isUpdateInProgress.next(value);
+  }
+
+  getIsUpdateInProgress(): Observable<boolean> {
+    return this._isUpdateInProgress.asObservable();
+  }
   
 }

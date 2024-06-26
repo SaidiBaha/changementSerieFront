@@ -36,17 +36,39 @@
             <label for="file-{{ planning.idDto }}">Progression du changement:</label>
             <progress id="file-{{ planning.idDto }}" max="100" [value]="planning.avancement ?? 0">{{ planning.avancement ?? 0 }}%</progress>
           </td>
+
+         
           <td>
+            
             <div class="action-buttons">
               <button class="detail-btn" [routerLink]="['/dashboard/planning-changement/changementInfo', planning.idDto]" data-toggle="tooltip" data-placement="top" title="Plus d'informations sur la planification">
                 <i class="fa fa-info-circle"></i>
               </button>
-              <button class="detail-btn" (click)="launchChangementProcess(planning.idDto)" data-toggle="tooltip" data-placement="top" title="lancer Changement Process" [disabled]="planning.changementEffectueDto">
-                <i class="fa fa-edit"></i>
-              </button>
-              <button class="material-symbols" (click)="navigateTolistCheckValidation1(planning.idDto)" data-toggle="tooltip" data-placement="top" title="Liste des checklists validation 1" [disabled]="planning.changementEffectueDto">
-                <i class="fa fa-edit"></i>
-              </button>
+             
+
+                            <!-- Button for launching Changement Process -->
+                            <button 
+                            class="detail-btn" 
+                            (click)="launchChangementProcess(planning.idDto)" 
+                            data-toggle="tooltip" 
+                            data-placement="top" 
+                            title="lancer Changement Process" 
+                            [disabled]="planning.etatChangementDto !== 'PREPARATION'">
+                            <i class="fa fa-edit"></i>
+                          </button>
+                
+                          <button 
+                            class="material-symbols" 
+                            (click)="navigateTolistCheckValidation1(planning.idDto)" 
+                            data-toggle="tooltip" 
+                            data-placement="top" 
+                            title="Liste des checklists validation 1" 
+                            [disabled]="planning.etatChangementDto !== 'VERIFICATION'">
+                            <i class="fa fa-edit"></i>
+                          </button>
+
+
+
               <button class="checkedbtn" [ngClass]="{'green-color': planning.changementEffectueDto, 'grey-color': !planning.changementEffectueDto}">
                 <div class="material-icons">done_all</div>
               </button>

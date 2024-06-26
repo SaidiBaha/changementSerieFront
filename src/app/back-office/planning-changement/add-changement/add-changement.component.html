@@ -26,12 +26,18 @@
           <span >
             <i class="fa fa-floppy-o"></i>
           </span></button>
-          <button class="cancelbutton" style="width: 15%;align-self: center;margin-left: 3%;"  data-toggle="tooltip" data-placement="top" title="Retour a la liste de checklist">
-            <span>
-              <i class="fa fa-times"></i> 
-            </span>
-          </button>
+          <button class="cancelbutton" style="width: 15%;align-self: center;margin-left: 3%;"  
+          data-toggle="tooltip" data-placement="top" title="Retour a la liste de checklist"
+          [routerLink]="['/dashboard/planning-changement/planning']">
+    <span>
+      <i class="fa fa-times"></i> 
+    </span>
+  </button>
           </div>
+            <!-- Indicateur de chargement -->
+  <div *ngIf="isLoading" class="loading-overlay">
+    <div class="loading-spinner"></div>
+  </div>
     </form>
   </div>
 

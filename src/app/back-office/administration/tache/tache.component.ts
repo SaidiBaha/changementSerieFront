@@ -6,6 +6,8 @@ import { TacheService } from 'src/shared/services/tache.service';
 import { ModalComponent } from '../modal/modal.component';
 import { User } from 'src/shared/models/User';
 import { UserService } from 'src/shared/services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -30,11 +32,14 @@ users:User[]=[];
   showAddCardInput: boolean = false;
 userId: number;
 
-  constructor(private tacheService: TacheService,private userService:UserService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router) { }
+
+tacheForm: FormGroup;
+  constructor(private tacheService: TacheService,private userService:UserService,private route:ActivatedRoute,private dialog: MatDialog,private router:Router, private fb: FormBuilder ) { }
 
   ngOnInit(): void {
     this.loadTaches();
     this.getUsers();
+    
     }
     getUsers(){
       this.userService.getUsers().subscribe(

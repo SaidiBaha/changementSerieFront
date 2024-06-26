@@ -27,6 +27,8 @@ export class AddChecklistCompleteValidation2Component implements OnInit{
   currentIndex: number = 0;
   checklistRemplie: boolean = false;
 
+ 
+
 
   constructor(private checklistService: ChecklistService,
     private router: Router,
@@ -52,25 +54,7 @@ ngOnInit(): void {
      this.loadChecklistDetails();
  
  }
- /*
- loadChecklistDetails(): void {
-   if (!this.checklistId) {
-     console.error('ID de la checklist non défini');
-     return;
-   }
-   const userId = this.authService.getCurrentUserId();
-   const numericUserId = Number(userId);
  
-   this.checklistService.getChecklistDetailsForUser(numericUserId, this.checklistId).subscribe(
-     (details: ChecklistVide) => {
-       this.checklistVide = details;
-       this.initValidationsInput();
-     },
-     error => {
-       console.error('Erreur lors de la récupération des détails de la checklist:', error);
-     }
-   );
- }*/
  loadChecklistDetails(): void {
    if (!this.checklistId) {
      console.error('ID de la checklist non défini');
@@ -105,19 +89,6 @@ ngOnInit(): void {
    );
  }
 
- launchChangementProcess(): void {
-   if (this.currentIndex >= this.checklistIds.length) {
-     // Tous les checklistIds ont été traités
-     this.toastr.info('Toutes les checklists ont été traitées.', 'Info');
-     return;
-   }
-
-   const nextChecklistId = this.checklistIds[this.currentIndex];
-   this.router.navigate(['/dashboard/checklist/remlirCheck', nextChecklistId]);
- }
- 
- 
- 
 
 
  
@@ -167,63 +138,24 @@ initValidationsInput(): void {
    }
 
 
-/*
- 
- completeChecklistForPlanning(): void {
-   const userId = this.authService.getCurrentUserId(); // Récupérez l'ID de l'utilisateur connecté depuis le service
-   const numericUserId = Number(userId); //convertir id string en number 
- 
-   console.log(numericUserId);
-   
-   if (!userId) {
-     console.error('Impossible de récupérer l\'ID de l\'utilisateur connecté');
-     return; // Arrête l'exécution de la fonction si l'ID de l'utilisateur est vide
-   }
- 
-   if (!this.constats || !this.resteAfaire) {
-     console.error('Veuillez remplir tous les champs avant de compléter la checklist.');
-     this.toastr.error('Veuillez remplir tous les champs avant de compléter la checklist.', 'Erreur');
-     
-     return; // Arrête l'exécution de la fonction si les champs sont vides
-   }
-   const planningId = this.route.snapshot.params['planningId'];
- 
-   // Si tous les champs sont remplis, alors envoyer la requête au service pour compléter la checklist
-   this.checklistService.completeChecklistForPlanning(numericUserId,planningId, { 
-     validationsInput: this.validationsInput,
-     constats: this.constats,
-     resteAfaire: this.resteAfaire
-   }).subscribe(
-     response => {
-       console.log('Checklist complétée avec succès');
-       console.log(response);
-       this.toastr.success('Checklist complétée avec succès', 'Succès');
-       this.router.navigateByUrl('/dashboard/checklist/listcheckComplete');
-     },
-     error => {
-       console.error('Erreur lors de la complétion de la checklist:', error);
-       this.toastr.error(error.error.message, 'Erreur lors de la création du planning');
-       this.toastr.error(error.error.message, 'Erreur lors de la complétion de la checklist');
-       // Gérer l'erreur si nécessaire
-     }
-   );
- }
-
-*/
-
 
 
 
 
 
 updateChecklist(): void {
+
  this.checklistService.updateChecklistcomplete(this.checklistCompleteeId, this.validationsInput).subscribe(
    response => {
      console.log('Checklist mise à jour avec succès', response);
      // Traitez la réponse ou effectuez d'autres actions nécessaires
+     this.toastr.success('Checklist complétée avec succès', 'Succès');
+     this.planningService.setIsUpdateInProgress(true);
+     this.router.navigate(['/dashboard/checklist/listcheckVal1', this.planningId]);
    },
    error => {
      console.error('Erreur lors de la mise à jour de la checklist', error);
+     this.toastr.error(error.error.message, 'Erreur lors de la création du planning');
      // Gérez l'erreur de manière appropriée
    }
  );

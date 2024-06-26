@@ -58,11 +58,13 @@ export class LoginComponent {
         this.authentificationService.setLastName(response.lastname);// Stockez le nom de l'utilisateur
       
         if (role === 'ADMIN') {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/administration/admin']);
         } else if (role === 'USER') {
-          this.router.navigate(['/user']);
+          this.router.navigate(['']);
         } else if (role === 'MANAGER') {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/planning-changement/changementDetails']);
+        }else if (role === 'METHODE') {
+          this.router.navigate(['/dashboard/planning-changement/planning-calendar']);
         }
       },
     /*  error: (error) => {

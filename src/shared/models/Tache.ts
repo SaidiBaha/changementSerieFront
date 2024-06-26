@@ -14,5 +14,5 @@ export class Tache {
     statutTacheDto!: StatutTache;
     userId:number;
     projetDto!:number;
-    // Autres propriétés nécessaires
+    
   }

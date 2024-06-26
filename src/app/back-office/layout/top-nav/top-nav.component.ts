@@ -75,11 +75,21 @@ openNotificationDetails(notification: Notif) {
   toggleSidebar() {
     this.sideNavToggled.emit();
   }
-  onLoggedout() {
 
+  
+  onLoggedout() {
+    const userId = this.authentificationService.getCurrentUserId();
+    let numericUserId = Number(userId);
+   
+      localStorage.removeItem('token'); // Supprimer le token ou autres informations d'authentification
+      localStorage.removeItem('idUser');
+      localStorage.removeItem('role');
+      numericUserId = null;
+      this.router.navigate(['/login']); // Rediriger vers la page de login
+   
   }
   onReddirectProfile(){
-    this.router.navigate(['/dashboard/profile']);
+    this.router.navigate(['/dashboard/utilisateur/userProfile']);
   }
 
 

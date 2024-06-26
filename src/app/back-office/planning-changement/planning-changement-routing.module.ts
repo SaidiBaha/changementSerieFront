@@ -6,32 +6,45 @@ import { ChangementDetailsComponent } from './changement-details/changement-deta
 import { ChangementinfoComponent } from './changementinfo/changementinfo.component';
 import { ChartChangementSerieComponent } from './chart-changement-serie/chart-changement-serie.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
 
   {
     path: 'planning',
     component: PlanningComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'MANAGER','METHODE'] }
   },
   {
     path: 'addPlanning',
     component: AddChangementComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['METHODE','ADMIN'] }
   },
   {
     path: 'changementDetails',
     component: ChangementDetailsComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'MANAGER', 'METHODE'] }
   },
   {
     path: 'changementInfo/:id',
     component: ChangementinfoComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'MANAGER','METHODE'] }
   },
   {
     path: 'chart/:id',
     component: ChartChangementSerieComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'MANAGER','METHODE'] }
   },
   {
     path: 'planning-calendar',
     component: CalendarComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'MANAGER','METHODE'] }
   },
   
 

@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./back-office/back-office.module').then(m => m.BackOfficeModule),
-  }
+  },
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

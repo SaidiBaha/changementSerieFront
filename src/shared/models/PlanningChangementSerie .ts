@@ -9,7 +9,7 @@ export class PlanningChangementSerie {
     changementEffectueDto:boolean
     nombreModelChecklist:number;
 
-    etatChangement:EtatChangement;
+    etatChangementDto:EtatChangement;
     
     nombreChecklistRemplieValidation1:number;
     nombreChecklistRemplieValidation2:number;

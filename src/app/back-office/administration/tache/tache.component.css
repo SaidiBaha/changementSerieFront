@@ -411,3 +411,16 @@
   .buttonsave:hover:before {
     bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
   }
+  /* Ajoutez ce CSS dans tache.component.css */
+  .ticket {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3b4e6a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
