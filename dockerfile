@@ -1,32 +1,29 @@
-# Utiliser l'image Node officielle pour builder l'application Angular
-FROM node:16 as build-stage
+# Stage 1: Build the Angular application in Node.js
+FROM node:16-alpine as builder
 
-# Définir le répertoire de travail dans le conteneur
-WORKDIR /app
+# Set the working directory in the Docker container
+WORKDIR /usr/src/app
 
-# Copier les fichiers package.json et package-lock.json pour installer les dépendances
+# Copy the package.json and package-lock.json files
 COPY package*.json ./
 
-# Installer les dépendances de l'application
+# Install dependencies
 RUN npm install -f
 
-# Copier le reste des fichiers de l'application dans le répertoire de travail
+# Copy the rest of your application code
 COPY . .
 
-# Construire l'application Angular
-RUN npm run build -- --output-path=dist
+# Build the Angular application
+RUN npm run build
 
-# Utiliser une image Nginx officielle pour servir l'application Angular
-FROM nginx:alpine as production-stage
+# Stage 2: Serve the built application using Nginx
+FROM nginx:alpine
 
-# Copier les fichiers construits de l'application Angular du build-stage vers le répertoire Nginx
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# Copy the build output from the builder stage
+COPY --from=builder /usr/src/app/dist/team-planning /usr/share/nginx/html
 
-# Copier le fichier de configuration Nginx personnalisé (optionnel)
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# Exposer le port sur lequel l'application va tourner
+# Expose port 80 to the host so you can access the app
 EXPOSE 80
 
-# Commande pour démarrer Nginx
+# Start Nginx and keep it running in the foreground
 CMD ["nginx", "-g", "daemon off;"]
