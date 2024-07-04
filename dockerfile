@@ -13,8 +13,10 @@ RUN npm install -f
 # Copy the rest of your application code
 COPY . .
 
-# Build the Angular application
-RUN npm run build
+# Build the Angular application with a specified environment
+# Use --build-arg to pass environment configuration
+ARG configuration=production
+RUN npm run build -- --configuration $configuration
 
 # Stage 2: Serve the built application using Nginx
 FROM nginx:alpine
